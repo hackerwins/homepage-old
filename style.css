@@ -29,6 +29,7 @@ h3 {
 }
 
 p {
+  margin: 0.5em 0;
   font-size: 1.2em;
   line-height: 1.875;
   color: #334046
@@ -44,8 +45,8 @@ p {
   margin: 0 auto;
   max-width: 960px;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+  flex-direction: column;
 }
 
 .nav {
@@ -56,6 +57,10 @@ p {
   background: #eee;
   padding: 4em 0;
   color: #030620;
+}
+
+.heading .wrapper {
+  flex-direction: row;
 }
 
 .heading h1 {
@@ -100,11 +105,35 @@ p {
   padding: 20px;
   border: 1px solid #f4f4f4;
   border-radius: 20px;
-  box-shadow: 0px 5px 24px -15px rgba(0,0,0,0.61);
+  box-shadow: 0px 5px 24px -15px rgba(0,0,0,0.6);
+}
+
+.example .playground{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.playground textarea {
+  padding: 20px;
+  border: 1px solid #f1f1f1;
+  border-radius: 20px;
+  font-size: 1.25em;
+  flex: 1;
+  min-width: 360px;
+  margin: 10px;
+  min-height: 120px;
+  box-shadow: 0px 5px 24px -15px rgba(0,0,0,0.6) inset;
+  resize: none;
 }
 
 .footer {
   background: #ddd;
+}
+
+.footer .wrapper {
+  align-items: center;
 }
 
 section {
