@@ -151,7 +151,8 @@ p {
   justify-content: space-between;
 }
 
-.playground .CodeMirror {
+.playground .CodeMirror,
+.playground textarea {
   padding: 20px;
   border: 1px solid #f1f1f1;
   border-radius: 20px;
