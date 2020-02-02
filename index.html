@@ -1,0 +1,120 @@
+<html>
+<head>
+  <title>Yorkie</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400|Roboto+Slab:400,700|Signika+Negative:700&display=swap" rel="stylesheet">
+
+  <!-- style -->
+  <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+<section class="nav">
+  <div class="wrapper">
+  </div>
+</section>
+<section class="heading">
+  <div class="wrapper">
+    <img class="logo" src="./images/yorkie-photo.png" alt="A photo of Yorkie" />
+    <div class="title">
+      <h1>Yorkie</h1>
+      <h2>Production-grade framework for building collaborative editing application.</h2>
+    </div>
+  </div>
+  <div class="clear"></div>
+</section>
+<section class="description">
+  <div class="wrapper">
+    <p>
+    실시간 협업 편집을 위한 기술은 오랫동안 대기업들에서 개발되어 서비스로 제공되어 왔습니다. 하지만, 실제 서비스에 사용할 만한 신뢰할 만한 프레임워크가 외부에 공개 되어있지는 않습니다. 공개되어 있는 오픈소스들은 그들의 서비스에 특화되어 있거나 아카데믹합니다.
+    요키는 대량의 트레픽을 받는 실제 서비스에 사용할 수 있는 신뢰있는 프레임워크를 제공합니다.
+    </p>
+  </div>
+</section>
+<section class="content">
+  <div class="wrapper">
+    <h2>
+    다른 프레임워크와 특징 비교
+    </h2>
+    <ul>
+      <li>
+        <h3>
+          Real world modeling
+        </h3>
+        <h4>
+          Client-Server vs P2P
+        </h4>
+        <p>
+        P2P 시스템은 멋져 보입니다. 하지만 보통 서비스들은 Client-Server로 구성되어 있고 데이터를 서버에 저장합니다. P2P 기반 오픈소스 라이브러리를 실제 서비스에 도입하기 위해서는 많은 것들을 직접 처리해야 합니다. 요키는 서비스에 도입하기 위한 구성 요소(SDK, 서버, DB)들을 기본으로 갖추고 있어서 기본 설치와 조금의 코드만으로 실시간 협업 기능을 서비스에 도입할 수 있습니다.
+        </p>
+      </li>
+      <li>
+        <h3>
+          Secure
+        </h3>
+        <h4>
+          Automatic TLS with optional client cert authentication
+        </h4>
+        <p>
+        Yorkie에서는 클라이언트와 서버의 통신은 TLS로 구성할 수 있습니다. 또 인증 Hook을 통해서 서비스 내부의 인증 시스템과 손쉽게 결합할 수 있습니다.
+        </p>
+      </li>
+      <li>
+        <h3>
+          Proofed reliability
+        </h3>
+        <h4>
+          CRDT vs OT (Operational transformation)
+        </h4>
+        <p>
+        CRDT는 OT에 비해 알고리즘이 깨끗하고 단순합니다. 복잡함은 버그가 발생할 수 있는 확률이 단숨함에 비해 높습니다. 일부 OT 알고리즘은 논문 발표 이후에 수렴을 만족하지 못한다는 것이 알려지기도 했습니다. 요키는 안정적인 서비스 제공을 위해서 증명된 CRDT 알고리즘을 사용합니다.
+        </p>
+      </li>
+      <li>
+        <h3>
+        Size matters
+        </h3>
+        <h4>
+          Lamport clock vs Vector clock
+        </h4>
+        <p>
+        요키는 meta 용량을 더 작게 하기 위해서 Lamport 시계를 사용합니다. 벡터 시계는 클라이언트 별로 별도의 시계를 갖고 있습니다. 하지만 CRDT에서는 엘리먼트마다 meta인 시계를 넣게 되기 때문에 스냅샷의 크기가 커질 수 있습니다. Lamport 시계 만으로도 total ordering을 구할 수 있으므로 공간을 더 작게 사용하기 위한 현실적인 방법입니다.
+        </p>
+      </li>
+      <li>
+        <h3>
+          Easy-to-adoption
+        </h3>
+        <h4>
+          Document vs Datatype
+        </h4>
+        <p>
+        일부 CRDT 기반 오픈소스들은 기본 Datatype만 제공합니다. 하지만 기본 Datatype만으로 서비스의 복잡한 Model을 표현하기 어렵습니다. Yorkie는 범용적인 JSON-like Document를 제공해서 서비스의 모델을 표현하는데 제한이 없습니다.
+        </p>
+      </li>
+      <li>
+        <h3>
+          Manageable warehouse
+        </h3>
+        <h4>
+          Support MongoDB Query
+        </h4>
+        <p>
+    저장된 문서의 Snapshot은 MongoDB의 특정 Collection의 Document로 저장되기 때문에 검색과 같은 MongoDB의 검색 Query를 사용할 수 있습니다. 저장된 문서의 관리가 쉽습니다.
+        </p>
+      </li>
+    </ul>
+  </div>
+</section>
+<section class="example">
+  <div class="wrapper">
+    <h2>Play with Yorkie!</h2>
+  </div>
+</section>
+<section class="footer">
+  <div class="wrapper">
+    footer
+  </div>
+</section>
+</body>
+</html>
