@@ -13,6 +13,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Signika Negative', sans-serif;
   font-weight: 700;
+  line-height: 1.25;
   margin: 0.5em 0 0.125em 0;
 }
 
@@ -31,8 +32,12 @@ h3 {
 p {
   margin: 0.5em 0;
   font-size: 1.2em;
-  line-height: 1.875;
+  line-height: 1.725;
   color: #334046
+}
+
+.brand {
+  font-weight: bold;
 }
 
 .clear {
@@ -157,6 +162,11 @@ p {
   min-height: 120px;
   box-shadow: 0px 5px 24px -15px rgba(0,0,0,0.6) inset;
   resize: none;
+}
+
+.CodeMirror-scroll {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow: auto;
 }
 
 .footer {
