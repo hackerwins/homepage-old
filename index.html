@@ -1,5 +1,6 @@
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Yorkie</title>
   <meta name="viewport" content="width=device-width, initial-scale=0.8">
   <!-- Google fonts -->
@@ -36,10 +37,11 @@
 <section class="description">
   <div class="wrapper">
     <p>
-      Technology for real-time collaborative editing has been developed and serviced by large companies by long time. However, no reliable framework is available to the public for production usage. Most of them are specialized for academic uses or implemented for internal services only.
+      Technology for real-time collaborative editing has been developed and serviced by large companies for a long time. However, no reliable framework is available to the public for production usage. Most of them are specialized for academic uses or implemented for internal services only.
     </p>
     <p>
-      <span class="brand">Yorkie</span> provides a reliable framework that can be used for real-world services handles heavy traffic.
+      <span class="brand">Yorkie</span> provides a reliable framework that can be used for services that handles
+heavy traffic.
     </p>
   </div>
 </section>
@@ -61,7 +63,7 @@
         </div>
         <div class="card-body">
           <p>
-            Peer-to-peer system can be deployed without any concern but also need a bunch of manual works to adopt it to the production-level services. <span class="brand">Yorkie</span> provides the essential services – SDK, Server, and Database. Just out-of-box. You makes services, we lift it up to be collaborative ones.
+            Peer-to-peer systems can be deployed without any concerns but also need a lot of tedious work to adopt it to the production-level services. <span class="brand">Yorkie</span> provides the SDK, Server, and Database to eliminate the tedious work, can be operational and can use the services just out-of-box. Yorkie will take care of the collaborative features while you focus on your direct services.
           </p>
         </div>
       </li>
@@ -93,7 +95,7 @@
         </div>
         <div class="card-body">
           <p>
-            <a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">CRDT</a>(Conflict-free Replicated Data Type) is formed solid and clean architecture, much better than <a href="https://en.wikipedia.org/wiki/Operational_transformation">OT</a>(Operational Transformation). Complexity leads to higher probability of bugs on operations. It has been known that some OT algorithms cannot provide satisfy convergence after publication. <span class="brand">Yorkie</span> uses well-proven CRDT algorithm to achieve reliable services.
+            <a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">CRDT</a>(Conflict-free Replicated Data Type) is formed solid and clean architecture, much better than <a href="https://en.wikipedia.org/wiki/Operational_transformation">OT</a>(Operational Transformation). Complexity leads to higher probability of bugs on operations. It has been known that some OT algorithms are more complex than CRDT and cannot satisfy the convergence after publication. which would be difficult to use. <span class="brand">Yorkie</span> uses well-proven CRDT algorithm to achieve reliable services for customers.
           </p>
         </div>
       </li>
@@ -109,7 +111,7 @@
         </div>
         <div class="card-body">
           <p>
-            CRDT uses logical clock to sync documents between each client. <a href="https://en.wikipedia.org/wiki/Vector_clock">Vector clock</a> needs clocks per every client and it leads to large space for snapshots. <span class="brand">Yorkie</span> uses <a href="https://en.wikipedia.org/wiki/Lamport_timestamps">Lamport timestamp</a> to keep smaller document size. Lamport clock cannot distinguish causality and simultaneous relations but in server-client architecture, we only need to determine the total order within the system — no problem on implementing real world application.
+            CRDT uses logical clock to sync documents between each client. <a href="https://en.wikipedia.org/wiki/Vector_clock">Vector clock</a> needs clocks per every client and it leads to large space for snapshots. <span class="brand">Yorkie</span> uses <a href="https://en.wikipedia.org/wiki/Lamport_timestamps">Lamport timestamp</a> to keep smaller document sizes. Lamport clocks cannot distinguish the concurrency and causality relations but in the server-client architecture, we only need to determine the total order within the system - therefore, there are no problems on implementing the real world application.
           </p>
         </div>
       </li>
@@ -125,7 +127,7 @@
         </div>
         <div class="card-body">
           <p>
-            Some open source CRDT libraries only support basic datatypes. It’s very difficult to express complex models of the application only with basic datatypes. <span class="brand">Yorkie</span> provides a general purpose JSON-like document to unleash the limitation.
+            Some open source CRDT libraries only support basic datatypes. It's very difficult to express complex models of the application only with basic datatypes. <span class="brand">Yorkie</span> provides a general purpose JSON-like documents to unleash the limitation.
           </p>
         </div>
       </li>
@@ -141,7 +143,7 @@
         </div>
         <div class="card-body">
           <p>
-            <span class="brand">Yorkie</span> snapshots are stored as plain documents in MongoDB collections. You can use enormous MongoDB queries and features to browse store documents and supervise data warehouse easily with MongoDB management services.
+            <span class="brand">Yorkie</span> snapshots are stored as plain documents in MongoDB collections. You can use enormous MongoDB queries and features to browse stored documents and supervise data warehouse easily with MongoDB management services.
           </p>
         </div>
       </li>
@@ -155,8 +157,6 @@
       <textarea id="clientA">Type text here</textarea>
       <textarea id="clientB" style="display:none">And text goes on</textarea>
     </div>
-    <div id="log-holder" style="display:none"></div>
-    <div id="text-log-holder" style="display:none"></div>
   </div>
 </section>
 <section class="contact">
@@ -185,13 +185,11 @@
   let nextColorIdx = 0;
 
   const placeholder = document.getElementById('clientA');
-  const logHolder = document.getElementById('log-holder');
-  const textLogHolder = document.getElementById('text-log-holder');
   const selectionMap = new Map();
 
-  function displayLog(doc) {
-    logHolder.innerText = doc.toJSON();
-    textLogHolder.innerText = doc.getRootObject().get('content').getAnnotatedString();
+  function getYYYYMMDD() {
+    const now = new Date();
+    return`${now.getUTCFullYear()}${('0' + (now.getUTCMonth() + 1)).slice(-2)}${('0' + now.getUTCDate()).slice(-2)}`;
   }
 
   // https://github.com/codemirror/CodeMirror/pull/5619
@@ -263,15 +261,12 @@
       await client.activate();
 
       // 02. create a document then attach it into the client.
-      const doc = yorkie.createDocument('examples', 'codemirror');
+      const doc = yorkie.createDocument('examples', `codemirror-${getYYYYMMDD()}`);
       await client.attach(doc);
 
       doc.update((root) => {
         root.getOrCreateText('content');
       }, 'create content');
-      doc.subscribe((event) => {
-        displayLog(doc);
-      });
       await client.sync();
 
       // 03. create an instance of codemirror.
@@ -295,7 +290,6 @@
           text.edit(from, to, content);
         }, `update content by ${client.getID()}`);
 
-        displayLog(doc);
         console.log(`%c local: ${from}-${to}: ${content}`, 'color: green');
       });
       codemirror.on('beforeSelectionChange', (cm, change) => {
@@ -334,7 +328,6 @@
       });
 
       // 05. set initial value.
-      displayLog(doc);
       codemirror.setValue(text.getValue());
     } catch (e) {
       console.error(e);
