@@ -33,3 +33,6 @@ tags
 _site
 .sass-cache
 .jekyll-metadata
+
+# rbenv
+.ruby-version
