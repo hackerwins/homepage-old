@@ -1,3 +1,8 @@
+---
+# Main style file
+---
+@import "nav.scss";
+
 * {
   line-height: 1;
 }
@@ -5,7 +10,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #fff;
+  background: #ececec;
   color: #1d2d35;
   font-family: 'Roboto Slab', 'Noto Sans KR', serif;
 }
@@ -54,14 +59,12 @@ p {
   flex-direction: column;
 }
 
-.nav {
-  background: #eee;
-}
 
 .heading {
-  background: #eee;
+  background: #1e1f21;
   padding: 4em 0;
-  color: #030620;
+  color: #cca100;
+  border-bottom: 3px solid #e6b600;
 }
 
 .heading .wrapper {
