@@ -1,29 +1,10 @@
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Yorkie</title>
-  <meta name="viewport" content="width=device-width, initial-scale=0.8">
-  <!-- Google fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400|Roboto+Slab:400,700|Signika+Negative:700&display=swap" rel="stylesheet">
+---
+# Feel free to add content and custom Front Matter to this file.
+# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
-  <!-- CodeMirror -->
-  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.51.0/codemirror.min.css" />
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.51.0/theme/blackboard.min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.51.0/theme/monokai.min.css">
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.51.0/codemirror.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.51.0/mode/xml/xml.min.js"></script>
+layout: default
+---
 
-  <!-- Yorkie -->
-  <script src="./yorkie.js"></script>
-
-  <!-- style -->
-  <link href="./style.css" rel="stylesheet">
-</head>
-<body>
-<section class="nav">
-  <div class="wrapper">
-  </div>
-</section>
 <section class="heading">
   <div class="wrapper">
     <img class="logo" src="./images/yorkie-photo.png" alt="A photo of Yorkie" />
@@ -169,17 +150,6 @@ heavy traffic.
     </p>
   </div>
 </section>
-<section class="footer">
-  <div class="wrapper">
-    <p>
-      Yorkie v0.0.1 · Created and Maintained by Yorkie team.
-    </p>
-    <p>
-      <a href="https://github.com/hackerwins/yorkie">GitHub Project</a> · <a href="https://github.com/hackerwins/yorkie/issues">Issues</a>
-    </p>
-  </div>
-</section>
-</body>
 <script>
   const colors = ['#FECEEA', '#FEF1D2', '#A9FDD8', '#D7F8FF', '#CEC5FA'];
   let nextColorIdx = 0;
@@ -344,4 +314,3 @@ heavy traffic.
 
   main();
 </script>
-</html>

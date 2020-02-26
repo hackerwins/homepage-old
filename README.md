@@ -11,5 +11,5 @@ The homepage is deployed to AWS and the configuration is shown below. This repos
 
 # EC2
 [nginx] - [yorkie-team.github.io] # for serving static pages
-        ㄴ [grpc-web proxy, envoy] - [yorkie server] - [mongodb]  # for serving API
+        ㄴ[grpc-web proxy, envoy] - [yorkie server] - [mongodb]  # for serving API
 ```
