@@ -49,7 +49,6 @@ p {
   clear: both;
 }
 
-
 .wrapper {
   padding: 0 30px;
   margin: 0 auto;
@@ -94,7 +93,26 @@ p {
 .content {
 }
 
-.content ul {
+.footer {
+  background: #ddd;
+}
+
+.footer .wrapper {
+  align-items: center;
+}
+
+section {
+  padding: 1em 0;
+}
+
+section + section {
+  padding-bottom: 4em;
+}
+
+/************
+ * index
+ ************/
+.content .card-list {
   padding: 0;
   display: flex;
   flex-direction: row;
@@ -147,6 +165,31 @@ p {
   border-radius: 0 0 20px 20px;
 }
 
+/************
+ * docs
+ ************/
+.content .docs {
+  display: flex;
+}
+
+.content .docs-menu {
+    min-width: 160px;
+    padding-right: 30px;
+}
+
+.content .docs-menu ul {
+  margin-left: 0;
+  list-style: none;
+  min-width: 0;
+}
+
+.content .docs-content {
+  -ms-flex: 1;
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
 .example .playground{
   display: flex;
   flex-direction: row;
@@ -154,6 +197,9 @@ p {
   justify-content: space-between;
 }
 
+/************
+ * demo
+ ************/
 .playground .CodeMirror,
 .playground textarea {
   padding: 20px;
@@ -173,18 +219,3 @@ p {
   overflow: auto;
 }
 
-.footer {
-  background: #ddd;
-}
-
-.footer .wrapper {
-  align-items: center;
-}
-
-section {
-  padding: 1em 0;
-}
-
-section + section {
-  padding-bottom: 4em;
-}
