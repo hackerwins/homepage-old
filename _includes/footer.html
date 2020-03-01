@@ -1,10 +1,25 @@
 <section class="footer">
   <div class="wrapper">
-    <p>
-      Yorkie v0.0.1 · Created and Maintained by Yorkie team.
-    </p>
-    <p>
-      <a href="https://github.com/hackerwins/yorkie">GitHub Project</a> · <a href="https://github.com/hackerwins/yorkie/issues">Issues</a>
-    </p>
+    <div class="copyright">
+      <div class="brand">Yorkie</div>
+      <p>Copyright © {{ site.time | date: '%Y' }} Yorkie team</p>
+    </div>
+    <div class="sitemap">
+      <div class="category">
+        <h4>Documentation</h4>
+        <ul>
+          <li><a href="/docs/master">About Yorkie</a></li>
+          <li><a href="/docs/master/quickstart">Quickstart</a></li>
+        </ul>
+      </div>
+      <div class="category">
+        <h4>Channels</h4>
+        <ul>
+          <li><a href="https://github.com/hackerwins/yorkie">GitHub Project</a></li>
+          <li><a href="https://github.com/hackerwins/yorkie/issues">Issues</a></li>
+          <li><span class="disabled">Slack (coming soon)</span></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>

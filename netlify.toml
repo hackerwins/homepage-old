@@ -1,0 +1,7 @@
+[[redirects]]
+  from = "/api/*"
+  to = "http://ec2-52-78-24-195.ap-northeast-2.compute.amazonaws.com/:splat"
+  status = 200
+
+[dev]
+  publish = "_site" # If you use a _redirect file, provide the path to your static content folder
