@@ -2,10 +2,14 @@
 # Main style file
 ---
 @import "variables.scss";
+@import "mixins.scss";
 @import "nav.scss";
+@import "footer.scss";
 
 * {
   line-height: 1;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -93,14 +97,6 @@ p {
 }
 
 .content {
-}
-
-.footer {
-  background: #ddd;
-}
-
-.footer .wrapper {
-  align-items: center;
 }
 
 section {
