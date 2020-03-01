@@ -9,11 +9,15 @@
 @import "hero.scss";
 @import "nav.scss";
 @import "footer.scss";
+@import "docs.scss";
 
 * {
+  box-sizing: border-box;
   line-height: 1;
   margin: 0;
+  outline: 0;
   padding: 0;
+  min-width: 0;
 }
 
 html {
@@ -43,22 +47,38 @@ h2 {
 }
 
 h3 {
-  font-size: 2em;
+  font-size: 1.8em;
 }
 
 h4 {
-  font-size: 1.2em;
+  font-size: 1.3em;
+}
+
+hr {
+  margin: 1em 0;
+  border: 0;
+  border-top: 1px solid $color-gray-1;
 }
 
 p {
-  margin: 0.5em 0;
+  color: $color-content;
   font-size: 1.0em;
   line-height: 1.725;
-  color: $color-content;
+  margin: 0.5em 0;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 li {
+  color: $color-content;
   font-size: 1.0em;
+  line-height: 1.725;
   margin: 0.5em 0;
 }
 
@@ -75,9 +95,8 @@ li {
 .wrapper {
   padding: 0 30px;
   margin: 0 auto;
-  max-width: 960px;
+  max-width: 1200px;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
 }
 
@@ -147,32 +166,9 @@ section + section {
   }
 }
 
-
 /************
- * docs
+ * demo
  ************/
-.content .docs {
-  display: flex;
-}
-
-.content .docs-menu {
-    min-width: 160px;
-    padding-right: 30px;
-}
-
-.content .docs-menu ul {
-  margin-left: 0;
-  list-style: none;
-  min-width: 0;
-}
-
-.content .docs-content {
-  -ms-flex: 1;
-  flex: 1;
-  min-width: 0;
-  position: relative;
-}
-
 .example .playground {
   display: flex;
   flex-direction: row;
@@ -180,9 +176,6 @@ section + section {
   justify-content: space-between;
 }
 
-/************
- * demo
- ************/
 .playground .CodeMirror,
 .playground textarea {
   padding: 20px;

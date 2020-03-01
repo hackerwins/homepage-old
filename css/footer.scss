@@ -31,7 +31,7 @@
 
     .sitemap {
       margin-top: 2em;
-      flex: 2;
+      flex: 3;
       display: flex;
 
       .category {
@@ -42,14 +42,6 @@
         }
 
         li {
-          a {
-            text-decoration: none;
-
-            &:hover {
-              text-decoration: underline;
-            }
-          }
-
           span.disabled {
             color: $color-gray-5;
           }
