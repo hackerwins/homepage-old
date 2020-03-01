@@ -1,18 +1,26 @@
 .nav {
-  background: #151617;
+  background: $color-black-0;
   display: flex;
+  padding: 0.5em 0;
 
   .wrapper {
     flex-direction: row;
     align-items: center;
     flex: 1;
+
+    @media #{$small-screen} {
+      flex-direction: column;
+    }
   }
 
-  .logo p {
+  .logo a {
+    font-family: $font-brand;
     font-weight: bold;
-    color: #cda102;
-    font-size: 1.5em;
-    margin: 0;
+    color: $color-primary;
+    font-size: 2em;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px 15px;
   }
 
   .menu {
@@ -27,20 +35,24 @@
       margin: 0;
     }
 
+    li {
+    }
+
     li a {
-      color: #cda102;
+      display: inline-block;
+      color: $color-primary;
       margin: 0 5px;
       padding: 8px 15px;
       text-decoration: none;
       white-space: nowrap;
 
       &:hover {
-        border-bottom: 1px solid #e6b602;
+        border-bottom: 1px solid $color-brand;
       }
 
       &.button {
-        background: #e6b602;
-        color: #1e1f22;
+        background: $color-brand;
+        color: $color-black-1;
         border-radius: 5px;
 
         &:hover {

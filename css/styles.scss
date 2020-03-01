@@ -1,6 +1,7 @@
 ---
 # Main style file
 ---
+@import "variables.scss";
 @import "nav.scss";
 
 * {
@@ -10,13 +11,13 @@
 body {
   margin: 0;
   padding: 0;
-  background: #ececec;
-  color: #1d2d35;
-  font-family: 'Roboto Slab', 'Noto Sans KR', serif;
+  background: $color-background;
+  color: $color-content;
+  font-family: $font-primary;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Signika Negative', sans-serif;
+  font-family: $font-brand;
   font-weight: 700;
   line-height: 1.25;
   margin: 0.5em 0 0.125em 0;
@@ -38,10 +39,11 @@ p {
   margin: 0.5em 0;
   font-size: 1.2em;
   line-height: 1.725;
-  color: #334046
+  color: $color-content;
 }
 
 .brand {
+  font-family: $font-brand;
   font-weight: bold;
 }
 
@@ -61,10 +63,10 @@ p {
 
 
 .heading {
-  background: #1e1f21;
+  background: $color-black-1;
   padding: 4em 0;
   color: #cca100;
-  border-bottom: 3px solid #e6b600;
+  border-bottom: 3px solid $color-brand;
 }
 
 .heading .wrapper {
