@@ -1,11 +1,8 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: default
 ---
 
-<section class="heading">
+<section class="hero">
   <div class="wrapper">
     <img class="logo" src="./images/yorkie-photo.png" alt="A photo of Yorkie" />
     <div class="title">
