@@ -26,6 +26,9 @@ html {
 }
 
 body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   background: $color-background;
   color: $color-content;
   font-family: $font-primary;
@@ -101,7 +104,9 @@ li {
 }
 
 .content {
-  min-height: 100%;
+  flex: 1;
+  padding-top: 0;
+  padding-bottom: 4em;
 }
 
 section {
