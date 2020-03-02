@@ -122,9 +122,7 @@ layout: default
 </section>
 <section class="contact">
   <div class="wrapper">
-    <h2>Contact</h2>
-    <p>
-      <a href="mailto:susukang98@gmail.com">susukang98 at gmail dot com</a>
-    </p>
+    <h2>Need help?</h2>
+    <p>If you have any questions along the way, please don’t hesitate to ask us in our <a href="https://dev-yorkie.slack.com/">Slack channel</a>. You can sign up for our Slack here.</p>
   </div>
 </section>
