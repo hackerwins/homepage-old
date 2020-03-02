@@ -50,6 +50,10 @@
       border-left: 4px solid $color-primary;
     }
 
+    div.highlight {
+      background: transparent;
+    }
+
     pre {
       background: $color-gray-0;
       padding: 0.5em 0.8em;

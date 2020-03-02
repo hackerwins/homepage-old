@@ -9,8 +9,8 @@ layout: docs
 #### Installation
 
 Include the following code in the `<head>` tag of your HTML:
-```
-<!-- include yorkie js-->
+```html
+<!-- include yorkie js -->
 <script src="yorkie.js"></script>
 ```
 
@@ -24,20 +24,20 @@ await client.activate();
 
 Then create a document then attach it into the client.
 
-```
+```javascript
 const doc = yorkie.createDocument('examples', 'codemirror');
 await client.attach(doc);
 ```
 
 Now make a change on the document:
-```
+```javascript
 doc.update((root) => {
   root['key'] = 'value';
 }, 'set value to the key');
 ```
 
 You can subscribe all events from the document.
-```
+```javascript
 doc.subscribe((event) => {
   console.log(event);
 });
@@ -49,7 +49,7 @@ doc.subscribe((event) => {
 
 Text provides support for collaborative plain text editing. Under the hood, text is represented as a list of characters. Compared to using a regular JavaScript array, Text offers better performance.
 
-```
+```javascript
 doc.update((root) => {
   const text = root.getOrCreateText('text'); // {"text":""}
   text.edit(0, 0, 'hello');                  // {"text":"hello"}

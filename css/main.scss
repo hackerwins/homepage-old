@@ -11,9 +11,11 @@
 @import "footer.scss";
 @import "docs.scss";
 
+/* syntax highlight */
+@import "syntax-github.css";
+
 * {
   box-sizing: border-box;
-  line-height: 1;
   margin: 0;
   outline: 0;
   padding: 0;
