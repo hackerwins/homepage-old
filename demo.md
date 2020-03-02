@@ -4,7 +4,9 @@ layout: default
 <section class="example">
   <div class="wrapper">
     <h2>Play with Yorkie!</h2>
-    <p>CodeMirror</p>
+    <h3>CodeMirror</h3>
+    <p>The codemirror example uses the text data type.</p>
+    <p>For more details about: <a href="/docs/master/js-sdk#text">Custom CRDT types > Text</a></p>
     <div class="playground">
       <textarea id="clientA">Type text here</textarea>
       <textarea id="clientB" style="display:none">And text goes on</textarea>
