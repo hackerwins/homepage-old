@@ -4,28 +4,30 @@
 </head>
 <body>
   {% include nav.html %}
-  <section class="content">
-    <div class="wrapper">
-      <div class="docs">
-        <div class="docs-menu">
-          <div class="menu">
-            <h4>Documentation</h4>
-            <hr>
-            <ul>
-              <li><a href="/docs/master">Yorkie</a></li>
-              <li><a href="/docs/master/quickstart">Quickstart</a></li>
-              <li><a href="/docs/master/internals">Internals</a></li>
-              <li><a href="/docs/master/commands">Commands</a></li>
-              <li><a href="/docs/master/js-sdk">JS SDK</a></li>
-            </ul>
+  <main>
+    <section class="content">
+      <div class="wrapper">
+        <div class="docs">
+          <div class="docs-menu">
+            <div class="menu">
+              <h4>Documentation</h4>
+              <hr>
+              <ul>
+                <li><a href="/docs/master">Yorkie</a></li>
+                <li><a href="/docs/master/quickstart">Quickstart</a></li>
+                <li><a href="/docs/master/internals">Internals</a></li>
+                <li><a href="/docs/master/commands">Commands</a></li>
+                <li><a href="/docs/master/js-sdk">JS SDK</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="docs-content">
+            {{ content }}
           </div>
         </div>
-        <div class="docs-content">
-          {{ content }}
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
   {% include footer.html %}
 </body>
 </html>

@@ -95,6 +95,10 @@ li {
   clear: both;
 }
 
+main {
+  flex: 1;
+}
+
 .wrapper {
   padding: 0 30px;
   margin: 0 auto;
@@ -104,9 +108,6 @@ li {
 }
 
 .content {
-  flex: 1;
-  padding-top: 0;
-  padding-bottom: 4em;
 }
 
 section {
