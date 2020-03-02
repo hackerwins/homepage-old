@@ -10,11 +10,11 @@ Yorkie is an open source framework for building collaborative editing applicatio
   +--Client "A" (Go)----+
   | +--Document "D-1"-+ |               +--Agent------------------+
   | | { a: 1, b: {} } | <-- Changes --> | +--Collection "C-1"---+ |
-  | +-----------------+ |               | | +--Document "D-1"-+ | |      +--Mongo DB---------------+
-  +---------------------+               | | | { a: 1, b: {} } | | |      | Changes                 |
-                                        | | +-----------------+ | | <--> | Snapshot with CRDT Meta |
-  +--Client "B" (JS)----+               | | +--Document "D-2"-+ | |      | Snapshot for query      |
-  | +--Document "D-1"-+ |               | | | { a: 1, b: {} } | | |      +-------------------------+
+  | +-----------------+ |               | | +--Document "D-1"-+ | |     +--Mongo DB--+
+  +---------------------+               | | | { a: 1, b: {} } | | |     | Changes    |
+                                        | | +-----------------+ | | <-> | Snapshot   |
+  +--Client "B" (JS)----+               | | +--Document "D-2"-+ | |     +------------+
+  | +--Document "D-1"-+ |               | | | { a: 1, b: {} } | | |
   | | { a: 2, b: {} } | <-- Changes --> | | +-----------------+ | |
   | +-----------------+ |               | +---------------------+ |
   +---------------------+               +-------------------------+
@@ -31,8 +31,11 @@ Yorkie is an open source framework for building collaborative editing applicatio
  - When a network connection is available, Yorkie figures out which changes need to be synced from one device to another, and brings them into the same state.
  - If the document was changed concurrently on different devices, Yorkie automatically syncs the changes, so that every replica ends up in the same state with resolving conflict.
 
-### Why yorkie?
+### Agent and SDKs
+ - Agent: [yorkie-team/yorkie](https://github.com/yorkie-team/yorkie)
+ - Go Client: [yorkie-team/yorkie/client](https://github.com/yorkie-team/yorkie/tree/master/client)
+ - JS SDK: [yorkie-team/yorkie-js-sdk](https://github.com/yorkie-team/yorkie-js-sdk)
 
-Technology for real-time collaborative editing has been developed and serviced by large companies for a long time. However, no reliable framework is available to the public for production usage. Most of them are specialized for academic uses or implemented for internal services only.
+### Need help?
 
-Yorkie provides a reliable framework that can be used for services that handles heavy traffic.
+Be sure to join the Yorkie Slack. If you have any questions along the way, please don’t hesitate to ask us in our [Slack channel](https://dev-yorkie.slack.com/). You can sign up for our Slack here.

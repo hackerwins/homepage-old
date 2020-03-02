@@ -14,16 +14,15 @@ Next, let's start a Yorkie agent. Agent runs until they're told to quit and hand
 $ ./bin/yorkie agent
 ```
 
-Use the -c option to change settings such as the MongoDB connectionURI.
+Use the `-c` option to change settings such as the MongoDB connectionURI.
 
 ```
 $ ./bin/yorkie agent -c yorkie.json
 ```
 
-The configuration file with default values ​​is shown below.
+The configuration file, `yorkie.json` with default values is shown below.
 
 ```
-# yorkie.json
 {
    "RPCPort":9090,
    "Mongo":{

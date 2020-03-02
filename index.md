@@ -37,32 +37,35 @@ layout: default
       <li class="card">
         <div class="card-header">
           <div class="card-header-title">
-            <h3>Secure</h3>
-            <h4>TLS with optional client authentication</h4>
+            <h3>Easy integration</h3>
+            <h4>Builtin JSON-like document</h4>
           </div>
           <div class="card-header-img">
-            <img src="./images/secure.svg" />
+            <img src="./images/easy.svg" />
           </div>
         </div>
         <div class="card-body">
           <p>
-            <span class="brand">Yorkie</span> uses <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a> between clients and server communication. You can connect custom authentication systems with <span class="brand">Yorkie</span> via authentication hooks.
+            Some open source CRDT libraries only support basic datatypes. It's very difficult to express complex models of the application only with basic datatypes. <span class="brand">Yorkie</span> provides a general purpose JSON-like documents to unleash the limitation.
+          </p>
+          <p>
+          For more integrations with other libraries: <a href="/demo">Live demo</a>
           </p>
         </div>
       </li>
       <li class="card">
         <div class="card-header">
           <div class="card-header-title">
-            <h3>Proofed reliability</h3>
-            <h4>CRDT is better than OT</h4>
+            <h3>Manageable warehouse</h3>
+            <h4>Support MongoDB Query</h4>
           </div>
           <div class="card-header-img">
-            <img src="./images/reliability.svg" />
+            <img src="./images/warehouse.svg" />
           </div>
         </div>
         <div class="card-body">
           <p>
-            <a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">CRDT</a>(Conflict-free Replicated Data Type) is formed solid and clean architecture, much better than <a href="https://en.wikipedia.org/wiki/Operational_transformation">OT</a>(Operational Transformation). Complexity leads to a higher probability of bugs on operations. It has been known that some OT algorithms are more complex than CRDT and cannot satisfy the convergence after publication. which would be difficult to use. <span class="brand">Yorkie</span> uses the well-proven CRDT algorithm to achieve reliable services for customers.
+            <span class="brand">Yorkie</span> snapshots are stored as plain documents in MongoDB collections. You can use enormous MongoDB queries and features to browse stored documents and supervise data warehouse easily with MongoDB management services.
           </p>
         </div>
       </li>
@@ -85,32 +88,32 @@ layout: default
       <li class="card">
         <div class="card-header">
           <div class="card-header-title">
-            <h3>Easy integration</h3>
-            <h4>Builtin JSON-like document</h4>
+            <h3>Proofed reliability</h3>
+            <h4>CRDT is better than OT</h4>
           </div>
           <div class="card-header-img">
-            <img src="./images/easy.svg" />
+            <img src="./images/reliability.svg" />
           </div>
         </div>
         <div class="card-body">
           <p>
-            Some open source CRDT libraries only support basic datatypes. It's very difficult to express complex models of the application only with basic datatypes. <span class="brand">Yorkie</span> provides a general purpose JSON-like documents to unleash the limitation.
+            <a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">CRDT</a>(Conflict-free Replicated Data Type) is formed solid and clean architecture, much better than <a href="https://en.wikipedia.org/wiki/Operational_transformation">OT</a>(Operational Transformation). Complexity leads to a higher probability of bugs on operations. It has been known that some OT algorithms are more complex than CRDT and cannot satisfy the convergence after publication. which would be difficult to use. <span class="brand">Yorkie</span> uses the well-proven CRDT algorithm to achieve reliable services for customers.
           </p>
         </div>
       </li>
       <li class="card">
         <div class="card-header">
           <div class="card-header-title">
-            <h3>Manageable warehouse</h3>
-            <h4>Support MongoDB Query</h4>
+            <h3>Secure</h3>
+            <h4>TLS with optional client authentication</h4>
           </div>
           <div class="card-header-img">
-            <img src="./images/warehouse.svg" />
+            <img src="./images/secure.svg" />
           </div>
         </div>
         <div class="card-body">
           <p>
-            <span class="brand">Yorkie</span> snapshots are stored as plain documents in MongoDB collections. You can use enormous MongoDB queries and features to browse stored documents and supervise data warehouse easily with MongoDB management services.
+            <span class="brand">Yorkie</span> uses <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security">TLS</a> between clients and server communication. You can connect custom authentication systems with <span class="brand">Yorkie</span> via authentication hooks.
           </p>
         </div>
       </li>
