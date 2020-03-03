@@ -10,7 +10,7 @@ The yorkie CLI is a well-behaved command line application. In erroneous cases, a
 
 To view a list of the available commands at any time, just run `yorkie` with no arguments:
 
-```
+```bash
 $ yorkie
 
 Usage:
@@ -28,7 +28,7 @@ Use "yorkie [command] --help" for more information about a command.
 
 To get help for any specific command, pass the -h flag to the relevant subcommand. For example, to see help about the members subcommand:
 
-```
+```bash
 $ yorkie agent -h
 Starts yorkie agent.
 
