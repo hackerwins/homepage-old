@@ -38,4 +38,4 @@ Yorkie is an open source framework for building collaborative editing applicatio
 
 ### Need help?
 
-Be sure to join the Yorkie Slack. If you have any questions along the way, please don’t hesitate to ask us in our [Slack channel](https://dev-yorkie.slack.com/). You can sign up for our Slack here.
+Be sure to join the Yorkie Slack. If you have any questions along the way, please don’t hesitate to ask us in our [Slack channel](https://dev-yorkie.slack.com/). You can sign up for our [Slack here](https://communityinviter.com/apps/dev-yorkie/yorkie-framework).
