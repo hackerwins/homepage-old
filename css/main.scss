@@ -205,3 +205,14 @@ section + section {
   overflow: auto;
 }
 
+.example .drawing {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 500px;
+  height: 300px;
+  border: 1px solid #f1f1f1;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 0px 5px 24px -15px rgba(0,0,0,0.6) inset;
+}
