@@ -42,46 +42,52 @@ async function createDrawingExample(client, drawingPanel) {
   });
   await client.sync();
 
-  document.addEventListener('mousedown', (e) => {
-    if (!window.isMouseDown) {
-      window.isMouseDown = true;
+  const handlers = {
+    'begin': (e) => {
+      if (!window.isMouseDown) {
+        window.isMouseDown = true;
 
-      const point = getPoint(drawingPanel, e);
-      if (point.x < 0 || point.y < 0 ||
-        point.x > drawingPanel.offsetWidth || point.y > drawingPanel.offsetHeight) {
-        return;
+        const point = getPoint(drawingPanel, e);
+        if (point.x < 0 || point.y < 0 ||
+          point.x > drawingPanel.offsetWidth || point.y > drawingPanel.offsetHeight) {
+          return;
+        }
+
+        doc.update((root) => {
+          const shape = root.shapes.push({
+            points: [point]
+          });
+          window.currentID = shape.getID();
+        }, `update content by ${client.getID()}`);
       }
+    },
 
-      doc.update((root) => {
-        const shape = root.shapes.push({
-          points: [point]
-        });
-        window.currentID = shape.getID();
-      }, `update content by ${client.getID()}`);
-    }
-  });
+    'move': (e) => {
+      if (window.isMouseDown) {
+        const point = getPoint(drawingPanel, e);
+        if (point.x < 0 || point.y < 0 ||
+          point.x > drawingPanel.offsetWidth || point.y > drawingPanel.offsetHeight) {
+          return;
+        }
 
-  document.addEventListener('mousemove', (e) => {
-    if (window.isMouseDown) {
-      const point = getPoint(drawingPanel, e);
-      if (point.x < 0 || point.y < 0 ||
-        point.x > drawingPanel.offsetWidth || point.y > drawingPanel.offsetHeight) {
-        return;
+        doc.update((root) => {
+          const shape = root.shapes.getElementByID(window.currentID);
+          shape.points.push(point);
+          paintCanvas(drawingPanel, root.shapes);
+        }, `update content by ${client.getID()}`);
       }
+    },
 
-      doc.update((root) => {
-        const shape = root.shapes.getElementByID(window.currentID);
-        shape.points.push(point);
-        paintCanvas(drawingPanel, root.shapes);
-      }, `update content by ${client.getID()}`);
-    }
-  });
+    'end': (e) => {
+      if (window.isMouseDown) {
+        window.isMouseDown = false;
+      }
+    },
+  };
 
-  document.addEventListener('mouseup', (e) => {
-    if (window.isMouseDown) {
-      window.isMouseDown = false;
-    }
-  });
+  document.addEventListener('mousedown', handlers['begin']);
+  document.addEventListener('mousemove', handlers['move']);
+  document.addEventListener('mouseup', handlers['end']);
 
   // 05. set initial value.
   paintCanvas(drawingPanel, doc.getRootObject().shapes);
