@@ -20,10 +20,17 @@ function paintCanvas(drawingPanel, shapes) {
 }
 
 function getPoint(drawingPanel, e) {
-  return {
-    x: e.clientX - drawingPanel.offsetLeft + window.scrollX,
-    y: e.clientY - drawingPanel.offsetTop + window.scrollY
-  };
+  if (!!e.touches) {
+    return {
+      x: parseInt(e.touches[0].clientX - drawingPanel.offsetLeft + window.scrollX),
+      y: parseInt(e.touches[0].clientY - drawingPanel.offsetTop + window.scrollY)
+    };
+  } else {
+    return {
+      x: e.clientX - drawingPanel.offsetLeft + window.scrollX,
+      y: e.clientY - drawingPanel.offsetTop + window.scrollY
+    };
+  }
 }
 
 async function createDrawingExample(client, drawingPanel) {
@@ -64,6 +71,8 @@ async function createDrawingExample(client, drawingPanel) {
 
     'move': (e) => {
       if (window.isMouseDown) {
+        e.preventDefault();
+
         const point = getPoint(drawingPanel, e);
         if (point.x < 0 || point.y < 0 ||
           point.x > drawingPanel.offsetWidth || point.y > drawingPanel.offsetHeight) {
@@ -85,9 +94,15 @@ async function createDrawingExample(client, drawingPanel) {
     },
   };
 
+  // for desktop
   document.addEventListener('mousedown', handlers['begin']);
   document.addEventListener('mousemove', handlers['move']);
   document.addEventListener('mouseup', handlers['end']);
+
+  // for touch devices
+  document.addEventListener('touchstart', handlers['begin']);
+  document.addEventListener('touchmove', handlers['move']);
+  document.addEventListener('touchend', handlers['end']);
 
   // 05. set initial value.
   paintCanvas(drawingPanel, doc.getRootObject().shapes);
