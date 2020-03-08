@@ -1,13 +1,13 @@
 ---
 layout: default
 ---
-<section class="example">
+<section class="demo">
   <div class="wrapper">
     <h2>Play with Yorkie!</h2>
     <h3>CodeMirror</h3>
     <p>The CodeMirror example uses custom CRDT type, <a href="/docs/master/js-sdk#text">Text</a>.</p>
     <p>For more details: <a href="https://github.com/yorkie-team/yorkie-js-sdk/blob/master/dist/index.html">codemirror.html</a></p>
-    <div class="playground">
+    <div class="text">
       <textarea id="text-editor">Type text here</textarea>
     </div>
     <h3>Drawing</h3>
@@ -18,8 +18,9 @@ layout: default
     </div>
   </div>
 </section>
-<script src="/demo-codemirror.js"></script>
-<script src="/demo-drawing.js"></script>
+<script src="/static/js/demo-util.js"></script>
+<script src="/static/js/demo-codemirror.js"></script>
+<script src="/static/js/demo-drawing.js"></script>
 
 <script>
   const placeholder = document.getElementById('text-editor');

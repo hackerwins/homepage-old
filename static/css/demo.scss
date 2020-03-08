@@ -1,0 +1,41 @@
+.demo {
+  .text {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10px 0;
+
+    .CodeMirror,textarea {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1.25em;
+      flex: 1;
+      min-width: 360px;
+      min-height: 120px;
+      resize: none;
+    }
+
+    .CodeMirror-scroll {
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+      overflow: auto;
+    }
+  }
+
+  .drawing {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 500px;
+    height: 300px;
+    margin: 10px 0;
+
+    canvas {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: white;
+      background-image: -webkit-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+      background-size: 1rem 1rem;
+    }
+  }
+}

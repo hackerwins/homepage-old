@@ -10,6 +10,7 @@
 @import "nav.scss";
 @import "footer.scss";
 @import "docs.scss";
+@import "demo.scss";
 
 /* syntax highlight */
 @import "syntax-github.css";
@@ -174,51 +175,4 @@ section + section {
     padding: 10px 20px 20px 20px;
     border-radius: 0 0 20px 20px;
   }
-}
-
-/************
- * demo
- ************/
-.example .playground {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.playground .CodeMirror,
-.playground textarea {
-  padding: 20px;
-  border: 1px solid #f1f1f1;
-  border-radius: 20px;
-  font-size: 1.25em;
-  flex: 1;
-  min-width: 360px;
-  margin: 10px;
-  min-height: 120px;
-  box-shadow: 0px 5px 24px -15px rgba(0,0,0,0.6) inset;
-  resize: none;
-}
-
-.CodeMirror-scroll {
-  -ms-overflow-style: -ms-autohiding-scrollbar;
-  overflow: auto;
-}
-
-.example .drawing {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 500px;
-  height: 300px;
-}
-
-.example .drawing canvas {
-  margin: 10px;
-  border: 1px solid #f1f1f1;
-  border-radius: 20px;
-  background: white;
-  background-image: -webkit-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
-  background-size: 1rem 1rem;
-  box-shadow: 0px 5px 24px -15px rgba(0,0,0,0.6) inset;
 }
