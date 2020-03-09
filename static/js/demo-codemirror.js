@@ -1,11 +1,6 @@
 const colors = ['#FECEEA', '#FEF1D2', '#A9FDD8', '#D7F8FF', '#CEC5FA'];
 let nextColorIdx = 0;
 
-function getYYYYMMDD() {
-  const now = new Date();
-  return`${now.getUTCFullYear()}${('0' + (now.getUTCMonth() + 1)).slice(-2)}${('0' + now.getUTCDate()).slice(-2)}`;
-}
-
 // https://github.com/codemirror/CodeMirror/pull/5619
 function replaceRangeFix(cm, text, from, to, origin) {
   const adjust = cm.listSelections().findIndex(({anchor, head}) => {
@@ -105,7 +100,7 @@ async function createTextExample(client, placeholder) {
   });
   codemirror.on('beforeSelectionChange', (cm, change) => {
     // Fix concurrent issue.
-    // CAUSION: The following conditional statement ignores cursor changes
+    // CAUTION: The following conditional statement ignores cursor changes
     //          that occur while applying remote changes to CodeMirror
     //          and handles only movement by keyboard and mouse.
     if (!change.origin) {
