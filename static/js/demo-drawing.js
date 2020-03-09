@@ -20,10 +20,17 @@ function paintCanvas(drawingPanel, shapes) {
 }
 
 function getPoint(drawingPanel, e) {
-  return {
-    x: e.clientX - drawingPanel.offsetLeft + window.scrollX,
-    y: e.clientY - drawingPanel.offsetTop + window.scrollY
-  };
+  if (!!e.touches) {
+    return {
+      x: parseInt(e.touches[0].clientX - drawingPanel.offsetLeft + window.scrollX),
+      y: parseInt(e.touches[0].clientY - drawingPanel.offsetTop + window.scrollY)
+    };
+  } else {
+    return {
+      x: e.clientX - drawingPanel.offsetLeft + window.scrollX,
+      y: e.clientY - drawingPanel.offsetTop + window.scrollY
+    };
+  }
 }
 
 async function createDrawingExample(client, drawingPanel) {
@@ -42,46 +49,60 @@ async function createDrawingExample(client, drawingPanel) {
   });
   await client.sync();
 
-  document.addEventListener('mousedown', (e) => {
-    if (!window.isMouseDown) {
-      window.isMouseDown = true;
+  const handlers = {
+    'begin': (e) => {
+      if (!window.isMouseDown) {
+        window.isMouseDown = true;
 
-      const point = getPoint(drawingPanel, e);
-      if (point.x < 0 || point.y < 0 ||
-        point.x > drawingPanel.offsetWidth || point.y > drawingPanel.offsetHeight) {
-        return;
+        const point = getPoint(drawingPanel, e);
+        if (point.x < 0 || point.y < 0 ||
+          point.x > drawingPanel.offsetWidth || point.y > drawingPanel.offsetHeight) {
+          return;
+        }
+
+        doc.update((root) => {
+          const shape = root.shapes.push({
+            points: [point]
+          });
+          window.currentID = shape.getID();
+        }, `update content by ${client.getID()}`);
       }
+    },
 
-      doc.update((root) => {
-        const shape = root.shapes.push({
-          points: [point]
-        });
-        window.currentID = shape.getID();
-      }, `update content by ${client.getID()}`);
-    }
-  });
+    'move': (e) => {
+      if (window.isMouseDown) {
+        e.preventDefault();
 
-  document.addEventListener('mousemove', (e) => {
-    if (window.isMouseDown) {
-      const point = getPoint(drawingPanel, e);
-      if (point.x < 0 || point.y < 0 ||
-        point.x > drawingPanel.offsetWidth || point.y > drawingPanel.offsetHeight) {
-        return;
+        const point = getPoint(drawingPanel, e);
+        if (point.x < 0 || point.y < 0 ||
+          point.x > drawingPanel.offsetWidth || point.y > drawingPanel.offsetHeight) {
+          return;
+        }
+
+        doc.update((root) => {
+          const shape = root.shapes.getElementByID(window.currentID);
+          shape.points.push(point);
+          paintCanvas(drawingPanel, root.shapes);
+        }, `update content by ${client.getID()}`);
       }
+    },
 
-      doc.update((root) => {
-        const shape = root.shapes.getElementByID(window.currentID);
-        shape.points.push(point);
-        paintCanvas(drawingPanel, root.shapes);
-      }, `update content by ${client.getID()}`);
-    }
-  });
+    'end': (e) => {
+      if (window.isMouseDown) {
+        window.isMouseDown = false;
+      }
+    },
+  };
 
-  document.addEventListener('mouseup', (e) => {
-    if (window.isMouseDown) {
-      window.isMouseDown = false;
-    }
-  });
+  // for desktop
+  document.addEventListener('mousedown', handlers['begin']);
+  document.addEventListener('mousemove', handlers['move']);
+  document.addEventListener('mouseup', handlers['end']);
+
+  // for touch devices
+  document.addEventListener('touchstart', handlers['begin']);
+  document.addEventListener('touchmove', handlers['move']);
+  document.addEventListener('touchend', handlers['end']);
 
   // 05. set initial value.
   paintCanvas(drawingPanel, doc.getRootObject().shapes);
