@@ -42,3 +42,9 @@ sass:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+defaults:
+  - scope:
+      path: "docs"
+    values:
+      github: "https://github.com/yorkie-team/yorkie-team.github.io/blob/master/docs/master/"

@@ -70,7 +70,7 @@ Text provides support for collaborative plain text editing. Under the hood, text
 
 ```javascript
 doc.update((root) => {
-  const text = root.getOrCreateText('text'); // {"text":""}
+  const text = root.createText('text');      // {"text":""}
   text.edit(0, 0, 'hello');                  // {"text":"hello"}
   text.edit(0, 1, 'H');                      // {"text":"Hello"}
   text.updateSelection(0, 1);                // {"text":"^H^ello"}
