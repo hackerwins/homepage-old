@@ -51,45 +51,43 @@ async function createDrawingExample(client, drawingPanel) {
 
   const handlers = {
     'begin': (e) => {
-      if (!window.isMouseDown) {
-        window.isMouseDown = true;
-
-        const point = getPoint(drawingPanel, e);
-        if (point.x < 0 || point.y < 0 ||
+      const point = getPoint(drawingPanel, e);
+      if (point.x < 0 || point.y < 0 ||
           point.x > drawingPanel.offsetWidth || point.y > drawingPanel.offsetHeight) {
-          return;
-        }
-
-        doc.update((root) => {
-          const shape = root.shapes.push({
-            points: [point]
-          });
-          window.currentID = shape.getID();
-        }, `update content by ${client.getID()}`);
+        return;
       }
+
+      window.isStartDragging = true;
+      doc.update((root) => {
+        const shape = root.shapes.push({
+          points: [point]
+        });
+        window.currentID = shape.getID();
+      }, `update content by ${client.getID()}`);
     },
 
     'move': (e) => {
-      if (window.isMouseDown) {
-        e.preventDefault();
-
-        const point = getPoint(drawingPanel, e);
-        if (point.x < 0 || point.y < 0 ||
-          point.x > drawingPanel.offsetWidth || point.y > drawingPanel.offsetHeight) {
-          return;
-        }
-
-        doc.update((root) => {
-          const shape = root.shapes.getElementByID(window.currentID);
-          shape.points.push(point);
-          paintCanvas(drawingPanel, root.shapes);
-        }, `update content by ${client.getID()}`);
+      if (!window.isStartDragging) {
+        return;
       }
+
+      const point = getPoint(drawingPanel, e);
+      if (point.x < 0 || point.y < 0 ||
+          point.x > drawingPanel.offsetWidth || point.y > drawingPanel.offsetHeight) {
+        e.preventDefault();
+        return;
+      }
+
+      doc.update((root) => {
+        const shape = root.shapes.getElementByID(window.currentID);
+        shape.points.push(point);
+        paintCanvas(drawingPanel, root.shapes);
+      }, `update content by ${client.getID()}`);
     },
 
     'end': (e) => {
-      if (window.isMouseDown) {
-        window.isMouseDown = false;
+      if (window.isStartDragging) {
+        window.isStartDragging = false;
       }
     },
   };
