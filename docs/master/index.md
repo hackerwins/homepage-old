@@ -4,7 +4,7 @@ layout: docs
 
 ## About Yorkie
 
-Yorkie is an open source framework for building collaborative editing applications. Yorkie provides the SDK, Server, and Database to eliminate the tedious work, can be operational and can use the services just out-of-box. Yorkie will take care of the collaborative features while you focus on your direct services.
+Yorkie is an open source synchronization solution for building collaborative editing applications. Yorkie provides the SDK, Server, and Database to eliminate the tedious work, can be operational and can use the services just out-of-box. Yorkie will take care of the collaborative features while you focus on your direct services.
 
  ```
   +--Client "A" (Go)----+
