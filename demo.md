@@ -16,15 +16,34 @@ layout: default
     <div class="drawing">
       <canvas id="drawing-panel" width="480px" height="300px"></canvas>
     </div>
+    <h3>Simple Kanban board</h3>
+    <p>Using Vue.js</p>
+    <div class="kanban" id="kanban-board">
+{% raw %}
+      <div v-cloak class="list" v-for="(list, listIdx) in lists">
+        <span class="delete" v-on:click="deleteList(listIdx)">❌</span>
+        <div class="title">{{ list.title }}</div>
+        <div class="card" v-for="(card, cardIdx) in list.cards">
+          <span class="delete" v-on:click="deleteCard(listIdx, cardIdx)">❌</span>
+          {{ card }}
+        </div>
+        <div class="add-card" v-on:click="addCard(listIdx)">Add another card</div>
+      </div>
+      <div class="add-list" v-on:click="addList">Add another list</div>
+{% endraw %}
+    </div>
   </div>
 </section>
 <script src="/static/js/demo-util.js"></script>
 <script src="/static/js/demo-codemirror.js"></script>
 <script src="/static/js/demo-drawing.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="/static/js/demo-kanban.js"></script>
 
 <script>
   const placeholder = document.getElementById('text-editor');
   const drawingPanel = document.getElementById('drawing-panel');
+  const kanbanBoard = document.getElementById('kanban-board');
 
   async function main() {
     try {
@@ -34,6 +53,7 @@ layout: default
 
       await createTextExample(client, placeholder);
       await createDrawingExample(client, drawingPanel);
+      await createKanbanExample(client, kanbanBoard);
     } catch (e) {
       console.error(e);
     }
