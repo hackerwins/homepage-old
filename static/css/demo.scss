@@ -39,4 +39,137 @@
       background-size: 1rem 1rem;
     }
   }
+
+  [v-cloak] {
+    display: none !important;
+  }
+
+  .kanban {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-bottom: 10px;
+
+    background: #026aa7;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 450px;
+    align-items: flex-start;
+    overflow: scroll;
+    user-select: none;
+
+    .add-list {
+      padding: 10px;
+      color: #fff;
+      cursor: pointer;
+      background: #ffffff3d;
+      margin: 10px 0 10px 10px;
+      width: 260px;
+      border-radius: 3px;
+      flex-shrink: 0;
+
+      &:hover {
+        background: #ffffff52;
+      }
+
+      .add-list-opener::before {
+        content: '＋ ';
+      }
+    }
+
+    .delete {
+      position: absolute;
+      cursor: pointer;
+      top: 2px;
+      right: 2px;
+      display: none;
+    }
+
+    .add-form {
+      display: flex;
+      flex-direction: column;
+
+      input[type=text] {
+        border: none;
+        overflow: auto;
+        outline: none;
+
+        font-size: 1em;
+
+        margin: 5px 0;
+        padding: 0 5px;
+        background: #fff;
+        border-radius: 3px;
+        box-shadow: 0 1px 0 rgba(9,30,66,.25);
+        position: relative;
+        word-break: break-word;
+      }
+
+      input[type=button] {
+        font-size: 1em;
+
+        &.pull-right {
+          float: right;
+        }
+      }
+    }
+
+    .list {
+      background: #ebecf0;
+      margin: 10px 0 10px 10px;
+      border-radius: 3px;
+      padding: 10px;
+      width: 260px;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      position: relative;
+
+      &:hover > .delete {
+        display: inherit;
+      }
+
+      .title {
+        font-weight: bold;
+        padding: 3px;
+      }
+
+      .card {
+        font-size: 1em;
+
+        margin: 5px 0;
+        padding: 5px;
+        background: #fff;
+        border-radius: 3px;
+        box-shadow: 0 1px 0 rgba(9,30,66,.25);
+        position: relative;
+        word-break: break-word;
+
+        &:hover {
+          background: #091e4214;
+
+          .delete {
+            display: inherit;
+          }
+        }
+      }
+
+      .add-card-opener {
+        margin: 5px 0;
+        padding: 5px;
+        color: #444;
+        font-size: 0.9em;
+        cursor: pointer;
+
+        &:hover {
+          background: #091e4214;
+        }
+
+        &::before {
+          content: '＋ ';
+        }
+      }
+
+    }
+  }
 }
