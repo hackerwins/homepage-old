@@ -2,21 +2,31 @@ const defaultLists = [
   {
     title: 'Todo',
     cards: [
-      'Pruning document',
-      'Clean up codes'
+      {
+        title: 'Pruning document',
+      },
+      {
+        title: 'Clean up codes'
+      }
     ]
   },
   {
     title: 'Doing',
     cards: [
-      'Array operations',
+      {
+        title: 'Array operations',
+      }
     ]
   },
   {
     title: 'Done',
     cards: [
-      'Create a sample page',
-      'Launch demo site'
+      {
+        title: 'Create a sample page',
+      },
+      {
+        title: 'Launch demo site'
+      }
     ]
   },
 ]
@@ -29,36 +39,54 @@ async function createKanbanExample(client, board) {
     el: board,
     data: {
       lists: [],
+      title: '',
+      opened: null,
     },
     methods: {
+      isOpened(item) {
+        return this.opened === item;
+      },
+
+      openForm(item, $event) {
+        this.opened = item;
+      },
+
+      closeForm(item) {
+        this.opened = null;
+      },
+
       addCard(list) {
-        var title = prompt("Enter card title");
+        if (this.title === '') return;
 
         doc.update((root) => {
-          root.lists.getElementByID(list.getID()).cards.push(title);
+          root.lists.getElementByID(list.getID()).cards.push({
+            title: this.title,
+          });
+          this.title = '';
         }, `add new card by ${client.getID()}`);
       },
 
-      deleteCard(list, cardIdx) {
+      deleteCard(list, card) {
         doc.update((root) => {
-          delete root.lists.getElementByID(list.getID()).cards[cardIdx];
+          delete root.lists.getElementByID(list.getID()).cards.removeByID(card.getID());
         }, `delete a card by ${client.getID()}`);
       },
 
       addList() {
-        var title = prompt("Enter list title");
+        if (this.title === '') return;
 
         doc.update((root) => {
           root.lists.push({
-            title: title,
+            title: this.title,
             cards: [],
           });
+          this.title = '';
         }, `add new list by ${client.getID()}`);
       },
 
-      deleteList(listIdx) {
+      deleteList(list) {
         doc.update((root) => {
-          delete root.lists[listIdx];
+          delete root.lists.removeByID(list.getID());
         }, `delete a list by ${client.getID()}`);
       },
     },

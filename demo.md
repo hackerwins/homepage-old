@@ -20,16 +20,34 @@ layout: default
     <p>Using Vue.js</p>
     <div class="kanban" id="kanban-board">
 {% raw %}
-      <div v-cloak class="list" v-for="(list, listIdx) in lists">
-        <span class="delete" v-on:click="deleteList(listIdx)">❌</span>
+      <div v-cloak class="list" v-for="list in lists">
+        <span class="delete" v-on:click="deleteList(list)">❌</span>
         <div class="title">{{ list.title }}</div>
-        <div class="card" v-for="(card, cardIdx) in list.cards">
-          <span class="delete" v-on:click="deleteCard(list, cardIdx)">❌</span>
-          {{ card }}
+        <div class="card" v-for="card in list.cards">
+          <span class="delete" v-on:click="deleteCard(list, card)">❌</span>
+          {{ card.title }}
         </div>
-        <div class="add-card" v-on:click="addCard(list)">Add another card</div>
+        <div class="add-card">
+          <div v-if="isOpened(list.getID())" class="add-form">
+            <input type="text" v-model="title" v-on:keyup.enter="addCard(list)" placeholder="Enter card title" autofocus>
+            <div class="buttons">
+              <input type="button" value="Add" v-on:click="addCard(list)">
+              <input type="button" value="Close" class="pull-right" v-on:click="closeForm(list)">
+            </div>
+          </div>
+          <div v-else class="add-card-opener" v-on:click="openForm(list.getID(), $event)">Add another card</div>
+        </div>
       </div>
-      <div class="add-list" v-on:click="addList">Add another list</div>
+      <div class="add-list">
+        <div v-if="isOpened(0)" class="add-form">
+          <input type="text" v-model="title" v-on:keyup.enter="addList()" placeholder="Enter list title" autofocus>
+          <div class="buttons">
+            <input type="button" value="Add" v-on:click="addList()">
+            <input type="button" value="Close" class="pull-right" v-on:click="closeForm()">
+          </div>
+        </div>
+        <div v-else class="add-list-opener" v-on:click="openForm(0, $event)">Add another list</div>
+      </div>
 {% endraw %}
     </div>
   </div>
@@ -48,7 +66,7 @@ layout: default
   async function main() {
     try {
       // 01. create client with RPCAddr(envoy) then activate it.
-      const client = yorkie.createClient('http://localhost:8080');
+      const client = yorkie.createClient('/api');
       await client.activate();
 
       await createTextExample(client, placeholder);
