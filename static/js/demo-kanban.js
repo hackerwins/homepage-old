@@ -31,29 +31,17 @@ async function createKanbanExample(client, board) {
       lists: [],
     },
     methods: {
-      addCard(listIdx) {
+      addCard(list) {
         var title = prompt("Enter card title");
 
         doc.update((root) => {
-          var i = 0;
-          for (list of root.lists) {
-            if (i === listIdx) {
-              list.cards.push(title);
-            }
-            i += 1;
-          }
+          root.lists.getElementByID(list.getID()).cards.push(title);
         }, `add new card by ${client.getID()}`);
       },
 
-      deleteCard(listIdx, cardIdx) {
+      deleteCard(list, cardIdx) {
         doc.update((root) => {
-          var i = 0;
-          for (list of root.lists) {
-            if (i === listIdx) {
-              delete list.cards[cardIdx];
-            }
-            i += 1;
-          }
+          delete root.lists.getElementByID(list.getID()).cards[cardIdx];
         }, `delete a card by ${client.getID()}`);
       },
 

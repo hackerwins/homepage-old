@@ -24,10 +24,10 @@ layout: default
         <span class="delete" v-on:click="deleteList(listIdx)">❌</span>
         <div class="title">{{ list.title }}</div>
         <div class="card" v-for="(card, cardIdx) in list.cards">
-          <span class="delete" v-on:click="deleteCard(listIdx, cardIdx)">❌</span>
+          <span class="delete" v-on:click="deleteCard(list, cardIdx)">❌</span>
           {{ card }}
         </div>
-        <div class="add-card" v-on:click="addCard(listIdx)">Add another card</div>
+        <div class="add-card" v-on:click="addCard(list)">Add another card</div>
       </div>
       <div class="add-list" v-on:click="addList">Add another list</div>
 {% endraw %}
@@ -48,7 +48,7 @@ layout: default
   async function main() {
     try {
       // 01. create client with RPCAddr(envoy) then activate it.
-      const client = yorkie.createClient('/api');
+      const client = yorkie.createClient('http://localhost:8080');
       await client.activate();
 
       await createTextExample(client, placeholder);
