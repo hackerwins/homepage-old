@@ -65,8 +65,13 @@ layout: default
 
   async function main() {
     try {
-      // 01. create client with RPCAddr(envoy) then activate it.
+      {% if jekyll.environment == "production" %}
+      // Production build uses https://yorkie.dev/api
       const client = yorkie.createClient('/api');
+      {% else %}
+      // yorkie-js-sdk serves its envoy endpoint as localhost:8080
+      const client = yorkie.createClient('http://localhost:8080');
+      {% endif %}
       await client.activate();
 
       await createTextExample(client, placeholder);
