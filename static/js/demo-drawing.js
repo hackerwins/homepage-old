@@ -59,10 +59,10 @@ async function createDrawingExample(client, drawingPanel) {
 
       window.isStartDragging = true;
       doc.update((root) => {
-        const shape = root.shapes.push({
+        root.shapes.push({
           points: [point]
         });
-        window.currentID = shape.getID();
+        window.currentID = root.shapes.getLast().getID();
       }, `update content by ${client.getID()}`);
     },
 
