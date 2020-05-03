@@ -10,6 +10,11 @@ layout: default
     <div class="text">
       <textarea id="text-editor">Type text here</textarea>
     </div>
+    <h3>Quill</h3>
+    <p>The Quill example uses custom CRDT type, RichText.</p>
+    <div>
+      <div id="quill-editor"></div>
+    </div>
     <h3>Drawing</h3>
     <p>The drawing example uses Array.</p>
     <p>For more details: <a href="https://github.com/yorkie-team/yorkie-js-sdk/blob/master/dist/drawing.html">drawing.html</a></p>
@@ -54,6 +59,7 @@ layout: default
 </section>
 <script src="/static/js/demo-util.js"></script>
 <script src="/static/js/demo-codemirror.js"></script>
+<script src="/static/js/demo-quill.js"></script>
 <script src="/static/js/demo-drawing.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="/static/js/demo-kanban.js"></script>
@@ -62,6 +68,7 @@ layout: default
   const placeholder = document.getElementById('text-editor');
   const drawingPanel = document.getElementById('drawing-panel');
   const kanbanBoard = document.getElementById('kanban-board');
+  const quillEditor = document.getElementById('quill-editor');
 
   async function main() {
     try {
@@ -75,6 +82,7 @@ layout: default
       await client.activate();
 
       await createTextExample(client, placeholder);
+      await createQuillExample(client, quillEditor);
       await createDrawingExample(client, drawingPanel);
       await createKanbanExample(client, kanbanBoard);
     } catch (e) {

@@ -71,7 +71,8 @@ async function createTextExample(client, placeholder) {
 
   doc.update((root) => {
     if (!root.content) {
-      root.createText('content');
+      const text = root.createText('content');
+      text.edit(0, 0, '<html>\n  <body>Hello CodeMirror</body>\n</html>');
     }
   }, 'create content if not exists');
   await client.sync();
