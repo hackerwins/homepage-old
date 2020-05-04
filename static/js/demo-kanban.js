@@ -29,7 +29,7 @@ const defaultLists = [
       }
     ]
   },
-]
+];
 
 async function createKanbanExample(client, board) {
   const doc = yorkie.createDocument('examples', `kanban-board-${getYYYYMMDD()}`);

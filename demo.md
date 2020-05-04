@@ -12,6 +12,7 @@ layout: default
     </div>
     <h3>Quill</h3>
     <p>The Quill example uses custom CRDT type, RichText.</p>
+    <p>For more details: <a href="https://github.com/yorkie-team/yorkie-js-sdk/blob/master/dist/quill.html">quill.html</a></p>
     <div>
       <div id="quill-editor"></div>
     </div>
