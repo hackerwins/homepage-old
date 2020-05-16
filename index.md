@@ -7,7 +7,7 @@ layout: default
     <img class="logo" src="./images/yorkie-photo.png" alt="A photo of Yorkie" />
     <div class="title">
       <h1>Yorkie</h1>
-      <h2>Synchronization solution for building collaborative editing applications.</h2>
+      <h2>Document store for building collaborative editing applications</h2>
     </div>
   </div>
   <div class="clear"></div>

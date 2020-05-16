@@ -16,7 +16,7 @@
 title: Yorkie
 email: susukang98@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Yorkie is a synchronization solution for building collaborative editing applications.
+  Yorkie is a document store for building collaborative editing applications.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: team_yorkie
