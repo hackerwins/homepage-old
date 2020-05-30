@@ -68,7 +68,7 @@ async function createKanbanExample(client, board) {
 
       deleteCard(list, card) {
         doc.update((root) => {
-          delete root.lists.getElementByID(list.getID()).cards.removeByID(card.getID());
+          root.lists.getElementByID(list.getID()).cards.deleteByID(card.getID());
         }, `delete a card by ${client.getID()}`);
       },
 
@@ -86,7 +86,7 @@ async function createKanbanExample(client, board) {
 
       deleteList(list) {
         doc.update((root) => {
-          delete root.lists.removeByID(list.getID());
+          root.lists.deleteByID(list.getID());
         }, `delete a list by ${client.getID()}`);
       },
     },
