@@ -6,24 +6,24 @@ layout: default
     <h2>Play with Yorkie!</h2>
     <h3>CodeMirror</h3>
     <p>The CodeMirror example uses custom CRDT type, <a href="/docs/master/js-sdk#text">Text</a>.</p>
-    <p>For more details: <a href="https://github.com/yorkie-team/yorkie-js-sdk/blob/master/dist/index.html">codemirror.html</a></p>
+    <p>For more details: <a href="https://github.com/yorkie-team/yorkie-js-sdk/blob/master/examples/index.html">codemirror.html</a></p>
     <div class="text">
       <textarea id="text-editor">Type text here</textarea>
     </div>
     <h3>Markdown</h3>
-    <p>Markdown example also uses Text.</p>
+    <p>Markdown example also uses <a href="/docs/master/js-sdk#text">Text</a>.</p>
     <div class="markdown">
       <textarea id="markdown-editor">Type markdown here</textarea>
     </div>
     <h3>Quill</h3>
     <p>The Quill example uses custom CRDT type, RichText.</p>
-    <p>For more details: <a href="https://github.com/yorkie-team/yorkie-js-sdk/blob/master/dist/quill.html">quill.html</a></p>
+    <p>For more details: <a href="https://github.com/yorkie-team/yorkie-js-sdk/blob/master/examples/quill.html">quill.html</a></p>
     <div>
       <div id="quill-editor"></div>
     </div>
     <h3>Drawing</h3>
     <p>The drawing example uses Array.</p>
-    <p>For more details: <a href="https://github.com/yorkie-team/yorkie-js-sdk/blob/master/dist/drawing.html">drawing.html</a></p>
+    <p>For more details: <a href="https://github.com/yorkie-team/yorkie-js-sdk/blob/master/examples/drawing.html">drawing.html</a></p>
     <div class="drawing">
       <canvas id="drawing-panel" width="480px" height="300px"></canvas>
     </div>

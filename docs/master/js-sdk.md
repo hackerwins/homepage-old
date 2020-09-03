@@ -79,4 +79,4 @@ doc.update((root) => {
 
 An example of text co-editing with CodeMirror:
 
-[CodeMirror example](https://github.com/yorkie-team/yorkie-js-sdk/blob/master/dist/index.html)
+[CodeMirror example](https://github.com/yorkie-team/yorkie-js-sdk/blob/master/examples/index.html)
