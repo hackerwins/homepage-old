@@ -80,3 +80,15 @@ doc.update((root) => {
 An example of text co-editing with CodeMirror:
 
 [CodeMirror example](https://github.com/yorkie-team/yorkie-js-sdk/blob/master/examples/index.html)
+
+#### Counter
+Counter support numeric types that change to addition and subtraction. If numeric data needs to be modified at the same time, Counter should be used instead of Primitive.
+
+```javascript
+doc.update((root) => {
+  const counter = root.createCounter('counter', 1);     // {"counter":1}
+  counter.increase(2);                                  // {"counter":3}
+  counter.increase(3.5);                                // {"counter":6.5}
+  counter.increase(-3.5);                               // {"counter":3}
+});
+```
