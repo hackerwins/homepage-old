@@ -5,16 +5,6 @@
     flex-direction: column;
   }
 
-  .docs-content {
-    h1, h2, h3, h4 {
-      margin-top: 1em;
-
-      &:first-child {
-        margin-top: 0.5em;
-      }
-    }
-  }
-
   .docs-menu {
     flex: 1;
 
@@ -44,6 +34,30 @@
 
   .docs-content {
     flex: 3;
+
+    h1, h2, h3, h4 {
+      margin-top: 1em;
+      position: relative;
+
+      &:first-child {
+        margin-top: 0.5em;
+      }
+
+      a.pilcrow {
+        left: -2em;
+        visibility: hidden;
+        position: absolute;
+        opacity: 0;
+        padding: 0.125em 1em 0.075em 1em;
+        font-size: 0.8em;
+        transition: all .2s ease-in-out;
+      }
+
+      &:hover a.pilcrow {
+        visibility: visible;
+        opacity: 1.0;
+      }
+    }
 
     p {
       margin: 0.5em 0 1em 0;
