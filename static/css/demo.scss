@@ -6,10 +6,11 @@
     justify-content: space-between;
     margin: 10px 0;
 
-    .CodeMirror,textarea {
+    .CodeMirror, textarea {
       border: 1px solid #ccc;
       border-radius: 5px;
       font-size: 1.25em;
+      font-family: $font-monospace;
       flex: 1;
       min-width: 360px;
       min-height: 120px;
