@@ -86,6 +86,9 @@ async function createQuillExample(client, quillHolder) {
             if (op.attributes !== undefined && op.insert === undefined) {
               root.content.setStyle(from, to, toAttributes(op.attributes));
             } else if (op.insert !== undefined) {
+              if (to < from) {
+                to = from;
+              }
               root.content.edit(from, to, op.insert, toAttributes(op.attributes));
               from = to + op.insert.length;
             }
