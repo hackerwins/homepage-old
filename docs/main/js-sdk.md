@@ -22,7 +22,7 @@ const client = yorkie.createClient('localhost:8080');
 await client.activate();
 ```
 
-*NOTE: If you want to test Yorkie quickly, You can start Envoy, Yorkie and MongoDB with `docker-compose`. To start them, type `docker-compose up` in [this directory](https://github.com/yorkie-team/yorkie-js-sdk/tree/master/docker).*
+*NOTE: If you want to test Yorkie quickly, You can start Envoy, Yorkie and MongoDB with `docker-compose`. To start them, type `docker-compose up` in [this directory](https://github.com/yorkie-team/yorkie-js-sdk/tree/main/docker).*
 
 Then create a document with a collection name and key then attach it into the client.
 
@@ -79,7 +79,7 @@ doc.update((root) => {
 
 An example of text co-editing with CodeMirror:
 
-[CodeMirror example](https://github.com/yorkie-team/yorkie-js-sdk/blob/master/examples/index.html)
+[CodeMirror example](https://github.com/yorkie-team/yorkie-js-sdk/blob/main/examples/index.html)
 
 #### Counter
 Counter support numeric types that change to addition and subtraction. If numeric data needs to be modified at the same time, Counter should be used instead of Primitive.

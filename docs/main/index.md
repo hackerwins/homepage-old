@@ -33,7 +33,7 @@ Yorkie is an open source document store for building collaborative editing appli
 
 ### Agent and SDKs
  - Agent: [yorkie-team/yorkie](https://github.com/yorkie-team/yorkie)
- - Go Client: [yorkie-team/yorkie/client](https://github.com/yorkie-team/yorkie/tree/master/client)
+ - Go Client: [yorkie-team/yorkie/client](https://github.com/yorkie-team/yorkie/tree/main/client)
  - JS SDK: [yorkie-team/yorkie-js-sdk](https://github.com/yorkie-team/yorkie-js-sdk)
 
 ### Need help?

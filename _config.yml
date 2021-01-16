@@ -47,4 +47,4 @@ defaults:
   - scope:
       path: "docs"
     values:
-      github: "https://github.com/yorkie-team/yorkie-team.github.io/blob/master/docs/master/"
+      github: "https://github.com/yorkie-team/yorkie-team.github.io/blob/main/docs/main/"
