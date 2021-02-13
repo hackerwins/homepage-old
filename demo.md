@@ -31,33 +31,35 @@ layout: default
     <p>Using Vue.js</p>
     <div class="kanban" id="kanban-board">
 {% raw %}
-      <div v-cloak class="list" v-for="list in lists">
+      <div v-cloak class="list" v-for="(list, index) in lists">
         <span class="delete" v-on:click="deleteList(list)">❌</span>
         <div class="title">{{ list.title }}</div>
         <div class="card" v-for="card in list.cards">
           <span class="delete" v-on:click="deleteCard(list, card)">❌</span>
           {{ card.title }}
         </div>
-        <div class="add-card">
-          <div v-if="isOpened(list.getID())" class="add-form">
-            <input type="text" v-model="title" v-on:keyup.enter="addCard(list)" placeholder="Enter card title" autofocus>
+        <div class="add-card" ref="addCardForm">
+          <div v-if="isOpened(index + 1)" class="add-form">
+            <input type="text" placeholder="Enter card title"
+              v-model="title" v-on:keyup.enter="addCard(list)" v-on:keyup.esc="closeForm()">
             <div class="buttons">
               <input type="button" value="Add" v-on:click="addCard(list)">
-              <input type="button" value="Close" class="pull-right" v-on:click="closeForm(list)">
+              <input type="button" value="Close" class="pull-right" v-on:click="closeForm()">
             </div>
           </div>
-          <div v-else class="add-card-opener" v-on:click="openForm(list.getID(), $event)">Add another card</div>
+          <div v-else class="add-card-opener" v-on:click="openForm(index + 1)">Add another card</div>
         </div>
       </div>
-      <div class="add-list">
+      <div class="add-list" ref="addListForm">
         <div v-if="isOpened(0)" class="add-form">
-          <input type="text" v-model="title" v-on:keyup.enter="addList()" placeholder="Enter list title" autofocus>
+          <input type="text" placeholder="Enter list title"
+            v-model="title" v-on:keyup.enter="addList()" v-on:keyup.esc="closeForm()">
           <div class="buttons">
             <input type="button" value="Add" v-on:click="addList()">
             <input type="button" value="Close" class="pull-right" v-on:click="closeForm()">
           </div>
         </div>
-        <div v-else class="add-list-opener" v-on:click="openForm(0, $event)">Add another list</div>
+        <div v-else class="add-list-opener" v-on:click="openForm(0)">Add another list</div>
       </div>
 {% endraw %}
     </div>
