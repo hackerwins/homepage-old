@@ -13,3 +13,14 @@ The homepage is deployed to AWS and the configuration is shown below. This repos
 [nginx] - [yorkie-team.github.io] # for serving static pages
         ㄴ[grpc-web proxy, envoy] - [yorkie server] - [mongodb]  # for serving API
 ```
+
+## Build
+
+Yorkie Homepage uses Jekyll.
+
+```
+$ bundle install
+$ bundle exec jekyll s
+```
+
+And connect http://localhost:4000 via web browsers.
