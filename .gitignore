@@ -36,3 +36,9 @@ _site
 
 # rbenv
 .ruby-version
+
+# direnv
+.envrc
+
+# asdf
+.tool-versions
