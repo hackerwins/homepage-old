@@ -42,16 +42,29 @@ async function createKanbanExample(client, board) {
       title: '',
       opened: null,
     },
+    watch: {
+      opened(index) {
+        this.$nextTick(function() {
+          if (index === 0) {
+            // Open add list form
+            this.$refs['addListForm'].querySelector('input').focus();
+          } else {
+            // Or open add card form
+            this.$refs['addCardForm'][index - 1].querySelector('input').focus();
+          }
+        });
+      },
+    },
     methods: {
-      isOpened(item) {
-        return this.opened === item;
+      isOpened(index) {
+        return this.opened === index;
       },
 
-      openForm(item, $event) {
-        this.opened = item;
+      openForm(index) {
+        this.opened = index;
       },
 
-      closeForm(item) {
+      closeForm() {
         this.opened = null;
       },
 
