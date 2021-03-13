@@ -47,7 +47,7 @@ doc.subscribe((event) => {
 });
 ```
 
-### Updating a document
+### Editing a document
 
 `Document.update(changeFn, message)` enables you to modify a document. The optional `message` allows you to keep a string to the change. If the document is attached to the client, all changes are automatically synchronized with other clients.
 
@@ -61,6 +61,16 @@ doc.update((root) => {
 ```
 
 Under the hood, `root` in the `update` function creates a change, a set of operations, using a JavaScript proxy. And Every element has a unique ID, created by the logical clock. This ID is used by Yorkie to track which object is which.
+
+You can get the contents of the document using `document.getRoot()`.
+
+```javascript
+const root = doc.getRoot();
+console.log(root.obj);     // {"num":1,"obj":{"str":"a"},"arr":[1,2]}
+console.log(root.obj.num); // 1
+console.log(root.obj.obj); // {"str":"a"}
+console.log(root.obj.arr); // [1,2]
+```
 
 ### Custom CRDT types
 
