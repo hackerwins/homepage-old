@@ -45,7 +45,7 @@ async function createDrawingExample(client, drawingPanel) {
   }, 'create points if not exists');
 
   doc.subscribe((event) => {
-    paintCanvas(drawingPanel, doc.getRootObject().shapes);
+    paintCanvas(drawingPanel, doc.getRoot().shapes);
   });
   await client.sync();
 
@@ -103,5 +103,5 @@ async function createDrawingExample(client, drawingPanel) {
   document.addEventListener('touchend', handlers['end']);
 
   // 05. set initial value.
-  paintCanvas(drawingPanel, doc.getRootObject().shapes);
+  paintCanvas(drawingPanel, doc.getRoot().shapes);
 }

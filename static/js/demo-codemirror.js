@@ -112,12 +112,12 @@ async function createTextExample(client, placeholder) {
     const to = cm.indexFromPos(change.ranges[0].head);
 
     doc.update((root) => {
-      root.content.updateSelection(from, to);
-    }, `update selection by ${client.getID()}`);
+      root.content.select(from, to);
+    }, `select by ${client.getID()}`);
   });
 
   // 03-2. document to codemirror(remote).
-  const text = doc.getRootObject().content;
+  const text = doc.getRoot().content;
   text.onChanges((changes) => {
     for (const change of changes) {
       if (change.type === 'content') {

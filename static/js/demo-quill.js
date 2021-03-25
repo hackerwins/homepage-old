@@ -1,5 +1,5 @@
 function toDelta(doc) {
-  const obj = doc.getRootObject();
+  const obj = doc.getRoot();
   const deltas = [];
   for (const val of obj.content.getValue()) {
     deltas.push({
@@ -113,12 +113,12 @@ async function createQuillExample(client, quillHolder) {
       }
 
       doc.update((root) => {
-        root.content.updateSelection(range.index, range.index + range.length);
-      }, `update selection by ${client.getID()}`);
+        root.content.select(range.index, range.index + range.length);
+      }, `select by ${client.getID()}`);
     });
 
     // 03-2. document to codemirror(remote).
-    const text = doc.getRootObject().content;
+    const text = doc.getRoot().content;
     text.onChanges((changes) => {
       const delta = [];
       let prevTo = 0;

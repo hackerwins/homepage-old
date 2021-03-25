@@ -112,9 +112,9 @@ async function createKanbanExample(client, board) {
   }, 'create default list if not exists');
 
   doc.subscribe((event) => {
-    app.lists = doc.getRootObject().lists;
+    app.lists = doc.getRoot().lists;
   });
   await client.sync();
 
-  app.lists = doc.getRootObject().lists;
+  app.lists = doc.getRoot().lists;
 }

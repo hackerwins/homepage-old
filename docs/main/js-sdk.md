@@ -104,7 +104,7 @@ doc.update((root) => {
   const text = root.createText('text');      // {"text":""}
   text.edit(0, 0, 'hello');                  // {"text":"hello"}
   text.edit(0, 1, 'H');                      // {"text":"Hello"}
-  text.updateSelection(0, 1);                // {"text":"^H^ello"}
+  text.select(0, 1);                         // {"text":"^H^ello"}
 });
 ```
 
