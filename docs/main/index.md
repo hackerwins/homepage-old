@@ -4,7 +4,15 @@ layout: docs
 
 ## About Yorkie
 
-Yorkie is an open source document store for building collaborative editing applications. Yorkie provides the SDK, Server, and Database to eliminate the tedious work, can be operational and can use the services just out-of-box. Yorkie will take care of the collaborative features while you focus on your direct services.
+Yorkie is an open source document store for building collaborative applications. Yorkie provides synchronization primitives such as JSON-like document and Peer Awareness API to easily develop real-time collaborative applications.
+
+Yorkie consists of Document, Client, and Agent.
+
+- Document: Document is a CRDT-based data type. We can representing the model of the application. And we can edit it even while offline.
+- Client: Client is a normal client that can communicate with the Agent. We can synchronize the changes of the document by using Client.
+- Agent: Agent receives changes from Client, stores them in DB, and propagates the changes to Clients who subscribe to the Document.
+
+High-level overview of Yorkie is as follows:
 
  ```
   +--Client "A" (Go)----+
@@ -26,12 +34,15 @@ Yorkie is an open source document store for building collaborative editing appli
   +-----------------------+
  ```
 
- - Clients can have a replica of the document representing an application model locally on several devices.
- - Each client can independently update the document on their local device, even while offline.
- - When a network connection is available, Yorkie figures out which changes need to be synced from one device to another, and brings them into the same state.
+ - Clients can have a replica of the Document representing an application model locally on several devices.
+ - Each client can independently edit the document on their local device, even while offline.
+ - When a network connection is available, Yorkie figures out which changes need to be synced from one client to another, and brings them into the same state.
  - If the document was changed concurrently on different devices, Yorkie automatically syncs the changes, so that every replica ends up in the same state with resolving conflict.
 
 ### Agent and SDKs
+
+Yorkie provides JS SDK, Agent, and Database to eliminate the tedious work, can be operational and can use the services just out-of-box.
+
  - Agent: [yorkie-team/yorkie](https://github.com/yorkie-team/yorkie)
  - Go Client: [yorkie-team/yorkie/client](https://github.com/yorkie-team/yorkie/tree/main/client)
  - JS SDK: [yorkie-team/yorkie-js-sdk](https://github.com/yorkie-team/yorkie-js-sdk)

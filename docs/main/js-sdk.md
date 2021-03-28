@@ -123,3 +123,7 @@ doc.update((root) => {
   counter.increase(-3.5);                               // {"counter":3}
 });
 ```
+
+### Reference
+
+[JS SDK Reference](/docs/main/js-sdk/reference)
