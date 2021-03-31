@@ -6,7 +6,7 @@ layout: docs
 
 ### CodePair
 
-[CodePair](https://yorkie.dev/codepair) is a real-time pair programming environment, powered by Yorkie.
+[CodePair](https://codepair.yorkie.dev) is a real-time pair programming environment, powered by Yorkie.
 
 ![Yorkie CodePair](/images/codepair.png){: width="100%"}
 

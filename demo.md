@@ -83,8 +83,8 @@ layout: default
   async function main() {
     try {
       {% if jekyll.environment == "production" %}
-      // Production build uses https://yorkie.dev/api
-      const client = yorkie.createClient('/api');
+      // Production build uses https://api.yorkie.dev
+      const client = yorkie.createClient('https://api.yorkie.dev');
       {% else %}
       // yorkie-js-sdk serves its envoy endpoint as localhost:8080
       const client = yorkie.createClient('http://localhost:8080');

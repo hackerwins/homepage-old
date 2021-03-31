@@ -126,4 +126,4 @@ doc.update((root) => {
 
 ### Reference
 
-[JS SDK Reference](/docs/main/js-sdk/reference)
+[JS SDK Reference](https://yorkie.dev/yorkie-js-sdk)
