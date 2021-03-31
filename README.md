@@ -7,11 +7,12 @@
 The homepage is deployed to AWS and the configuration is shown below. This repository is used to distribute static pages.
 
 ```
-[Route53] - [ELB] - [EC2]
+[Route53]
+ ㄴ yorkie.dev - [gh-pages]        # for serving static pages
+ ㄴ api.yorkie.dev - [ELB] - [EC2] # for serving API
 
 # EC2
-[nginx] - [yorkie-team.github.io] # for serving static pages
-        ㄴ[grpc-web proxy, envoy] - [yorkie server] - [mongodb]  # for serving API
+[nginx] - [grpc-web proxy, envoy] - [yorkie server] - [mongodb]
 ```
 
 ## Build
