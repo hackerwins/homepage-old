@@ -42,14 +42,25 @@ To get help for any specific command, pass the `-h` flag to the relevant subcomm
 
 ```bash
 $ yorkie agent -h
-Starts yorkie agent.
+Starts yorkie agent
 
 Usage:
   yorkie agent [options] [flags]
 
 Flags:
-  -c, --config string   config path
-  -h, --help            help for agent
+      --backend-snapshot-interval uint     Interval of changes to create a snapshot (default 100)
+      --backend-snapshot-threshold uint    Threshold that determines if changes should be sent with snapshot when the number of changes is greater than this value. (default 500)
+  -c, --config string                      Config path
+      --etcd-endpoints strings             Comma separated list of etcd endpoints
+  -h, --help                               help for agent
+      --metrics-port int                   Metrics port (default 11102)
+      --mongo-connection-timeout-sec int   Mongo DB's connection timeout in seconds (default 5)
+      --mongo-connection-uri string        MongoDB's connection URI (default "mongodb://localhost:27017")
+      --mongo-ping-timeout-sec int         Mongo DB's ping timeout in seconds (default 5)
+      --mongo-yorkie-database string       Yorkie's database name in MongoDB (default "yorkie-meta")
+      --rpc-cert-file string               RPC certification file's path
+      --rpc-key-file string                RPC key file's path
+      --rpc-port int                       RPC port (default 11101)
 ```
 
 ### Running Agent
@@ -62,34 +73,9 @@ $ ./bin/yorkie agent
 
 *NOTE: Yorkie uses MongoDB to store it's data. To start MongoDB, `docker-compose -f docker/docker-compose.yml up --build -d` in [the project root](https://github.com/yorkie-team/yorkie).*
 
-Use the `-c` option to change settings such as the MongoDB connectionURI.
+Use the `--mongo-connection-uri` option to change he MongoDB connectionURI.
 
 ```bash
-$ ./bin/yorkie agent -c yorkie.json
-```
-
-The configuration file, `yorkie.json` with default values is shown below.
-
-```json
-{
-  "RPC": {
-    "Port": 11101,
-    "CertFile": "",
-    "KeyFile": ""
-  },
-  "Metrics": {
-    "Port": 11102
-  },
-  "Mongo": {
-    "ConnectionTimeoutSec": 5,
-    "ConnectionURI": "mongodb://localhost:27017",
-    "YorkieDatabase": "yorkie-meta",
-    "PingTimeoutSec": 5
-  },
-  "Backend": {
-    "SnapshotThreshold": 500,
-    "SnapshotInterval": 100
-  }
-}
+$ ./bin/yorkie agent --mongo-connection-uri mongodb://localhost:27017
 ```
 
