@@ -4,32 +4,18 @@ layout: docs
 
 ## Agent
 
-For now, we didn't deploy binary yet. So you should [compile Yorkie yourself](#building-yorkie).
+### Install pre-built binaries
 
-### Building Yorkie
+The easiest way to install yorkie is from pre-built binaries:
 
-For building Agent, You'll first need [Go](https://golang.org) installed (version 1.16+ is required). Make sure you have Go properly [installed](https://golang.org/doc/install), including setting up your [GOPATH](https://golang.org/doc/code.html#GOPATH).
-
-Next, clone this repository into some local directory and then just type `make build`. In a few moments, you'll have a working `yorkie` executable:
+1. Download the compressed archive file for your platform from [Releases](https://github.com/yorkie-team/yorkie/releases).
+2. Unpack the archive file. This results in a directory containing the binaries.
+3. Add the executable binaries to your path. For example, rename and/or move the binaries to a directory in your path (like /usr/local/bin), or add the directory created by the previous step to your path.
+4. From a shell, test that yorkie is in your path:
 ```bash
-$ make build
-go build -o ./bin/yorkie
-
-$ ./bin/yorkie
-Document store for collaborative applications based on CRDT
-
-Usage:
-  yorkie [command]
-
-Available Commands:
-  agent       Starts yorkie agent
-  help        Help about any command
-  version     Print the version number of Yorkie
-
-Flags:
-  -h, --help   help for yorkie
-
-Use "yorkie [command] --help" for more information about a command.
+$ yorkie --version
+Yorkie: 0.1.8
+...
 ```
 
 ### Commands (CLI)
@@ -48,19 +34,25 @@ Usage:
   yorkie agent [options] [flags]
 
 Flags:
-      --backend-snapshot-interval uint     Interval of changes to create a snapshot (default 100)
-      --backend-snapshot-threshold uint    Threshold that determines if changes should be sent with snapshot when the number of changes is greater than this value. (default 500)
-  -c, --config string                      Config path
-      --etcd-endpoints strings             Comma separated list of etcd endpoints
-  -h, --help                               help for agent
-      --metrics-port int                   Metrics port (default 11102)
-      --mongo-connection-timeout-sec int   Mongo DB's connection timeout in seconds (default 5)
-      --mongo-connection-uri string        MongoDB's connection URI (default "mongodb://localhost:27017")
-      --mongo-ping-timeout-sec int         Mongo DB's ping timeout in seconds (default 5)
-      --mongo-yorkie-database string       Yorkie's database name in MongoDB (default "yorkie-meta")
-      --rpc-cert-file string               RPC certification file's path
-      --rpc-key-file string                RPC key file's path
-      --rpc-port int                       RPC port (default 11101)
+      --auth-webhook-cache-auth-ttl duration      TTL value to set when caching authorized webhook response. (default 10s)
+      --auth-webhook-cache-unauth-ttl duration    TTL value to set when caching unauthorized webhook response. (default 10s)
+      --auth-webhook-max-wait-interval duration   Maximum wait interval for authorization webhook. (default 3s)
+      --auth-webhook-methods strings              List of methods that require authorization checks. If no value is specified, all methods will be checked.
+      --auth-webhook-url string                   URL of remote service to query authorization
+      --authorization-webhook-max-retries uint    Maximum number of retries for an authorization webhook. (default 10)
+      --backend-snapshot-interval uint            Interval of changes to create a snapshot (default 100)
+      --backend-snapshot-threshold uint           Threshold that determines if changes should be sent with snapshot when the number of changes is greater than this value. (default 500)
+  -c, --config string                             Config path
+      --etcd-endpoints strings                    Comma separated list of etcd endpoints
+  -h, --help                                      help for agent
+      --metrics-port int                          Metrics port (default 11102)
+      --mongo-connection-timeout duration         Mongo DB's connection timeout (default 5s)
+      --mongo-connection-uri string               MongoDB's connection URI (default "mongodb://localhost:27017")
+      --mongo-ping-timeout duration               Mongo DB's ping timeout (default 5s)
+      --mongo-yorkie-database string              Yorkie's database name in MongoDB (default "yorkie-meta")
+      --rpc-cert-file string                      RPC certification file's path
+      --rpc-key-file string                       RPC key file's path
+      --rpc-port int                              RPC port (default 11101)
 ```
 
 ### Running Agent
