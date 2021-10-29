@@ -8,18 +8,15 @@ The homepage is deployed to AWS and the configuration is shown below. This repos
 
 ```
 [Route53]
- ㄴ yorkie.dev - [gh-pages]        # for serving static pages
- ㄴ api.yorkie.dev - [ELB] - [EC2] # for serving API
-
-# EC2
-[nginx] - [grpc-web proxy, envoy] - [yorkie server] - [mongodb]
+ ㄴ yorkie.dev     - [gh-pages]    # for serving static pages
+ ㄴ api.yorkie.dev - [EKS]         # for serving API
 ```
 
 ## Build
 
 Yorkie Homepage uses Jekyll.
 
-```
+```bash
 $ bundle install
 $ bundle exec jekyll s
 ```
