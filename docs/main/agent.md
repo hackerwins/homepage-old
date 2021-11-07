@@ -14,7 +14,7 @@ The easiest way to install yorkie is from pre-built binaries:
 4. From a shell, test that yorkie is in your path:
 ```bash
 $ yorkie --version
-Yorkie: 0.1.8
+Yorkie: 0.1.9
 ...
 ```
 
@@ -36,20 +36,25 @@ Usage:
 Flags:
       --auth-webhook-cache-auth-ttl duration      TTL value to set when caching authorized webhook response. (default 10s)
       --auth-webhook-cache-unauth-ttl duration    TTL value to set when caching unauthorized webhook response. (default 10s)
+      --auth-webhook-max-retries uint             Maximum number of retries for an authorization webhook. (default 10)
       --auth-webhook-max-wait-interval duration   Maximum wait interval for authorization webhook. (default 3s)
       --auth-webhook-methods strings              List of methods that require authorization checks. If no value is specified, all methods will be checked.
       --auth-webhook-url string                   URL of remote service to query authorization
-      --authorization-webhook-max-retries uint    Maximum number of retries for an authorization webhook. (default 10)
       --backend-snapshot-interval uint            Interval of changes to create a snapshot (default 100)
       --backend-snapshot-threshold uint           Threshold that determines if changes should be sent with snapshot when the number of changes is greater than this value. (default 500)
   -c, --config string                             Config path
+      --enable-pprof                              Enable runtime profiling data via HTTP server.
+      --etcd-dial-timeout duration                ETCD's dial timeout (default 5s)
       --etcd-endpoints strings                    Comma separated list of etcd endpoints
+      --etcd-lock-lease-time duration             ETCD's lease time for lock (default 30s)
+      --etcd-password string                      ETCD's password
+      --etcd-username string                      ETCD's user name
   -h, --help                                      help for agent
-      --metrics-port int                          Metrics port (default 11102)
       --mongo-connection-timeout duration         Mongo DB's connection timeout (default 5s)
       --mongo-connection-uri string               MongoDB's connection URI (default "mongodb://localhost:27017")
       --mongo-ping-timeout duration               Mongo DB's ping timeout (default 5s)
       --mongo-yorkie-database string              Yorkie's database name in MongoDB (default "yorkie-meta")
+      --profiling-port int                        Profiling port (default 11102)
       --rpc-cert-file string                      RPC certification file's path
       --rpc-key-file string                       RPC key file's path
       --rpc-port int                              RPC port (default 11101)
@@ -60,7 +65,7 @@ Flags:
 Next, let's start a Yorkie agent. Agent runs until they're told to quit and handle the communication of maintenance tasks of Agent. and start the agent:
 
 ```bash
-$ ./bin/yorkie agent
+$ yorkie agent
 ```
 
 *NOTE: Yorkie uses MongoDB to store it's data. To start MongoDB, `docker-compose -f docker/docker-compose.yml up --build -d` in [the project root](https://github.com/yorkie-team/yorkie).*
@@ -68,6 +73,6 @@ $ ./bin/yorkie agent
 Use the `--mongo-connection-uri` option to change he MongoDB connectionURI.
 
 ```bash
-$ ./bin/yorkie agent --mongo-connection-uri mongodb://localhost:27017
+$ yorkie agent --mongo-connection-uri mongodb://localhost:27017
 ```
 
