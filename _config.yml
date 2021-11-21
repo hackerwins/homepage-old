@@ -43,6 +43,9 @@ sass:
 #   - vendor/gems/
 #   - vendor/ruby/
 
+# the current Yorkie version
+version: 0.1.10
+
 defaults:
   - scope:
       path: "docs"

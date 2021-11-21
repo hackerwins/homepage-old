@@ -8,10 +8,16 @@ layout: docs
 
 #### Installation
 
-Include the following code in the `<head>` tag of your HTML:
+Install Yorkie JS SDK using npm:
+
+```bash
+$ npm install yorkie-js-sdk
+```
+
+or just include the following code in the `<head>` tag of your HTML:
 ```html
 <!-- include yorkie js -->
-<script src="yorkie.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/yorkie-js-sdk/{{site.version}}/yorkie-js-sdk.js"></script>
 ```
 
 #### How to use
