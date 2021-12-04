@@ -21,4 +21,10 @@ $ bundle install
 $ bundle exec jekyll s
 ```
 
+Homepage requires local applications such as Envoy, Yorkie. To start them:
+
+```
+docker-compose -f docker/docker-compose.yml up --build -d
+```
+
 And connect http://localhost:4000 via web browsers.

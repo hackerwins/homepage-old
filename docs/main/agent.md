@@ -4,6 +4,8 @@ layout: docs
 
 ## Agent
 
+Agent is a typical server. Agent receives changes from Client, stores them in DB, and propagates the changes to Clients who subscribe to the Document.
+
 ### Install pre-built binaries
 
 The easiest way to install yorkie is from pre-built binaries:
@@ -14,7 +16,7 @@ The easiest way to install yorkie is from pre-built binaries:
 4. From a shell, test that yorkie is in your path:
 ```bash
 $ yorkie --version
-Yorkie: 0.1.9
+Yorkie: 0.1.12
 ...
 ```
 
@@ -35,6 +37,7 @@ Usage:
 
 Flags:
       --auth-webhook-cache-auth-ttl duration      TTL value to set when caching authorized webhook response. (default 10s)
+      --auth-webhook-cache-size int               The cache size of the authorization webhook. (default 5000)
       --auth-webhook-cache-unauth-ttl duration    TTL value to set when caching unauthorized webhook response. (default 10s)
       --auth-webhook-max-retries uint             Maximum number of retries for an authorization webhook. (default 10)
       --auth-webhook-max-wait-interval duration   Maximum wait interval for authorization webhook. (default 3s)
@@ -51,12 +54,13 @@ Flags:
       --etcd-username string                      ETCD's user name
   -h, --help                                      help for agent
       --mongo-connection-timeout duration         Mongo DB's connection timeout (default 5s)
-      --mongo-connection-uri string               MongoDB's connection URI (default "mongodb://localhost:27017")
+      --mongo-connection-uri string               MongoDB's connection URI
       --mongo-ping-timeout duration               Mongo DB's ping timeout (default 5s)
       --mongo-yorkie-database string              Yorkie's database name in MongoDB (default "yorkie-meta")
       --profiling-port int                        Profiling port (default 11102)
       --rpc-cert-file string                      RPC certification file's path
       --rpc-key-file string                       RPC key file's path
+      --rpc-max-requests-bytes uint               Maximum client request size in bytes the server will accept. (default 4194304)
       --rpc-port int                              RPC port (default 11101)
 ```
 
@@ -66,13 +70,87 @@ Next, let's start a Yorkie agent. Agent runs until they're told to quit and hand
 
 ```bash
 $ yorkie agent
+
+backend created: id: c6ljcdl94818baveba8g, rpc: localhost:11101: db: memory
+serving profiling on 11102
+serving RPC on 11101
 ```
 
-*NOTE: Yorkie uses MongoDB to store it's data. To start MongoDB, `docker-compose -f docker/docker-compose.yml up --build -d` in [the project root](https://github.com/yorkie-team/yorkie).*
+Agent store its data using an in-memory DB that does not provide durability by default.
 
-Use the `--mongo-connection-uri` option to change he MongoDB connectionURI.
+### Running Agent with MongoDB
+
+If you start an Agent with MongoDB address, you can permanently save the data stored by Yorkie.
+
+*To start MongoDB, `docker-compose -f docker/docker-compose.yml up --build -d` in [the project root](https://github.com/yorkie-team/yorkie).*
+
+Then start a Yorkie agent with `--mongo-connection-uri` flag to connect the MongoDB.
 
 ```bash
 $ yorkie agent --mongo-connection-uri mongodb://localhost:27017
+
+MongoDB connected, URI: mongodb://localhost:27017, DB: yorkie-meta
+backend created: id: c6ljibt948102kkt9neg, rpc: localhost:11101: db: mongodb://localhost:27017
+serving profiling on 11102
+serving RPC on 11101
 ```
 
+### Auth Webhook
+
+Webhook is an HTTP POST that is called when something happens. When specified, Auth Webhook causes Agent to query an outside REST service when determining user privileges.
+
+The overall flow is as follows:
+
+```
+(5) response the request (4) handle the request
+     ┌─────────────────┐ ┌──┐
+     │                 │ │  │   (3) response
+     ▼                 │ ▼  │    - allowed
+ ┌──────┐             ┌┴────┤    - reason   ┌──────────────┐
+ │Client├────────────►│Agent│◄──────────────┤Outside Server│
+ └──────┘ (1)request  └───┬─┘               └──────────────┘
+           - token        │                      ▲
+           - dockey       └──────────────────────┘
+                              (2) call webhook
+                               - token
+                               - dockey
+                               - verb: r or rw
+```
+
+We can pass some tokens when creating a client:
+
+```javascript
+yorkie.createClient('localhost:8080', {
+  token: SOME_TOKEN,
+});
+```
+
+When running an Agent, We can specify the Auth Webhook by the `--authorization-webhook` flag:
+
+````bash
+$ yorkie agent --authorization-webhook=http://localhost:3000/auth-hook
+```
+
+When the client sends every request, it passes the token to Agent. The Agent who receives the token calls Webhook before processing the requests.
+
+Here is an example of the webhook requests:
+
+```javascript
+{
+  "token": "SOME_TOKEN",          // token passed by the client
+  "method": "PushPull",           // method: ActivateClient, DeactivateClient, AttachDocument, DetachDocument, WatchDocuments
+  documentAttributes: [{
+    key: "COLLECTION$DOCUMENT", // document key
+    verb: "r"                   // 'r' or 'rw'
+  }]
+}
+```
+
+The outside server should respond like this:
+
+```javascript
+{
+  "allowed": true, // or false if the given token is not privileged for this document.
+  "reason": "ok"   // [optional] reason for this response.
+}
+```
