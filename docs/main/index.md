@@ -1,5 +1,7 @@
 ---
+title: "About Yorkie"
 layout: docs
+order: 1
 ---
 
 ## About Yorkie

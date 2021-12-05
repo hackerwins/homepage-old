@@ -1,5 +1,7 @@
 ---
+title: "JS SDK"
 layout: docs
+order: 3
 ---
 
 ## JS SDK

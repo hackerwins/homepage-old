@@ -13,11 +13,14 @@
               <h4>Documentation</h4>
               <hr>
               <ul>
-                <li><a href="/docs/main">About Yorkie</a></li>
-                <li><a href="/docs/main/agent">Agent</a></li>
-                <li><a href="/docs/main/js-sdk">JS SDK</a></li>
-                <li><a href="/docs/main/examples">Examples</a></li>
-                <li><a href="/docs/main/internals">Internals</a></li>
+                {% assign pages = site.pages | sort: "order" %}
+                {% for p in pages %}
+                  {{ if p.layout == "docs" }}
+                  <li class="{% if p.url == page.url %}active{% endif %}">
+                    <a href="{{ p.url }}">{{ p.title }}</a>
+                  </li>
+                  {{ endif }}
+                {% endfor %}
               </ul>
             </div>
           </div>

@@ -1,5 +1,7 @@
 ---
+title: "Examples"
 layout: docs
+order: 4
 ---
 
 ## Examples

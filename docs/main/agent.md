@@ -1,5 +1,7 @@
 ---
+title: "Agent"
 layout: docs
+order: 2
 ---
 
 ## Agent

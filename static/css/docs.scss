@@ -30,11 +30,15 @@
         color: $color-black-1;
       }
     }
+    li.active {
+      a {
+        color: #e6b602;
+      }
+    }
   }
 
   .docs-content {
     flex: 3;
-
     h1, h2, h3, h4 {
       margin-top: 1em;
       position: relative;
@@ -57,6 +61,14 @@
         visibility: visible;
         opacity: 1.0;
       }
+    }
+
+    h2 {
+      float: none;
+      margin-bottom: 30px;
+      padding: 0 0 15px;
+      background: transparent;
+      border-bottom: 1px solid $color-gray-1;
     }
 
     p {
