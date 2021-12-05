@@ -6,7 +6,9 @@ layout: docs
 
 Agent is a typical server. Agent receives changes from Client, stores them in DB, and propagates the changes to Clients who subscribe to the Document.
 
-### Install pre-built binaries
+### Getting started
+
+#### Install pre-built binaries
 
 The easiest way to install yorkie is from pre-built binaries:
 
@@ -20,7 +22,7 @@ Yorkie: 0.1.12
 ...
 ```
 
-### Commands (CLI)
+#### Commands (CLI)
 
 Yorkie is controlled via a very easy to use command-line interface (CLI). Yorkie is only a single command-line application: `yorkie`. This application then takes a subcommand such as `agent`.
 
@@ -64,7 +66,7 @@ Flags:
       --rpc-port int                              RPC port (default 11101)
 ```
 
-### Running Agent
+#### Running Agent
 
 Next, let's start a Yorkie agent. Agent runs until they're told to quit and handle the communication of maintenance tasks of Agent. and start the agent:
 

@@ -24,11 +24,11 @@ or just include the following code in the `<head>` tag of your HTML:
 
 First, create client with RPCAddr(Envoy) then activate it.
 ```javascript
-const client = yorkie.createClient('localhost:8080');
+const client = yorkie.createClient('AGENT_RPC_ADDR'); // e.g.) 'localhost:8080'
 await client.activate();
 ```
 
-*NOTE: If you want to test Yorkie quickly, You can start Envoy, Yorkie and MongoDB with `docker-compose`. To start them, type `docker-compose -f docker/docker-compose.yml up --build -d` in [the project root](https://github.com/yorkie-team/yorkie-js-sdk).*
+*NOTE: If you want to test Yorkie quickly, You can start Envoy and Yorkie with `docker-compose`. To start them, type `docker-compose -f docker/docker-compose.yml up --build -d` in [the project root](https://github.com/yorkie-team/yorkie-js-sdk).*
 
 Then create a document with a collection name and key then attach it into the client.
 
@@ -45,6 +45,51 @@ doc.update((root) => {
 ```
 
 The changes are applied immediately locally and propagated to other peers that have attached the document.
+
+### Client
+
+Client is a normal client that can communicate with the agent. It has documents and sends changes of the document in local to the agent to synchronize with other replicas in remote.
+
+#### Subscribing document events
+
+We can use `client.subscribe` to subscribe client-based events, such as `status-changed`, `stream-connection-status-changed` and `peer-changed`. 
+
+```javascript
+const unsubscribe = client.subscribe((event) => {
+  if (event.name === 'status-changed') {
+    console.log(event.value); // 'activated' or 'deactivated'
+  } else if (event.name === 'stream-connection-status-changed') {
+    console.log(event.value); // 'connected' or 'disconnected'
+  }
+});
+```
+
+By using the value of the `stream-connection-status-changed` event, it is possible to determine whether the client is connected to the network.
+
+#### Peer Awareness
+
+When creating a client, we can pass information of the client to other peers attaching the same document with metadata.
+
+```javascript
+const client = yorkie.createClient('AGENT_RPC_ADDR', {
+  metadata: {
+    username: name,
+  },
+});
+```
+
+When a new peer registers or leaves, `peers-changed` event is fired, and the other peer's clientID and metadata can be obtained from the event.
+
+```javascript
+const unsubscribe = client.subscribe((event) => {
+  if (event.name === 'peers-changed') {
+    const peers = event.value[doc.getKey().toIDString()];
+    for (const [clientID, metadata] of Object.entries(peers)) {
+      console.log(clientID, metadata);
+    }
+  }
+});
+```
 
 ### Document
 

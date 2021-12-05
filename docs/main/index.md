@@ -4,18 +4,18 @@ layout: docs
 
 ## About Yorkie
 
-Yorkie is an open source document store for building collaborative applications. Yorkie provides synchronization primitives such as JSON-like document and Peer Awareness API to easily develop real-time collaborative applications.
+Yorkie is an open source document store for building collaborative applications such as [Google Docs](https://docs.google.com/) and [Figma](https://www.figma.com/). To achieve that, Yorkie provides synchronization primitives such as JSON-like document and Peer Awareness API.
 
-Yorkie consists of Document, Client, and Agent.
+Yorkie consists of Client, Document, and Agent.
 
-- Document: Document is a CRDT-based data type. We can representing the model of the application. And we can edit it even while offline.
-- Client: Client is a normal client that can communicate with the Agent. We can synchronize the changes of the document by using Client.
-- Agent: Agent receives changes from Client, stores them in DB, and propagates the changes to Clients who subscribe to the Document.
+- [Client](./js-sdk#client): Client is a normal client that can communicate with the Agent. We can synchronize the changes of the document by using Client.
+- [Document](./js-sdk#document): Document is a CRDT-based data type. We can representing the model of the application. And we can edit it even while offline.
+- [Agent](./agent): Agent receives changes from Client, stores them in DB, and propagates the changes to Clients who subscribe to the Document.
 
 High-level overview of Yorkie is as follows:
 
  ```
- Client "A" (Go)                 Agent                        Mongo DB
+ Client "A" (Go)                 Agent                        MemDB or MongoDB
 ┌───────────────────┐           ┌────────────────────────┐   ┌───────────┐
 │  Document "D-1"   │◄─Changes─►│  Collection "C-1"      │   │ Changes   │
 │  { a: 1, b: {} }  │           │ ┌───────────────────┐  │◄─►│ Snapshots │
@@ -28,22 +28,16 @@ High-level overview of Yorkie is as follows:
  Client "C" (Admin)             │                        │
 ┌────────────────────┐          └────────────────────────┘
 │  Query "Q-1"       │               ▲
-│ db[c-1].find({a:2})├─MongoDB Query─┘
+│ db[c-1].find({a:2})├───── Query────┘
 └────────────────────┘
  ```
+
+The overall flows is as follows:
 
  - Clients can have a replica of the Document representing an application model locally on several devices.
  - Each client can independently edit the document on their local device, even while offline.
  - When a network connection is available, Yorkie figures out which changes need to be synced from one client to another, and brings them into the same state.
  - If the document was changed concurrently on different devices, Yorkie automatically syncs the changes, so that every replica ends up in the same state with resolving conflict.
-
-### Agent and SDKs
-
-Yorkie provides JS SDK, Agent, and Database to eliminate the tedious work, can be operational and can use the services just out-of-box.
-
- - Agent: [yorkie-team/yorkie](https://github.com/yorkie-team/yorkie)
- - Go Client: [yorkie-team/yorkie/client](https://github.com/yorkie-team/yorkie/tree/main/client)
- - JS SDK: [yorkie-team/yorkie-js-sdk](https://github.com/yorkie-team/yorkie-js-sdk)
 
 ### Need help?
 
