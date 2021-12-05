@@ -1,7 +1,7 @@
 ---
 title: "Internals"
 layout: docs
-order: 5
+order: 6
 ---
 
 ## Internals

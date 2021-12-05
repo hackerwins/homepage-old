@@ -15,11 +15,11 @@
               <ul>
                 {% assign pages = site.pages | sort: "order" %}
                 {% for p in pages %}
-                  {{ if p.layout == "docs" }}
+                  {% if p.layout == "docs" %}
                   <li class="{% if p.url == page.url %}active{% endif %}">
                     <a href="{{ p.url }}">{{ p.title }}</a>
                   </li>
-                  {{ endif }}
+                  {% endif %}
                 {% endfor %}
               </ul>
             </div>
