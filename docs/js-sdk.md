@@ -1,6 +1,7 @@
 ---
 title: "JS SDK"
 layout: docs
+category: "JS SDK"
 order: 3
 ---
 

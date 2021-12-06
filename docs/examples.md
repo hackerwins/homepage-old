@@ -1,14 +1,15 @@
 ---
 title: "Examples"
 layout: docs
-order: 5
+category: "Examples"
+order: 6
 ---
 
 ## Examples
 
 ### CodePair
 
-[CodePair](https://codepair.yorkie.dev) is a real-time pair programming environment, powered by Yorkie.
+[CodePair](https://codepair.yorkie.dev) is Real-time collaborative code editor with brush tools for online coding interviews or meetings.
 
 ![Yorkie CodePair](/images/codepair.png){: width="100%"}
 
