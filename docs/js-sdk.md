@@ -2,7 +2,7 @@
 title: "JS SDK"
 layout: docs
 category: "JS SDK"
-order: 3
+order: 30
 ---
 
 ## JS SDK
@@ -22,7 +22,7 @@ const client = yorkie.createClient('AGENT_RPC_ADDR');
 await client.activate();
 ```
 
-#### Subscribing document events
+#### Subscribing client events
 
 We can use `client.subscribe` to subscribe client-based events, such as `status-changed`, `stream-connection-status-changed` and `peer-changed`. 
 
@@ -37,31 +37,6 @@ const unsubscribe = client.subscribe((event) => {
 ```
 
 By using the value of the `stream-connection-status-changed` event, it is possible to determine whether the client is connected to the network.
-
-#### Peer Awareness
-
-When creating a client, we can pass information of the client to other peers attaching the same document with metadata.
-
-```javascript
-const client = yorkie.createClient('AGENT_RPC_ADDR', {
-  metadata: {
-    username: name,
-  },
-});
-```
-
-When a new peer registers or leaves, `peers-changed` event is fired, and the other peer's clientID and metadata can be obtained from the event.
-
-```javascript
-const unsubscribe = client.subscribe((event) => {
-  if (event.name === 'peers-changed') {
-    const peers = event.value[doc.getKey().toIDString()];
-    for (const [clientID, metadata] of Object.entries(peers)) {
-      console.log(clientID, metadata);
-    }
-  }
-});
-```
 
 ### Document
 
@@ -150,3 +125,6 @@ doc.update((root) => {
 ### Reference
 
 [JS SDK Reference](https://yorkie.dev/yorkie-js-sdk)
+
+Next, Let's take a look at the various [Tasks](./tasks) that can be performed with Yorkie.
+

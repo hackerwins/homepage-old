@@ -2,12 +2,12 @@
 title: "About Yorkie"
 layout: docs
 category: "About Yorkie"
-order: 1
+order: 10
 ---
 
 ## About Yorkie
 
-Yorkie is an open source document store for building collaborative applications such as [Google Docs](https://docs.google.com/) and [Figma](https://www.figma.com/). To achieve that, Yorkie provides synchronization primitives such as JSON-like document([CRDT](https://crdt.tech/)) and Peer Awareness API.
+Yorkie is an open source document store for building collaborative applications such as [Google Docs](https://docs.google.com/) and [Figma](https://www.figma.com/). To achieve that, Yorkie provides synchronization primitives such as JSON-like document([CRDT](https://crdt.tech/)) and Peer Awareness API. It also provides Admin API to manage documents as a document store.
 
 High-level overview of Yorkie is as follows:
 
@@ -43,7 +43,3 @@ Yorkie consists of Client, Document, and Agent.
 - [Agent](./agent): Agent receives changes from Client, stores them in DB, and propagates the changes to Clients who subscribe to the Document.
 
 Next, let's see how to use Yorkie from [Quick Start](./quick-start).
-
-### Need help?
-
-Be sure to join the Yorkie Slack. If you have any questions along the way, please don’t hesitate to ask us in our [Slack channel](https://dev-yorkie.slack.com/). You can sign up for our [Slack here](https://communityinviter.com/apps/dev-yorkie/yorkie-framework).

@@ -2,7 +2,7 @@
 title: "Quick Start"
 layout: docs
 category: "Quick Start"
-order: 2
+order: 20
 ---
 
 ## Quick Start
@@ -23,8 +23,8 @@ or just include the following code in the `<head>` tag of your HTML:
 <script src="https://cdnjs.cloudflare.com/ajax/libs/yorkie-js-sdk/{{site.version}}/yorkie-js-sdk.js"></script>
 ```
 
-*NOTE: If you want to test Yorkie quickly, You can start Envoy and Yorkie with `docker-compose`.<br>
-To start them, type `docker-compose -f docker/docker-compose.yml up --build -d` in [the project root](https://github.com/yorkie-team/yorkie-js-sdk).*
+*NOTE: If you want to test Yorkie quickly, You can start `Envoy` and `Yorkie` with `docker-compose`.<br>
+To start them, type `docker-compose up --build -d` in [docker folder](https://github.com/yorkie-team/yorkie-js-sdk/docker).*
 
 ### How to use
 
@@ -37,13 +37,13 @@ await client.activate();
 Then create a document with a collection name and key of document then attach it into the client.
 
 ```javascript
-const doc = yorkie.createDocument('collection-1', 'document-1');
+const doc = yorkie.createDocument('my-docs', 'doc-1');
 await client.attach(doc);
 ```
 
 This automatically synchronizes all changes to the document attached to the client with the remote peers.
 
-Now make a change on the document:
+Now let's make a change on the document:
 ```javascript
 doc.update((root) => {
   root['key'] = 'value'; // {"key":"value"}

@@ -2,7 +2,7 @@
 title: "Cluster Mode"
 layout: docs
 category: "Tasks"
-order: 7
+order: 53
 ---
 
 ## Cluster Mode
