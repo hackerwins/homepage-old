@@ -13,4 +13,5 @@ This section of the documentation contains pages that show how to do individual 
 - [Tasks: Agent for Web](./agent-for-web)
 - [Tasks: Peer Awareness](./peer-awareness)
 - [Tasks: Auth Webhook](./auth-webhook)
+- [Tasks: Monitoring Agent](./monitoring-agent)
 - [Tasks: Cluster Mode](./cluster-mode)

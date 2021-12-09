@@ -39,8 +39,8 @@ The overall flows is as follows:
 
 Yorkie consists of Client, Document, and Agent.
 
-- [Client](./js-sdk#client): Client is a normal client that can communicate with the Agent. We can synchronize the changes of the document by using Client.
-- [Document](./js-sdk#document): Document is a CRDT-based data type. We can representing the model of the application. And we can edit it even while offline.
-- [Agent](./agent): Agent receives changes from Client, stores them in DB, and propagates the changes to Clients who subscribe to the Document.
+- [Client](/docs/js-sdk#client): Client is a normal client that can communicate with the Agent. We can synchronize the changes of the document by using Client.
+- [Document](/docs/js-sdk#document): Document is a CRDT-based data type. We can representing the model of the application. And we can edit it even while offline.
+- [Agent](/docs/agent): Agent receives changes from Client, stores them in DB, and propagates the changes to Clients who subscribe to the Document.
 
-Next, let's see how to use Yorkie from [Quick Start](./quick-start).
+Next, let's see how to use Yorkie from [Quick Start](/docs/quick-start).

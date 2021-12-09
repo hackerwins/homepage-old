@@ -10,7 +10,7 @@ order: 53
 
 Webhook is an HTTP POST that is called when something happens. When specified, Auth Webhook causes Agent to query an outside REST service when determining user privileges.
 
-The overall flow is as follows:
+This page shows how to set up a auth webhook. The overall flow is as follows:
 
 ```
 (5) response the request (4) handle the request

@@ -8,12 +8,11 @@ order: 52
 
 ## Peer Awareness
 
-Peer Awareness is a required feature in collaborative applications. With Peer Awareness, we can display information such as names and colors about peers who are editing a document together in the application.
-
-Example of Peer Awareness in [CodePair](https://codepair.yorkie.dev/):
+Peer Awareness is a feature often required in collaborative applications. With Peer Awareness, we can display information such as names and colors about peers who are editing a document together in the application. Example of Peer Awareness in [CodePair](https://codepair.yorkie.dev/):
 
 <img src="/images/peer-awareness.png" width="100%" style="max-width:400px">
 
+This page shows how to implement Peer Awareness in your application.
 
 ### How to implement
 

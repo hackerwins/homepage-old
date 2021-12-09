@@ -3,16 +3,14 @@ title: "Cluster Mode"
 layout: docs
 category: "Tasks"
 permalink: /docs/cluster-mode
-order: 54
+order: 55
 ---
 
 ## Cluster Mode
 
-In a production environment, it is generally expected more than one agent to handle requests. Even if an agent goes down, the other agents must be able to handle the request.
+In a production environment, it is generally expected more than one agent to handle requests. Even if an agent goes down, the other agents must be able to handle the request. We can achieve that by setup Agents with Cluster-Mode.
 
-We can achieve that by setup Agents with Cluster-Mode.
-
-An example of the cluster is as follows:
+This page describes how to setup a cluster of agents. An example of the cluster is as follows:
 
 ```
                         ┌───────────┐

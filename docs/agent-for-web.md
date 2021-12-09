@@ -8,9 +8,9 @@ order: 51
 
 ## Agent for Web
 
-Agent provides API using [gRPC](https://grpc.io/), so [Envoy](https://www.envoyproxy.io/) is required for web.
+Agent uses [gRPC](https://grpc.io/) to provide an API that clients can connect to. It is currently impossible to implement the HTTP/2 gRPC in some browsers, [Envoy](https://www.envoyproxy.io/) is required for web. For more details: [gRPC-web](https://grpc.io/blog/state-of-grpc-web/)
 
-Overall structure is as follows:
+This page shows how to start the agent for web. Overall structure is as follows:
 
 ```
  Browser            Envoy                  Agent
@@ -18,7 +18,6 @@ Overall structure is as follows:
 │gRPC-web├─HTTP1.1─┤gRPC-web Proxy├─HTTP2─┤gRPC Server│
 └────────┘         └──────────────┘       └───────────┘
 ```
-For more details: [gRPC-web](https://grpc.io/blog/state-of-grpc-web/)
 
 ### Start Agent with Envoy
 
