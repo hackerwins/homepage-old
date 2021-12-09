@@ -2,6 +2,7 @@
 title: "Internals"
 layout: docs
 category: "Internals"
+permalink: /docs/internals
 order: 70
 ---
 

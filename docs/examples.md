@@ -2,6 +2,7 @@
 title: "Examples"
 layout: docs
 category: "Examples"
+permalink: /docs/examples
 order: 60
 ---
 

@@ -2,6 +2,7 @@
 title: "About Yorkie"
 layout: docs
 category: "About Yorkie"
+permalink: /docs
 order: 10
 ---
 

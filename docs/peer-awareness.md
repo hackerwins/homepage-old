@@ -2,7 +2,8 @@
 title: "Peer Awareness"
 layout: docs
 category: "Tasks"
-order: 51
+permalink: /docs/peer-awareness
+order: 52
 ---
 
 ## Peer Awareness
@@ -19,7 +20,7 @@ Example of Peer Awareness in [CodePair](https://codepair.yorkie.dev/):
 When creating a client, we can pass information of the client to other peers attaching the same document with metadata.
 
 ```javascript
-const clientA = yorkie.createClient('AGENT_RPC_ADDR', {
+const clientA = yorkie.createClient('localhost:8080', {
   metadata: {
     username: 'alice',
     color: 'blue',
@@ -35,7 +36,7 @@ await clientA.attach(docA);
 Then another client is created and attaches a document with the same name as before.
 
 ```javascript
-const clientB = yorkie.createClient('AGENT_RPC_ADDR', {
+const clientB = yorkie.createClient('localhost:8080', {
   metadata: {
     username: 'bob',
     color: 'red',

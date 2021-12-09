@@ -2,7 +2,8 @@
 title: "Cluster Mode"
 layout: docs
 category: "Tasks"
-order: 53
+permalink: /docs/cluster-mode
+order: 54
 ---
 
 ## Cluster Mode

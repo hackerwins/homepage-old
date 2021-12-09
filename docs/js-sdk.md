@@ -2,6 +2,7 @@
 title: "JS SDK"
 layout: docs
 category: "JS SDK"
+permalink: /docs/js-sdk
 order: 30
 ---
 
@@ -18,7 +19,7 @@ Client is a normal client that can communicate with the agent. It has documents 
 With `yorkie.createClient()` you can create a client. After the client is activated, it is connected to the agent and ready to use.
 
 ```javascript
-const client = yorkie.createClient('AGENT_RPC_ADDR');
+const client = yorkie.createClient('localhost:8080');
 await client.activate();
 ```
 

@@ -2,6 +2,7 @@
 title: "Agent"
 layout: docs
 category: "Agent"
+permalink: /docs/agent
 order: 40
 ---
 

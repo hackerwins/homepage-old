@@ -2,6 +2,7 @@
 title: "Quick Start"
 layout: docs
 category: "Quick Start"
+permalink: /docs/quick-start
 order: 20
 ---
 
@@ -23,8 +24,8 @@ or just include the following code in the `<head>` tag of your HTML:
 <script src="https://cdnjs.cloudflare.com/ajax/libs/yorkie-js-sdk/{{site.version}}/yorkie-js-sdk.js"></script>
 ```
 
-*NOTE: If you want to test Yorkie quickly, You can start `Envoy` and `Yorkie` with `docker-compose`.<br>
-To start them, type `docker-compose up --build -d` in [docker folder](https://github.com/yorkie-team/yorkie-js-sdk/docker).*
+*NOTE: If you want to test Yorkie quickly, You can start `Envoy` and `Yorkie` with `docker-compose`. To start them, downloads manifests files from [docker folder](https://github.com/yorkie-team/yorkie-team.github.io/tree/main/docker), then type `docker-compose up --build -d` in the folder.<br>
+For more details please refer to [Agent for Web](./agent-for-web)*
 
 ### How to use
 

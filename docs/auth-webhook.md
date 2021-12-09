@@ -2,7 +2,8 @@
 title: "Auth Webhook"
 layout: docs
 category: "Tasks"
-order: 52
+permalink: /docs/auth-webhook
+order: 53
 ---
 
 ## Auth Webhook
@@ -27,7 +28,9 @@ The overall flow is as follows:
                                - verb: r or rw
 ```
 
-We can pass some tokens when creating a client:
+### How to implement
+
+First, We need to pass some tokens (that identify users in the service) when creating a client:
 
 ```javascript
 yorkie.createClient('localhost:8080', {
@@ -35,13 +38,15 @@ yorkie.createClient('localhost:8080', {
 });
 ```
 
-When running an Agent, We can specify the Auth Webhook by the `--authorization-webhook` flag:
+this token will be sent to the Agent on every request from the client.
+
+And when running an Agent, We can specify the Auth Webhook by the `--authorization-webhook` flag:
 
 ````bash
 $ yorkie agent --authorization-webhook=http://localhost:3000/auth-hook
 ```
 
-When the client sends every request, it passes the token to Agent. The Agent who receives the token calls Webhook before processing the requests.
+The Agent who receives the token calls the given webhook URL before processing the requests.
 
 Here is an example of the webhook requests:
 
