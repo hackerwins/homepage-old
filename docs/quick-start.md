@@ -8,7 +8,7 @@ order: 20
 
 ## Quick Start
 
-Currently, only JS SDK is developed among SDKs. Let's start using Yorkie with JS SDK and Agent.
+Let's start using Yorkie with JS SDK and Agent.
 
 ### Installation
 

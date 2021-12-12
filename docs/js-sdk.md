@@ -12,7 +12,7 @@ Through Yorkie JS SDK, you can efficiently building collaborative applications. 
 
 ### Client
 
-Client is a normal client that can communicate with the agent. It has documents and sends changes of the document in local to the agent to synchronize with other replicas in remote.
+`Client` is a normal client that can communicate with the agent. It has documents and sends changes of the document in local to the agent to synchronize with other replicas in remote.
 
 #### Creating a client
 
@@ -41,7 +41,7 @@ By using the value of the `stream-connection-status-changed` event, it is possib
 
 ### Document
 
-Document is primary data type in Yorkie, providing a JSON-like updating experience that makes it easy to represent your application's model. Document can be updated without attaching it to the client, and changes are automatically propagated to other peers when attaching it to the client or when the network is restored.
+`Document` is primary data type in Yorkie, providing a JSON-like updating experience that makes it easy to represent your application's model. `Document` can be updated without attaching it to the client, and changes are automatically propagated to other peers when attaching it to the client or when the network is restored.
 
 #### Editing the document
 
@@ -96,7 +96,7 @@ doc.subscribe((event) => {
 
 #### Text
 
-Text provides support for collaborative plain text editing. Under the hood, text is represented as a list of characters. Compared to using a regular JavaScript array, Text offers better performance. And it also has selection information for sharing the cursor position.
+`Text` provides support for collaborative plain text editing. Under the hood, `Text` is represented as a list of characters. Compared to using a regular JavaScript array, Text offers better performance. And it also has selection information for sharing the cursor position.
 
 ```javascript
 doc.update((root) => {
@@ -111,8 +111,26 @@ An example of text co-editing with CodeMirror:
 
 [CodeMirror example](https://github.com/yorkie-team/yorkie-js-sdk/blob/main/examples/index.html)
 
+#### RichText
+
+`RichText` is similar to `Text` except that we can add attributes to contents.
+
+```javascript
+doc.update((root) => {
+  const text = root.createRichText('text');      // {"text":""}
+  text.edit(0, 0, 'hello');                      // {"text":"hello"}
+  text.edit(0, 1, 'H');                          // {"text":"Hello"}
+  text.setStyle(0, 1, {bold: true});             // {"text":"<b>H</b>ello"}
+});
+```
+
+An example of text co-editing with CodeMirror:
+
+[CodeMirror example](https://github.com/yorkie-team/yorkie-js-sdk/blob/main/examples/index.html)
+
+
 #### Counter
-Counter support numeric types that change to addition and subtraction. If numeric data needs to be modified at the same time, Counter should be used instead of Primitive.
+`Counter` support numeric types that change to addition and subtraction. If numeric data needs to be modified at the same time, `Counter` should be used instead of Primitive.
 
 ```javascript
 doc.update((root) => {
