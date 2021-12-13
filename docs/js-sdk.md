@@ -16,7 +16,7 @@ Through Yorkie JS SDK, you can efficiently building collaborative applications. 
 
 #### Creating a client
 
-With `yorkie.createClient()` you can create a client. After the client is activated, it is connected to the agent and ready to use.
+We can create a client using `yorkie.createClient()`. After the client is activated, it is connected to the agent and ready to use.
 
 ```javascript
 const client = yorkie.createClient('localhost:8080');
@@ -43,6 +43,16 @@ By using the value of the `stream-connection-status-changed` event, it is possib
 
 `Document` is primary data type in Yorkie, providing a JSON-like updating experience that makes it easy to represent your application's model. `Document` can be updated without attaching it to the client, and changes are automatically propagated to other peers when attaching it to the client or when the network is restored.
 
+#### Creating a document
+
+We can create a document using `yorkie.createDocument()`. Let's create a document with a collection name and key of document then attach it into the client.
+
+```javascript
+const doc = yorkie.createDocument('my-docs', 'doc-1');
+await client.attach(doc);
+```
+
+After attaching the document to the client, all changes to the document are automatically synchronized with remote peers.
 #### Editing the document
 
 `Document.update(changeFn, message)` enables you to modify a document. The optional `message` allows you to keep a string to the change. If the document is attached to the client, all changes are automatically synchronized with other clients.
@@ -107,9 +117,7 @@ doc.update((root) => {
 });
 ```
 
-An example of text co-editing with CodeMirror:
-
-[CodeMirror example](https://github.com/yorkie-team/yorkie-js-sdk/blob/main/examples/index.html)
+An example of Text co-editing with CodeMirror: [CodeMirror example](https://github.com/yorkie-team/yorkie-js-sdk/blob/main/examples/index.html), [Demos](/demos)
 
 #### RichText
 
@@ -124,10 +132,7 @@ doc.update((root) => {
 });
 ```
 
-An example of text co-editing with CodeMirror:
-
-[CodeMirror example](https://github.com/yorkie-team/yorkie-js-sdk/blob/main/examples/index.html)
-
+An example of RichText co-editing with Quill: [Quill example](https://github.com/yorkie-team/yorkie-js-sdk/blob/main/examples/quill.html), [Demos](/demos)
 
 #### Counter
 `Counter` support numeric types that change to addition and subtraction. If numeric data needs to be modified at the same time, `Counter` should be used instead of Primitive.
