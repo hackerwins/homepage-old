@@ -26,13 +26,19 @@
     }
 
     li {
+      margin: 0;
       a {
         color: $color-black-1;
+        display: block;
+        padding: 0.25em 0.5em;
       }
     }
     li.active {
       a {
-        color: #e6b602;
+        color: $color-primary;
+        background: $color-white-2;
+        border: 1px solid $color-gray-1;
+        border-radius: 4px;
       }
     }
     li.sub {

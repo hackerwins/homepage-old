@@ -13,7 +13,7 @@
               <h4>Documentation</h4>
               <hr>
               <ul>
-                {% assign sorteds = site.pages | sort: "order" %}
+                {% assign sorteds = site.pages | where: "layout", "docs" | sort: "order" %}
                 {% assign groups = sorteds | group_by: "category" %}
                 {% for group in groups %}
                   {% assign docs = group.items %}

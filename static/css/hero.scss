@@ -1,7 +1,7 @@
 .hero {
   background: $color-black-1;
   padding: 4em 0;
-  color: #cca100;
+  color: $color-brand;
   border-bottom: 3px solid $color-brand;
 
   @media #{$small-screen} {
