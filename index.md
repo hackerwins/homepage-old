@@ -78,7 +78,7 @@ layout: default
         </div>
         <div class="card-body">
           <p>
-          <a href="https://en.wikipedia.org/wiki/Vector_clock">Vector clock</a> needs clocks per every client and it leads to large space for documents. <span class="brand">Yorkie</span> uses <a href="https://en.wikipedia.org/wiki/Lamport_timestamps">Lamport timestamp</a> to keep smaller document sizes and provides Garbage Collection that removes <a href="https://crdt.tech/glossary">tombstones</a> to keep documents from growing.
+          <a href="https://en.wikipedia.org/wiki/Vector_clock">Vector clock</a> needs clocks per every client and it leads to large space for documents. <span class="brand">Yorkie</span> uses <a href="https://en.wikipedia.org/wiki/Lamport_timestamps">Lamport timestamp</a> to keep smaller document sizes and provides <a href="/docs/garbage-collection">Garbage Collection</a> that removes <a href="https://crdt.tech/glossary">tombstones</a> to keep documents from growing.
           </p>
         </div>
       </li>
