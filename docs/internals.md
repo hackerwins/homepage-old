@@ -12,6 +12,8 @@ This section goes over some of the internals of Yorkie, such as the CRDT, orderi
 
 - [Internals: Garbage Collection](./garbage-collection)
 
+*Note: Because this section explains internals for understanding the techniques, It is not essential for using Yorkie.*
+
 ### References
 
 For more details on the techniques used for understanding Yorkie, we recommend reading the following papers:
