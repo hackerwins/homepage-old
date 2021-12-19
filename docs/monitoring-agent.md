@@ -16,7 +16,7 @@ The metrics can be fetched with curl:
 ```bash
 $ curl http://localhost:11102/metrics
 
-yorkie_agent_version{agent_version="0.1.12"} 1
+yorkie_agent_version{agent_version="{{site.version}}"} 1
 # HELP yorkie_pushpull_received_changes_total The total count of changes included
 # TYPE yorkie_pushpull_received_changes_total counter
 yorkie_pushpull_received_changes_total 6
