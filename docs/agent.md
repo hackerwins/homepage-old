@@ -22,7 +22,7 @@ The easiest way to install yorkie is from pre-built binaries:
 4. From a shell, test that yorkie is in your path:
 ```bash
 $ yorkie --version
-Yorkie: 0.1.12
+Yorkie: {{site.version}}
 ...
 ```
 
