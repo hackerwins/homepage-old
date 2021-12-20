@@ -1,7 +1,7 @@
 ---
 title: "Garbage Collection"
 layout: docs
-category: "internals"
+category: "Internals"
 permalink: /docs/garbage-collection
 order: 71
 ---

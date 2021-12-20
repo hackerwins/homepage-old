@@ -13,14 +13,15 @@
               <h4>Documentation</h4>
               <hr>
               <ul>
-                {% assign sorteds = site.pages | where: "layout", "docs" | sort: "order" %}
-                {% assign groups = sorteds | group_by: "category" %}
+                {% assign groups = site.pages | where: "layout", "docs" | sort: "order" | group_by: "category" %}
                 {% for group in groups %}
                   {% assign docs = group.items %}
                   {% for doc in docs %}
+                    {% if doc.category == page.category or doc.title == doc.category %}
                     <li class="{% if doc.url == page.url %}active{% endif %}{% if doc.category != doc.title %} sub{% endif %}">
                       <a href="{{ doc.url }}">{{ doc.title }}</a>
                     </li>
+                    {% endif %}
                   {% endfor %}
                 {% endfor %}
               </ul>
