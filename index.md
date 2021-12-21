@@ -120,6 +120,6 @@ layout: default
 <section class="contact">
   <div class="wrapper">
     <h2>Need help?</h2>
-    <p>If you have any questions along the way, please don’t hesitate to ask us in our <a href="https://dev-yorkie.slack.com/">Slack channel</a>. You can sign up for our <a href="https://communityinviter.com/apps/dev-yorkie/yorkie-framework">Slack here</a>.</p>
+    <p>If you have any questions along the way, please don’t hesitate to ask us in our <a href="https://dev-yorkie.slack.com/">Slack channel</a>. You can sign up for our <a href="{{site.inviter}}">Slack here</a>.</p>
   </div>
 </section>
