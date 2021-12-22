@@ -31,10 +31,7 @@ const defaultLists = [
   },
 ];
 
-async function createKanbanExample(client, board) {
-  const doc = yorkie.createDocument('examples', `kanban-board-${getYYYYMMDD()}`);
-  await client.attach(doc);
-
+async function createKanbanExample(client, doc, board) {
   var app = new Vue({
     el: board,
     data: {
@@ -106,8 +103,8 @@ async function createKanbanExample(client, board) {
   });
 
   doc.update((root) => {
-    if (!root['lists']) {
-      root['lists'] = defaultLists;
+    if (!root.lists) {
+      root.lists = defaultLists;
     }
   }, 'create default list if not exists');
 

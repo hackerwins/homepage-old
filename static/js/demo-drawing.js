@@ -33,14 +33,10 @@ function getPoint(drawingPanel, e) {
   }
 }
 
-async function createDrawingExample(client, drawingPanel) {
-  // 02. create a document then attach it into the client.
-  const doc = yorkie.createDocument('examples', `drawing-panel-${getYYYYMMDD()}`);
-  await client.attach(doc);
-
+async function createDrawingExample(client, doc, drawingPanel) {
   doc.update((root) => {
-    if (!root['shapes']) {
-      root['shapes'] = [];
+    if (!root.shapes) {
+      root.shapes = [];
     }
   }, 'create points if not exists');
 
