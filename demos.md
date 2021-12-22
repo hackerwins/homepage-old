@@ -91,11 +91,14 @@ layout: default
       {% endif %}
       await client.activate();
 
-      await createTextExample(client, placeholder);
-      await createMarkdownExample(client, markdownPlaceholder);
-      await createQuillExample(client, quillEditor);
-      await createDrawingExample(client, drawingPanel);
-      await createKanbanExample(client, kanbanBoard);
+      const doc = yorkie.createDocument('examples', `example-${getYYYYMMDD()}`);
+      await client.attach(doc);
+
+      await createTextExample(client, doc, placeholder);
+      await createMarkdownExample(client, doc, markdownPlaceholder);
+      await createQuillExample(client, doc, quillEditor);
+      await createDrawingExample(client, doc, drawingPanel);
+      await createKanbanExample(client, doc, kanbanBoard);
     } catch (e) {
       console.error(e);
     }

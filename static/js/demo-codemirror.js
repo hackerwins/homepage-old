@@ -64,17 +64,13 @@ function displayRemoteSelection(cm, change, selectionMap) {
 }
 
 const selectionMap = new Map();
-async function createTextExample(client, placeholder) {
-  // 01. create a document then attach it into the client.
-  const doc = yorkie.createDocument('examples', `codemirror-${getYYYYMMDD()}`);
-  await client.attach(doc);
-
+async function createTextExample(client, doc, placeholder) {
   doc.update((root) => {
-    if (!root.content) {
-      const text = root.createText('content');
+    if (!root.codemirror) {
+      const text = root.createText('codemirror');
       text.edit(0, 0, '<html>\n  <body>Hello CodeMirror</body>\n</html>');
     }
-  }, 'create content if not exists');
+  }, 'create codemirror if not exists');
   await client.sync();
 
   // 02. create an instance of codemirror.
@@ -94,8 +90,8 @@ async function createTextExample(client, placeholder) {
     const content = change.text.join('\n');
 
     doc.update((root) => {
-      root.content.edit(from, to, content);
-    }, `update content by ${client.getID()}`);
+      root.codemirror.edit(from, to, content);
+    }, `update codemirror by ${client.getID()}`);
 
     console.log(`%c local: ${from}-${to}: ${content}`, 'color: green');
   });
@@ -112,12 +108,12 @@ async function createTextExample(client, placeholder) {
     const to = cm.indexFromPos(change.ranges[0].head);
 
     doc.update((root) => {
-      root.content.select(from, to);
+      root.codemirror.select(from, to);
     }, `select by ${client.getID()}`);
   });
 
   // 03-2. document to codemirror(remote).
-  const text = doc.getRoot().content;
+  const text = doc.getRoot().codemirror;
   text.onChanges((changes) => {
     for (const change of changes) {
       if (change.type === 'content') {

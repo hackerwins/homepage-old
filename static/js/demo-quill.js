@@ -1,7 +1,7 @@
 function toDelta(doc) {
-  const obj = doc.getRoot();
+  const root = doc.getRoot();
   const deltas = [];
-  for (const val of obj.content.getValue()) {
+  for (const val of root.quill.getValue()) {
     deltas.push({
       insert: val.content,
       attributes: val.attributes,
@@ -22,21 +22,17 @@ function toAttributes(attrs) {
   return attributes;
 }
 
-async function createQuillExample(client, quillHolder) {
+async function createQuillExample(client, doc, quillHolder) {
   try {
-    // 01. create a document then attach it into the client.
-    const doc = yorkie.createDocument('examples', `quill-${getYYYYMMDD()}`);
-    await client.attach(doc);
-
     doc.update((root) => {
-      if (!root.content) {
-        const text = root.createRichText('content');
+      if (!root.quill) {
+        const text = root.createRichText('quill');
         text.edit(0, 0, 'Hello Quill');
         text.setStyle(0, 5, {
           bold: '1'
         });
       }
-    }, 'create content if not exists');
+    }, 'create quill if not exists');
     await client.sync();
 
     // 02. create an instance of Quill
@@ -84,12 +80,12 @@ async function createQuillExample(client, quillHolder) {
 
           doc.update((root) => {
             if (op.attributes !== undefined && op.insert === undefined) {
-              root.content.setStyle(from, to, toAttributes(op.attributes));
+              root.quill.setStyle(from, to, toAttributes(op.attributes));
             } else if (op.insert !== undefined) {
               if (to < from) {
                 to = from;
               }
-              root.content.edit(from, to, op.insert, toAttributes(op.attributes));
+              root.quill.edit(from, to, op.insert, toAttributes(op.attributes));
               from = to + op.insert.length;
             }
           }, `update style by ${client.getID()}`);
@@ -100,8 +96,8 @@ async function createQuillExample(client, quillHolder) {
           console.log(`%c local: ${from}-${to}: ''`, 'color: green');
 
           doc.update((root) => {
-            root.content.edit(from, to, '');
-          }, `update content by ${client.getID()}`);
+            root.quill.edit(from, to, '');
+          }, `update quill by ${client.getID()}`);
         } else if (op.retain !== undefined) {
           from = to + op.retain;
           to = from;
@@ -113,12 +109,12 @@ async function createQuillExample(client, quillHolder) {
       }
 
       doc.update((root) => {
-        root.content.select(range.index, range.index + range.length);
+        root.quill.select(range.index, range.index + range.length);
       }, `select by ${client.getID()}`);
     });
 
     // 03-2. document to codemirror(remote).
-    const text = doc.getRoot().content;
+    const text = doc.getRoot().quill;
     text.onChanges((changes) => {
       const delta = [];
       let prevTo = 0;

@@ -65,17 +65,13 @@ const createMarkdownExample = (() => {
   }
 
   const selectionMap = new Map();
-  async function createMarkdownExample(client, placeholder) {
-    // 01. create a document then attach it into the client.
-    const doc = yorkie.createDocument('examples', `markdown-${getYYYYMMDD()}`);
-    await client.attach(doc);
-
+  async function createMarkdownExample(client, doc, placeholder) {
     doc.update((root) => {
-      if (!root.content) {
-        const text = root.createText('content');
+      if (!root.markdown) {
+        const text = root.createText('markdown');
         text.edit(0, 0, '# Hello Markdown');
       }
-    }, 'create content if not exists');
+    }, 'create markdown if not exists');
     await client.sync();
 
     // 02. create an instance of codemirror.
@@ -94,8 +90,8 @@ const createMarkdownExample = (() => {
       const content = change.text.join('\n');
 
       doc.update((root) => {
-        root.content.edit(from, to, content);
-      }, `update content by ${client.getID()}`);
+        root.markdown.edit(from, to, content);
+      }, `update markdown by ${client.getID()}`);
 
       console.log(`%c local: ${from}-${to}: ${content}`, 'color: green');
     });
@@ -112,12 +108,12 @@ const createMarkdownExample = (() => {
       const to = cm.indexFromPos(change.ranges[0].head);
 
       doc.update((root) => {
-        root.content.select(from, to);
+        root.markdown.select(from, to);
       }, `select by ${client.getID()}`);
     });
 
     // 03-2. document to codemirror(remote).
-    const text = doc.getRoot().content;
+    const text = doc.getRoot().markdown;
     text.onChanges((changes) => {
       for (const change of changes) {
         if (change.type === 'content') {
