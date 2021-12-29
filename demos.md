@@ -94,11 +94,11 @@ layout: default
       const client = yorkie.createClient('http://localhost:8080');
       {% endif %}
       await client.activate();
-      await createPeerAwareness(client, peerList);
 
       const doc = yorkie.createDocument('examples', `example-${getYYYYMMDD()}`);
       await client.attach(doc);
 
+      await createPeerAwareness(client, doc, peerList);
       await createTextExample(client, doc, placeholder);
       await createMarkdownExample(client, doc, markdownPlaceholder);
       await createQuillExample(client, doc, quillEditor);
