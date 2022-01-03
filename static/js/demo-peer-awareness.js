@@ -17,7 +17,6 @@ async function createPeerAwareness(client, doc, div) {
 
   client.subscribe((event) => {
     if (event.type === 'peers-changed') {
-      console.log('peers-changed');
       const changedPeers = event.value[doc.getKey()];
 
       for (const clientID of Object.keys(peers)) {
