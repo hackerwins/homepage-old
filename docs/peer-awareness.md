@@ -51,8 +51,8 @@ Once a new peer registers or leaves, `peers-changed` event is fired, and the oth
 
 ```javascript
 const unsubscribe = clientA.subscribe((event) => {
-  if (event.name === 'peers-changed') {
-    const peers = event.value[doc.getKey().toIDString()];
+  if (event.type === 'peers-changed') {
+    const peers = event.value[doc.getKey()];
     for (const [clientID, metadata] of Object.entries(peers)) {
       console.log(clientID, metadata); // e.g.) metadata: {username: 'bob', color: 'red'}
     }

@@ -15,6 +15,7 @@
       min-width: 360px;
       min-height: 120px;
       resize: none;
+      padding: 0px;
     }
 
     .CodeMirror-scroll {
@@ -102,7 +103,7 @@
         font-size: 1em;
 
         margin: 5px 0;
-        padding: 0 5px;
+        padding: 5px;
         background: #fff;
         border-radius: 3px;
         box-shadow: 0 1px 0 rgba(9,30,66,.25);
@@ -112,6 +113,7 @@
 
       input[type=button] {
         font-size: 1em;
+        padding: 5px;
 
         &.pull-right {
           float: right;
@@ -176,5 +178,20 @@
       }
 
     }
+  }
+
+  #peer-list {
+    position: fixed;
+    right: 0;
+    margin: 12px;
+    font-size: 0.7em;
+    background: #d7d7d76c;
+    padding: 6px 12px;
+    border-radius: 5px;
+    z-index: 999;
+    box-shadow: 0 1px 0 rgba(9,30,66,.25);
+
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
   }
 }

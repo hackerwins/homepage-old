@@ -4,6 +4,7 @@ layout: default
 <section class="demo">
   <div class="wrapper">
     <h2>Play with Yorkie!</h2>
+    <div id="peer-list"></div>
     <h3>CodeMirror</h3>
     <p>The CodeMirror example uses custom CRDT type, <a href="/docs/js-sdk#text">Text</a>.</p>
     <p>For more details: <a href="https://github.com/yorkie-team/yorkie-js-sdk/blob/main/examples/index.html">codemirror.html</a></p>
@@ -66,6 +67,8 @@ layout: default
   </div>
 </section>
 <script src="/static/js/demo-util.js"></script>
+<script src="/static/js/demo-peer-awareness.js"></script>
+
 <script src="/static/js/demo-codemirror.js"></script>
 <script src="/static/js/demo-markdown.js"></script>
 <script src="/static/js/demo-quill.js"></script>
@@ -79,6 +82,7 @@ layout: default
   const drawingPanel = document.getElementById('drawing-panel');
   const kanbanBoard = document.getElementById('kanban-board');
   const quillEditor = document.getElementById('quill-editor');
+  const peerList = document.getElementById('peer-list');
 
   async function main() {
     try {
@@ -94,6 +98,7 @@ layout: default
       const doc = yorkie.createDocument('examples', `example-${getYYYYMMDD()}`);
       await client.attach(doc);
 
+      await createPeerAwareness(client, doc, peerList);
       await createTextExample(client, doc, placeholder);
       await createMarkdownExample(client, doc, markdownPlaceholder);
       await createQuillExample(client, doc, quillEditor);
