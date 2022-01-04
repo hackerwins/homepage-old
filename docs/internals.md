@@ -16,9 +16,15 @@ This section goes over some of the internals of Yorkie, such as the CRDT, orderi
 
 ### References
 
-For more details on the techniques used for understanding Yorkie, we recommend reading the following papers:
+For more details on the techniques used for understanding Yorkie, we recommend reading the following papers.
 
- - H.-G. Roh, M. Jeon, J.-S. Kim, and J. Lee, “Replicated abstract data types: Building blocks for collaborative applications,” J. Parallel Distrib. Comput., vol. 71, no. 3, pp. 354–368, Mar. 2011. [Online].
- - Weihai Yu, “Supporting String-Wise Operations and Selective Undo for Peer-to-Peer Group Editing.“
- - Loïck Briot, Pascal Urso, Marc Shapiro, “High Responsiveness for Group Editing CRDTs“.
+[RGA](https://github.com/yorkie-team/yorkie/blob/main/pkg/document/json/rga_tree_list.go), [RHT](https://github.com/yorkie-team/yorkie/blob/main/pkg/document/json/rht.go): 
+  - H.-G. Roh, M. Jeon, J.-S. Kim, and J. Lee, “Replicated abstract data types: Building blocks for collaborative applications,” J. Parallel Distrib. Comput., vol. 71, no. 3, pp. 354–368, Mar. 2011. [Online].: [Link](https://www.researchgate.net/publication/220379659_Replicated_abstract_data_types_Building_blocks_for_collaborative_applications)
+
+[RGATreeSplit](https://github.com/yorkie-team/yorkie/blob/main/pkg/document/json/rga_tree_split.go):
+  - Weihai Yu, “Supporting String-Wise Operations and Selective Undo for Peer-to-Peer Group Editing.“: [Link](https://dl.acm.org/doi/10.1145/2660398.2660401)
+  - Loïck Briot, Pascal Urso, Marc Shapiro, “High Responsiveness for Group Editing CRDTs“.: [Link](https://hal.archives-ouvertes.fr/hal-01343941)
+
+[Attach/Detach, PushPull API](https://github.com/yorkie-team/yorkie/blob/main/yorkie/rpc/yorkie_server.go):
+  - Kaleido: Implementing a Novel Data System for Multi-Device Synchronization: [Link](https://www.semanticscholar.org/paper/Kaleido%3A-Implementing-a-Novel-Data-System-for-Roh-Kim/9c850fcf2763243e56e6248af5315d4b86602fda)
 
