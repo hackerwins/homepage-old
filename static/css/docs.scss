@@ -110,14 +110,17 @@
       overflow-x: auto;
 
       code {
+        font-family: $font-monospace;
+        font-size: 0.8em;
         line-height: 1.5;
-        font-size: 1.1em;
       }
     }
 
     p code {
+      font-family: $font-monospace;
+      font-size: 0.8em;
       background: $color-gray-0;
-      padding: 0.1em 0.2em;
+      padding: 0.15em 0.25em;
       margin: 0 0.1em;
       border: 1px solid $color-gray-1;
       border-radius: 2px;
