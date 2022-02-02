@@ -129,5 +129,34 @@
     ul, ol {
       margin-left: 40px;
     }
+
+    table {
+      border-collapse: collapse;
+      border: 1px solid $color-gray-1;
+      width: 100%;
+    }
+
+    thead {
+      background-color: $color-gray-0;
+    }
+
+    tr {
+      td:first-child {
+        text-align: center;
+      }
+
+      td a {
+        color: $color-black-0;
+        text-decoration: underline;
+      }
+
+      th, td {
+        padding: 0.5em;
+      }
+    }
+    
+    tbody tr:nth-child(even) {
+      background-color: $color-gray-0;
+    }
   }
 }

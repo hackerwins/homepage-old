@@ -17,8 +17,8 @@
                 {% for group in groups %}
                   {% assign docs = group.items %}
                   {% for doc in docs %}
-                    {% if doc.category == page.category or doc.title == doc.category %}
-                    <li class="{% if doc.url == page.url %}active{% endif %}{% if doc.category != doc.title %} sub{% endif %}">
+                    {% if doc.category == page.category or doc.title == doc.category or doc.hide != true %}
+                    <li class="{% if doc.url == page.url or page.url contains doc.group %}active{% endif %}{% if doc.category != doc.title %} sub{% endif %}">
                       <a href="{{ doc.url }}">{{ doc.title }}</a>
                     </li>
                     {% endif %}
