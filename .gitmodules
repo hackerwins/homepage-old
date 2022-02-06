@@ -1,0 +1,4 @@
+[submodule "docs/js-references"]
+	path = docs/js-references
+	url = git@github.com:yorkie-team/yorkie-js-sdk.git
+	branch = gh-pages
