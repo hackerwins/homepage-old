@@ -73,7 +73,7 @@ layout: default
 <script src="/static/js/demo-markdown.js"></script>
 <script src="/static/js/demo-quill.js"></script>
 <script src="/static/js/demo-drawing.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.min.js" integrity="sha512-XdUZ5nrNkVySQBnnM5vzDqHai823Spoq1W3pJoQwomQja+o4Nw0Ew1ppxo5bhF2vMug6sfibhKWcNJsG8Vj9tg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="/static/js/demo-kanban.js"></script>
 
 <script>
