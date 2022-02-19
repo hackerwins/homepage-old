@@ -12,7 +12,7 @@ Yorkie is an open source document store for building collaborative applications 
 
 High-level overview of Yorkie is as follows:
 
- ```
+```
  Client "A" (Go)                 Agent                        MemDB or MongoDB
 ┌───────────────────┐           ┌────────────────────────┐   ┌───────────┐
 │  Document "D-1"   │◄─Changes─►│  Collection "C-1"      │   │ Changes   │
@@ -28,7 +28,7 @@ High-level overview of Yorkie is as follows:
 │  Query "Q-1"       │               ▲
 │ db[c-1].find({a:2})├───── Query────┘
 └────────────────────┘
- ```
+```
 
 The overall flows is as follows:
 
