@@ -22,7 +22,7 @@ layout: default
         <div class="card-header">
           <div class="card-header-title">
             <h3>Just Out-of-Box</h3>
-            <h4>SDKs, Agent and Database</h4>
+            <h4>SDKs, Server and Database</h4>
           </div>
           <div class="card-header-img">
             <img src="./images/network.svg" />
@@ -30,7 +30,7 @@ layout: default
         </div>
         <div class="card-body">
           <p>
-          <span class="brand">Yorkie</span> provides <a href="/docs/js-sdk">SDKs</a>, <a href="/docs/agent">Server</a>, and <a href="/docs/agent#running-agent-with-mongodb">Database</a> to eliminate the tedious work can be operational and can use the services just out-of-box. Yorkie will take care of the collaborative features while you focus on your direct services.
+          <span class="brand">Yorkie</span> provides <a href="/docs/js-sdk">SDKs</a>, <a href="/docs/server">Server</a>, and <a href="/docs/server#running-server-with-mongodb">Database</a> to eliminate the tedious work can be operational and can use the services just out-of-box. Yorkie will take care of the collaborative features while you focus on your direct services.
           </p>
         </div>
       </li>

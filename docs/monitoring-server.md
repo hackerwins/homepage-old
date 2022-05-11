@@ -1,22 +1,22 @@
 ---
-title: "Monitoring Agent"
+title: "Monitoring Server"
 layout: docs
 category: "Tasks"
-permalink: /docs/monitoring-agent
+permalink: /docs/monitoring-server
 order: 54
 ---
 
-## Monitoring Agent
+## Monitoring Server
 
-This page describes how to monitor the Agent.
+This page describes how to monitor the Server.
 
-Agent exports metrics under the `/metrics` path on its profiling port.
+Server exports metrics under the `/metrics` path on its profiling port.
 The metrics can be fetched with curl:
 
 ```bash
 $ curl http://localhost:11102/metrics
 
-yorkie_agent_version{agent_version="{{site.version}}"} 1
+yorkie_server_version{server_version="{{site.version}}"} 1
 # HELP yorkie_pushpull_received_changes_total The total count of changes included
 # TYPE yorkie_pushpull_received_changes_total counter
 yorkie_pushpull_received_changes_total 6
@@ -27,7 +27,7 @@ This metrics can be collected from [Prometheus](https://prometheus.io/).
 
 ### Prometheus and Grafana
 
-Running [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/oss/grafana/) is the easiest way to monitor Agent's metrics.
+Running [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/oss/grafana/) is the easiest way to monitor Server's metrics.
 
 First, downloads all manifests files from [docker folder](https://github.com/yorkie-team/yorkie-team.github.io/tree/main/docker). Then let's start the applications with `docker-compose`:
 
@@ -38,7 +38,7 @@ Creating prometheus ... done
 Creating grafana    ... done
 ```
 
-Now Prometheus will collect Agent metrics every 10 seconds.
+Now Prometheus will collect Server metrics every 10 seconds.
 
 Grafana has built-in Prometheus support; just add a Prometheus data source:
 

@@ -818,13 +818,13 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "yorkie_agent_version",
+          "expr": "yorkie_server_version",
           "interval": "",
-          "legendFormat": "{{agent_version}}",
+          "legendFormat": "{{server_version}}",
           "refId": "A"
         }
       ],
-      "title": "Agent Version",
+      "title": "Server Version",
       "type": "timeseries"
     }
   ],

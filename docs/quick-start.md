@@ -8,7 +8,7 @@ order: 20
 
 ## Quick Start
 
-Let's start using Yorkie with JS SDK and Agent.
+Let's start using Yorkie with JS SDK and Server.
 
 ### Installation
 
@@ -25,7 +25,7 @@ or just include the following code in the `<head>` tag of your HTML:
 ```
 
 *NOTE: If you want to test Yorkie quickly, You can start `Envoy` and `Yorkie` with `docker-compose`. To start them, downloads manifests files from [docker folder](https://github.com/yorkie-team/yorkie-team.github.io/tree/main/docker), then type `docker-compose up --build -d` in the folder.<br>
-For more details please refer to [Agent for Web](./agent-for-web)*
+For more details please refer to [Server for Web](./server-for-web)*
 
 ### How to use
 
@@ -35,10 +35,10 @@ const client = yorkie.createClient('localhost:8080');
 await client.activate();
 ```
 
-Then create a document with a collection name and key of document then attach it into the client.
+Then create a document with a key of document then attach it into the client.
 
 ```javascript
-const doc = yorkie.createDocument('my-docs', 'doc-1');
+const doc = yorkie.createDocument('doc-1');
 await client.attach(doc);
 ```
 
