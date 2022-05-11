@@ -25,12 +25,12 @@ async function createPeerAwareness(client, doc, div) {
         }
       }
 
-      for (const [clientID, metadata] of Object.entries(changedPeers)) {
+      for (const [clientID, presence] of Object.entries(changedPeers)) {
         if (!peers[clientID] || peers[clientID].status === Disconnected) {
           const peer = {
             id: clientID,
             status: Connected,
-            metadata,
+            presence,
           };
           peers[clientID] = peer;
         }

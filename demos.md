@@ -95,7 +95,7 @@ layout: default
       {% endif %}
       await client.activate();
 
-      const doc = yorkie.createDocument('examples', `example-${getYYYYMMDD()}`);
+      const doc = yorkie.createDocument(`examples$${getYYYYMMDD()}`);
       await client.attach(doc);
 
       await createPeerAwareness(client, doc, peerList);

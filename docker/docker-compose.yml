@@ -22,13 +22,14 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
   yorkie:
-    image: 'yorkieteam/yorkie:0.2.2'
+    image: 'yorkieteam/yorkie:0.2.4'
     container_name: 'yorkie'
     command: [
-      'agent',
+      'server',
       '--enable-pprof',
     ]
     restart: always
     ports:
       - '11101:11101'
       - '11102:11102'
+      - '11103:11103'

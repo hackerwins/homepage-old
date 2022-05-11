@@ -12,11 +12,11 @@ Through Yorkie JS SDK, you can efficiently building collaborative applications. 
 
 ### Client
 
-`Client` is a normal client that can communicate with the agent. It has documents and sends changes of the document in local to the agent to synchronize with other replicas in remote.
+`Client` is a normal client that can communicate with the server. It has documents and sends changes of the document in local to the server to synchronize with other replicas in remote.
 
 #### Creating a client
 
-We can create a client using `yorkie.createClient()`. After the client is activated, it is connected to the agent and ready to use.
+We can create a client using `yorkie.createClient()`. After the client is activated, it is connected to the server and ready to use.
 
 ```javascript
 const client = yorkie.createClient('localhost:8080');
@@ -45,10 +45,10 @@ By using the value of the `stream-connection-status-changed` event, it is possib
 
 #### Creating a document
 
-We can create a document using `yorkie.createDocument()`. Let's create a document with a collection name and key of document then attach it into the client.
+We can create a document using `yorkie.createDocument()`. Let's create a document with a key of document then attach it into the client.
 
 ```javascript
-const doc = yorkie.createDocument('my-docs', 'doc-1');
+const doc = yorkie.createDocument('doc-1');
 await client.attach(doc);
 ```
 

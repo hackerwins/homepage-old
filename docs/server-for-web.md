@@ -1,25 +1,25 @@
 ---
-title: "Agent for Web"
+title: "Server for Web"
 layout: docs
 category: "Tasks"
-permalink: /docs/agent-for-web
+permalink: /docs/server-for-web
 order: 51
 ---
 
-## Agent for Web
+## Server for Web
 
-Agent uses [gRPC](https://grpc.io/) to provide an API that clients can connect to. It is currently impossible to implement the HTTP/2 gRPC in some browsers, [Envoy](https://www.envoyproxy.io/) is required for web. For more details: [gRPC-web](https://grpc.io/blog/state-of-grpc-web/)
+Server uses [gRPC](https://grpc.io/) to provide an API that clients can connect to. It is currently impossible to implement the HTTP/2 gRPC in some browsers, [Envoy](https://www.envoyproxy.io/) is required for web. For more details: [gRPC-web](https://grpc.io/blog/state-of-grpc-web/)
 
-This page shows how to start the agent for web. Overall structure is as follows:
+This page shows how to start the server for web. Overall structure is as follows:
 
 ```
- Browser            Envoy                  Agent
+ Browser            Envoy                  Server
 ┌────────┐         ┌──────────────┐       ┌───────────┐
 │gRPC-web├─HTTP1.1─┤gRPC-web Proxy├─HTTP2─┤gRPC Server│
 └────────┘         └──────────────┘       └───────────┘
 ```
 
-### Start Agent with Envoy
+### Start Server with Envoy
 
 Configuring Envoy by hand with its config file is cumbersome, but using [Docker Compose](https://docs.docker.com/compose/) makes it easy.
 
@@ -34,21 +34,22 @@ Starting yorkie ... done
 Starting envoy  ... done
 ```
 
-This will launch the yorkie(Agent) and envoy containers on your environment.
+This will launch the yorkie(Server) and envoy containers on your environment.
 
 ```bash
 $ docker ps
 
 IMAGE                      COMMAND                  PORTS                                  NAMES
 grpcweb:envoy              "/usr/local/bin/envo…"   0.0.0.0:8080->8080/tcp                 envoy
-yorkieteam/yorkie:latest   "yorkie agent --enab…"   0.0.0.0:11101-11102->11101-11102/tcp   yorkie
+yorkieteam/yorkie:latest   "yorkie server --ena…"   0.0.0.0:11101-11103->11101-11103/tcp   yorkie
 ```
 
 Then, the ports of the services are bound to the host environment.
 
 - 8080: gRPC port for Web
-- 11101: gRPC port
-- 11102: port for profiling Agent
+- 11101: gRPC port for SDK
+- 11102: HTML port for profiling Server
+- 11103: gRPC port for admin Server
 
 Now lets create a client with address `localhost:8080`.
 
