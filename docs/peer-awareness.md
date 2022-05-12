@@ -3,7 +3,7 @@ title: "Peer Awareness"
 layout: docs
 category: "Tasks"
 permalink: /docs/peer-awareness
-order: 52
+order: 53
 ---
 
 ## Peer Awareness

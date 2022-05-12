@@ -3,7 +3,7 @@ title: "Monitoring Server"
 layout: docs
 category: "Tasks"
 permalink: /docs/monitoring-server
-order: 54
+order: 55
 ---
 
 ## Monitoring Server

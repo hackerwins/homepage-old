@@ -3,7 +3,7 @@ title: "Cluster Mode"
 layout: docs
 category: "Tasks"
 permalink: /docs/cluster-mode
-order: 55
+order: 56
 ---
 
 ## Cluster Mode

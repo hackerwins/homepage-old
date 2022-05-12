@@ -32,9 +32,10 @@ Yorkie is controlled via a very easy to use command-line interface (CLI). Yorkie
 
 The yorkie CLI is a well-behaved command line application. In erroneous cases, a non-zero exit status will be returned. It also responds to `-h` and `---help` as you'd most likely expect.
 
-To get help for any specific command, pass the `-h` flag to the relevant subcommand. For example, to see help about the members subcommand:
+To get help for any specific command, pass the `-h` flag to the relevant subcommand. For example, to see help about the `server` subcommand:
 
 ```bash
+$ yorkie server --help
 Start Yorkie server
 
 Usage:

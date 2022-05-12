@@ -39,6 +39,8 @@ const unsubscribe = client.subscribe((event) => {
 
 By using the value of the `stream-connection-status-changed` event, it is possible to determine whether the client is connected to the network.
 
+If you want to know about other ClientEvents, please refer to the [ClientEventType](https://yorkie.dev/yorkie-js-sdk/yorkie-js-sdk.clienteventtype).
+
 ### Document
 
 `Document` is primary data type in Yorkie, providing a JSON-like updating experience that makes it easy to represent your application's model. `Document` can be updated without attaching it to the client, and changes are automatically propagated to other peers when attaching it to the client or when the network is restored.
@@ -53,17 +55,19 @@ await client.attach(doc);
 ```
 
 After attaching the document to the client, all changes to the document are automatically synchronized with remote peers.
+
 #### Editing the document
 
 `Document.update(changeFn, message)` enables you to modify a document. The optional `message` allows you to keep a string to the change. If the document is attached to the client, all changes are automatically synchronized with other clients.
 
 ```javascript
+const message = 'update document for test';
 doc.update((root) => {
   root.obj = {};              // {"obj":{}}
   root.obj.num = 1;           // {"obj":{"num":1}}
   root.obj.obj = {'str':'a'}; // {"obj":{"num":1,"obj":{"str":"a"}}}
   root.obj.arr = ['1', '2'];  // {"obj":{"num":1,"obj":{"str":"a"},"arr":[1,2]}}
-}, 'update document for test');
+}, message);
 ```
 
 Under the hood, `root` in the `update` function creates a `change`, a set of operations, using a JavaScript proxy. And Every element has a unique ID, created by the logical clock. This ID is used by Yorkie to track which object is which.
@@ -103,6 +107,8 @@ doc.subscribe((event) => {
 ```
 
 ### Custom CRDT types
+
+Custom CRDT types are data types that can be used for special applications such as text editors and counters, unlike general JSON data types such as `Object` and `Array`. Custom CRDT types can be created in the callback function of `document.update`.
 
 #### Text
 
@@ -148,7 +154,7 @@ doc.update((root) => {
 
 ### Reference
 
-[JS SDK Reference](https://yorkie.dev/yorkie-js-sdk)
+For details on how to use the JS SDK, please refer to [JS SDK Reference](https://yorkie.dev/yorkie-js-sdk).
 
 Next, Let's take a look at the various [Tasks](./tasks) that can be performed with Yorkie.
 
