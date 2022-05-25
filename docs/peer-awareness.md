@@ -19,7 +19,7 @@ This page shows how to implement Peer Awareness in your application.
 When creating a client, we can pass information of the client to other peers attaching the same document with presence.
 
 ```javascript
-const clientA = yorkie.createClient('localhost:8080', {
+const clientA = new yorkie.Client('localhost:8080', {
   presence: {
     username: 'alice',
     color: 'blue',
@@ -27,7 +27,7 @@ const clientA = yorkie.createClient('localhost:8080', {
 });
 await client.activate();
 
-const docA = yorkie.createDocument('doc-1');
+const docA = new yorkie.Document('doc-1');
 await clientA.attach(docA);
 ```
 
@@ -35,7 +35,7 @@ await clientA.attach(docA);
 Then another client is created and attaches a document with the same name as before.
 
 ```javascript
-const clientB = yorkie.createClient('localhost:8080', {
+const clientB = new yorkie.Client('localhost:8080', {
   presence: {
     username: 'bob',
     color: 'red',
@@ -43,7 +43,7 @@ const clientB = yorkie.createClient('localhost:8080', {
 });
 await clientB.activate();
 
-const docB = yorkie.createDocument('doc-1');
+const docB = new yorkie.Document('doc-1');
 await clientB.attach(docB);
 ```
 

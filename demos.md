@@ -88,14 +88,14 @@ layout: default
     try {
       {% if jekyll.environment == "production" %}
       // Production build uses https://api.yorkie.dev
-      const client = yorkie.createClient('https://api.yorkie.dev');
+      const client = new yorkie.Client('https://api.yorkie.dev');
       {% else %}
       // yorkie-js-sdk serves its envoy endpoint as localhost:8080
-      const client = yorkie.createClient('http://localhost:8080');
+      const client = new yorkie.Client('http://localhost:8080');
       {% endif %}
       await client.activate();
 
-      const doc = yorkie.createDocument(`examples$${getYYYYMMDD()}`);
+      const doc = new yorkie.DocumentReplica(`examples$${getYYYYMMDD()}`);
       await client.attach(doc);
 
       await createPeerAwareness(client, doc, peerList);

@@ -47,7 +47,7 @@ $ yorkie project create test-project
 If you create a client with `public_key` of the project as `apiKey`, you can manage the client in the project.
 
 ```javascript
-const client = yorkie.createClient('localhost:8080', {
+const client = new yorkie.Client('localhost:8080', {
   apiKey: 'c9u9298qp9as73b8i190', // public_key of the project
 });
 ```

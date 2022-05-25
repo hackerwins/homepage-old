@@ -1,7 +1,7 @@
 function toDelta(doc) {
   const root = doc.getRoot();
   const deltas = [];
-  for (const val of root.quill.getValue()) {
+  for (const val of root.quill.values()) {
     deltas.push({
       insert: val.content,
       attributes: val.attributes,
