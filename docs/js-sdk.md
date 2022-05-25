@@ -16,10 +16,10 @@ Through Yorkie JS SDK, you can efficiently building collaborative applications. 
 
 #### Creating a client
 
-We can create a client using `yorkie.createClient()`. After the client is activated, it is connected to the server and ready to use.
+We can create a client using `new yorkie.Client()`. After the client is activated, it is connected to the server and ready to use.
 
 ```javascript
-const client = yorkie.createClient('localhost:8080');
+const client = new yorkie.Client('localhost:8080');
 await client.activate();
 ```
 
@@ -47,10 +47,10 @@ If you want to know about other ClientEvents, please refer to the [ClientEventTy
 
 #### Creating a document
 
-We can create a document using `yorkie.createDocument()`. Let's create a document with a key of document then attach it into the client.
+We can create a document using `yorkie.Document()`. Let's create a document with a key of document then attach it into the client.
 
 ```javascript
-const doc = yorkie.createDocument('doc-1');
+const doc = new yorkie.Document('doc-1');
 await client.attach(doc);
 ```
 
@@ -116,10 +116,10 @@ Custom CRDT types are data types that can be used for special applications such 
 
 ```javascript
 doc.update((root) => {
-  const text = root.createText('text');      // {"text":""}
-  text.edit(0, 0, 'hello');                  // {"text":"hello"}
-  text.edit(0, 1, 'H');                      // {"text":"Hello"}
-  text.select(0, 1);                         // {"text":"^H^ello"}
+  root.text = new yorkie.Text();  // {"text":""}
+  root.text.edit(0, 0, 'hello');  // {"text":"hello"}
+  root.text.edit(0, 1, 'H');      // {"text":"Hello"}
+  root.text.select(0, 1);         // {"text":"^H^ello"}
 });
 ```
 
@@ -131,10 +131,10 @@ An example of Text co-editing with CodeMirror: [CodeMirror example](https://gith
 
 ```javascript
 doc.update((root) => {
-  const text = root.createRichText('text');      // {"text":""}
-  text.edit(0, 0, 'hello');                      // {"text":"hello"}
-  text.edit(0, 1, 'H');                          // {"text":"Hello"}
-  text.setStyle(0, 1, {bold: true});             // {"text":"<b>H</b>ello"}
+  root.text = new yorkie.RichText();       // {"text":""}
+  root.text.edit(0, 0, 'hello');           // {"text":"hello"}
+  root.text.edit(0, 1, 'H');               // {"text":"Hello"}
+  root.text.setStyle(0, 1, {bold: true});  // {"text":"<b>H</b>ello"}
 });
 ```
 
@@ -145,10 +145,27 @@ An example of RichText co-editing with Quill: [Quill example](https://github.com
 
 ```javascript
 doc.update((root) => {
-  const counter = root.createCounter('counter', 1);     // {"counter":1}
-  counter.increase(2);                                  // {"counter":3}
-  counter.increase(3.5);                                // {"counter":6.5}
-  counter.increase(-3.5);                               // {"counter":3}
+  root.counter = new yorkie.Counter(1);     // {"counter":1}
+  root.counter.increase(2);                 // {"counter":3}
+  root.counter.increase(3.5);               // {"counter":6.5}
+  root.counter.increase(-3.5);              // {"counter":3}
+});
+```
+
+### TypeScript Support
+
+To use document more strictly, we can use [type variable](https://www.typescriptlang.org/docs/handbook/2/generics.html) in TypeScript when creating a Document.
+
+```typescript
+type DocType = {
+  list: Array<number>;
+  text: yorkie.Text;
+}
+
+const doc = new yorkie.Document<DocType>('key');
+doc.update((root) => {
+  root.list = [1, 2, 3];
+  root.text = new yorkie.Text();
 });
 ```
 

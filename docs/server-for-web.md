@@ -57,7 +57,7 @@ Then, the ports of the services are bound to the host environment.
 Now lets create a client with address `localhost:8080`.
 
 ```javascript
-const client = yorkie.createClient('localhost:8080');
+const client = new yorkie.Client('localhost:8080');
 await client.activate();
 ```
 

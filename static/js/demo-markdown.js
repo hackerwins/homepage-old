@@ -138,7 +138,7 @@ const createMarkdownExample = (() => {
     });
 
     // 04. set initial value.
-    codemirror.setValue(text.getValue());
+    codemirror.setValue(text.toString());
   }
   return createMarkdownExample
 })()

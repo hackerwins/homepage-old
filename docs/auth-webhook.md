@@ -33,7 +33,7 @@ This page shows how to set up a auth webhook. The overall flow is as follows:
 First, We need to pass some tokens (that identify users in the service) when creating a client:
 
 ```javascript
-yorkie.createClient('localhost:8080', {
+const client = new yorkie.Client('localhost:8080', {
   token: SOME_TOKEN,
 });
 ```

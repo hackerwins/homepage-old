@@ -33,7 +33,7 @@ For more details please refer to [Server for Web](./server-for-web)
 
 First, create client with RPCAddr then activate it.
 ```javascript
-const client = yorkie.createClient('localhost:8080');
+const client = new yorkie.Client('localhost:8080');
 await client.activate();
 ```
 
@@ -42,7 +42,7 @@ await client.activate();
 Then create a document with a key of document then attach it into the client.
 
 ```javascript
-const doc = yorkie.createDocument('doc-1');
+const doc = new yorkie.Document('doc-1');
 await client.attach(doc);
 ```
 

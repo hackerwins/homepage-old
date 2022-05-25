@@ -67,8 +67,8 @@ const selectionMap = new Map();
 async function createTextExample(client, doc, placeholder) {
   doc.update((root) => {
     if (!root.codemirror) {
-      const text = root.createText('codemirror');
-      text.edit(0, 0, '<html>\n  <body>Hello CodeMirror</body>\n</html>');
+      root.codemirror = new yorkie.Text();
+      root.codemirror.edit(0, 0, '<html>\n  <body>Hello CodeMirror</body>\n</html>');
     }
   }, 'create codemirror if not exists');
   await client.sync();
@@ -138,5 +138,5 @@ async function createTextExample(client, doc, placeholder) {
   });
 
   // 04. set initial value.
-  codemirror.setValue(text.getValue());
+  codemirror.setValue(text.toString());
 }
