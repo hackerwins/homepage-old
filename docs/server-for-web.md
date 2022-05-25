@@ -40,16 +40,19 @@ This will launch the yorkie(Server) and envoy containers on your environment.
 $ docker ps
 
 IMAGE                      COMMAND                  PORTS                                  NAMES
-grpcweb:envoy              "/usr/local/bin/envo…"   0.0.0.0:8080->8080/tcp                 envoy
+grpcweb:envoy              "/usr/local/bin/envo…"   0.0.0.0:8080->9090/tcp                 envoy
 yorkieteam/yorkie:latest   "yorkie server --ena…"   0.0.0.0:11101-11103->11101-11103/tcp   yorkie
 ```
 
 Then, the ports of the services are bound to the host environment.
 
-- 8080: gRPC port for Web
+- 8080: gRPC-web port for SDK
+- 9090: gRPC-web port for Web Admin([Yorkie House](https://github.com/yorkie-team/yorkie-house))
 - 11101: gRPC port for SDK
 - 11102: HTML port for profiling Server
 - 11103: gRPC port for admin Server
+
+*NOTE: Server stores its data using an in-memory DB that does not provide durability. If you want to store data permanently please refer to [Running Server With MongoDB](/docs/server#running-server-with-mongodb)*
 
 Now lets create a client with address `localhost:8080`.
 
