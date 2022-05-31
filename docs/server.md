@@ -26,6 +26,32 @@ Yorkie: {{site.version}}
 ...
 ```
 
+#### Install via Homebrew
+
+[Homebrew](https://brew.sh/) is a free and open-source package management system for Mac OS X. Install the official [Yorkie formula](https://formulae.brew.sh/formula/yorkie) from the terminal.
+
+To update to the latest version of Yorkie, first update Homebrew.
+
+```bash
+$ brew update
+```
+
+Now, install Yorkie.
+
+```bash
+$ brew install yorkie
+```
+
+Verify that the installation worked by opening a new terminal session and listing Yorkie's available subcommands.
+
+```bash
+$ yorkie version
+Yorkie: {{site.version}}
+Commit: ...
+Go: ...
+Build date: ...
+```
+
 #### Commands (CLI)
 
 Yorkie is controlled via a very easy to use command-line interface (CLI). Yorkie is only a single command-line application: `yorkie`. This application then takes a subcommand such as `server`.
