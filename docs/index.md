@@ -48,8 +48,8 @@ A high-level overview of Yorkie is as follows:
 The overall flow is as follows:
 
  - Clients can have a replica of a Document representing an application model locally on several devices.
- - Each Client can independently edit a Document on his or her local devices, even while offline.
+ - Each Client can independently edit the Document on his or her local devices, even while offline.
  - When a network connection is available, Yorkie figures out which changes need to be synced from one Client to another, and brings them into the same state.
- - If a Document is being changed concurrently on different devices, Yorkie automatically syncs the changes so that every replica ends up in the same state with conflicts resolved.
+ - If the Document is being changed concurrently on different devices, Yorkie automatically syncs the changes so that every replica ends up in the same state with conflicts resolved.
 
 Next, let's see how to use Yorkie from [Quick Start](/docs/quick-start).
