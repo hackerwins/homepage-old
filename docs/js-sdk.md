@@ -29,9 +29,9 @@ We can use `client.subscribe` to subscribe client-based events, such as `status-
 
 ```javascript
 const unsubscribe = client.subscribe((event) => {
-  if (event.name === 'status-changed') {
+  if (event.type === 'status-changed') {
     console.log(event.value); // 'activated' or 'deactivated'
-  } else if (event.name === 'stream-connection-status-changed') {
+  } else if (event.type === 'stream-connection-status-changed') {
     console.log(event.value); // 'connected' or 'disconnected'
   }
 });
