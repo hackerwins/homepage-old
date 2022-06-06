@@ -8,13 +8,9 @@ order: 51
 
 ### Project
 
-Project represents your service or application in Yorkie. For example, you might have separate projects for your application.
+Project represents your service or application in Yorkie. Separate Projects can exist within a single application. You can add more Projects as needed, for example, if you want to manage [auth webhook](/docs/auth-webhook) and documents for specific purposes.
 
-You can create a project for a service  when you first start using Yorkie. You can add more projects on an as-needed basis, for example, if you want to manage [auth webhook](/docs/auth-webhook) and documents.
-
-*Server creates a `default project` automatically. If you create a client without apiKey, the client is created in the default project.*
-
-To manage projects you can use the `project` subcommand:
+To manage Projects you can use the `project` subcommand:
 
 ```bash
 $ yorkie project
@@ -25,7 +21,7 @@ Usage:
 
 Available Commands:
   create      Create a new project
-  list        List all projects
+  ls          List all projects
 
 Flags:
   -h, --help   help for project
@@ -33,9 +29,21 @@ Flags:
 Use "yorkie project [command] --help" for more information about a command.
 ```
 
-#### Creating a project
+#### Listing Projects
 
-You can create a new project with its name using `create`.
+You can list Projects on the server using `ls`.
+
+```bash
+$ yorkie project ls
+ NAME     PUBLIC KEY            SECRET KEY            AUTH WEBHOOK URL  AUTH WEBHOOK METHODS  CREATED AT
+ default  caes5i3hkdftdruae2tg  caes5i3hkdftdruae2u0                    []                    2 minutes
+```
+
+*Server creates a `default project` automatically. If you create a Client without apiKey, the Client is created in the default Project.*
+
+#### Creating a Project
+
+You can create a new Project with its name using `create`.
 
 ```bash
 $ yorkie project create test-project
@@ -44,10 +52,11 @@ $ yorkie project create test-project
 
 #### Using Public Key
 
-If you create a client with `public_key` of the project as `apiKey`, you can manage the client in the project.
+If you create a Client with `public_key` of the Project as `apiKey`, you can manage the Client in the Project.
 
 ```javascript
 const client = new yorkie.Client('localhost:8080', {
   apiKey: 'c9u9298qp9as73b8i190', // public_key of the project
 });
 ```
+Then Documents attached to the Client are isolated and stored in the Project.
