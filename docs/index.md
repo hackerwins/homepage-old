@@ -8,7 +8,7 @@ order: 10
 
 ## About Yorkie
 
-Yorkie is an open source document storage for building collaborative applications such as [Google Docs](https://docs.google.com/) and [Figma](https://www.figma.com/). To achieve that, Yorkie provides synchronization primitives such as a JSON-like Document([CRDT](https://crdt.tech/)), [Peer Awareness](/docs/peer-awareness) and [Authentication](/docs/auth-webhook).
+Yorkie is an open source document store for building collaborative applications such as [Google Docs](https://docs.google.com/) and [Figma](https://www.figma.com/). To achieve that, Yorkie provides synchronization primitives such as a JSON-like Document([CRDT](https://crdt.tech/)), [Peer Awareness](/docs/peer-awareness) and [Authentication](/docs/auth-webhook).
 
 Unlike libraries such as AutoMerge and Yjs, it contains SDKs, a server, and a DB, enabling the implementation of the co-editing feature with less effort.
 
