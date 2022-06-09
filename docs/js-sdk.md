@@ -23,7 +23,7 @@ const client = new yorkie.Client('localhost:8080');
 await client.activate();
 ```
 
-#### Subscribing Client events
+#### Subscribing to Client events
 
 We can use `client.subscribe` to subscribe to client-based events, such as `status-changed`, `stream-connection-status-changed` and `peer-changed`. 
 
