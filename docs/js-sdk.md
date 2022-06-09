@@ -8,24 +8,24 @@ order: 30
 
 ## JS SDK
 
-Through Yorkie JS SDK, you can efficiently building collaborative applications. On the client-side implementation, you can create documents that are automatically synced with remote peers with minimal effort.
+Through Yorkie JS SDK, you can efficiently build collaborative applications. On the client-side implementation, you can create Documents that are automatically synced with remote peers with minimal effort.
 
 ### Client
 
-`Client` is a normal client that can communicate with the server. It has documents and sends changes of the document in local to the server to synchronize with other replicas in remote.
+`Client` is a normal client that can communicate with the server. It has Documents and sends changes of the Document from local to the server to synchronize with other replicas in remote.
 
-#### Creating a client
+#### Creating a Client
 
-We can create a client using `new yorkie.Client()`. After the client is activated, it is connected to the server and ready to use.
+We can create a Client using `new yorkie.Client()`. After the Client has been activated, it is connected to the server and ready to use.
 
 ```javascript
 const client = new yorkie.Client('localhost:8080');
 await client.activate();
 ```
 
-#### Subscribing client events
+#### Subscribing Client events
 
-We can use `client.subscribe` to subscribe client-based events, such as `status-changed`, `stream-connection-status-changed` and `peer-changed`. 
+We can use `client.subscribe` to subscribe to client-based events, such as `status-changed`, `stream-connection-status-changed` and `peer-changed`. 
 
 ```javascript
 const unsubscribe = client.subscribe((event) => {
@@ -37,28 +37,28 @@ const unsubscribe = client.subscribe((event) => {
 });
 ```
 
-By using the value of the `stream-connection-status-changed` event, it is possible to determine whether the client is connected to the network.
+By using the value of the `stream-connection-status-changed` event, it is possible to determine whether the Client is connected to the network.
 
 If you want to know about other ClientEvents, please refer to the [ClientEventType](https://yorkie.dev/yorkie-js-sdk/yorkie-js-sdk.clienteventtype).
 
 ### Document
 
-`Document` is primary data type in Yorkie, providing a JSON-like updating experience that makes it easy to represent your application's model. `Document` can be updated without attaching it to the client, and changes are automatically propagated to other peers when attaching it to the client or when the network is restored.
+`Document` is a primary data type in Yorkie, which provides a JSON-like updating experience that makes it easy to represent your application's model. A `Document` can be updated without being attached to the client, and its changes are automatically propagated to other peers when the Document is attached to the Client or when the network is restored.
 
-#### Creating a document
+#### Creating a Document
 
-We can create a document using `yorkie.Document()`. Let's create a document with a key of document then attach it into the client.
+We can create a Document using `yorkie.Document()`. Let's create a Document with a key and attach it to the Client.
 
 ```javascript
 const doc = new yorkie.Document('doc-1');
 await client.attach(doc);
 ```
 
-After attaching the document to the client, all changes to the document are automatically synchronized with remote peers.
+After attaching the Document to the Client, all changes to the Document are automatically synchronized with remote peers.
 
-#### Editing the document
+#### Editing the Document
 
-`Document.update(changeFn, message)` enables you to modify a document. The optional `message` allows you to keep a string to the change. If the document is attached to the client, all changes are automatically synchronized with other clients.
+`Document.update(changeFn, message)` enables you to modify a Document. The optional `message` allows you to add a description to the change. If the Document is attached to the Client, all changes are automatically synchronized with other Clients.
 
 ```javascript
 const message = 'update document for test';
@@ -70,9 +70,9 @@ doc.update((root) => {
 }, message);
 ```
 
-Under the hood, `root` in the `update` function creates a `change`, a set of operations, using a JavaScript proxy. And Every element has a unique ID, created by the logical clock. This ID is used by Yorkie to track which object is which.
+Under the hood, `root` in the `update` function creates a `change`, a set of operations, using a JavaScript proxy. Every element has its unique ID, created by the logical clock. This ID is used by Yorkie to track which object is which.
 
-And you can get the contents of the document using `document.getRoot()`.
+You can get the contents of the Document using `document.getRoot()`.
 
 ```javascript
 const root = doc.getRoot();
@@ -82,9 +82,9 @@ console.log(root.obj.obj); // {"str":"a"}
 console.log(root.obj.arr); // [1,2]
 ```
 
-#### Subscribing document events
+#### Subscribing Document events
 
-A document is modified by changes generated remotely or locally in Yorkie. When the document is modified, change events occur and we can subscribe to it using `document.subscribe`. Here, we can do post-processing such as repaint in the application using the `path` of the change events.
+A Document is modified by changes generated remotely or locally in Yorkie. When the Document is modified, change events occur, to which we can subscribe using `document.subscribe`. Here, we can do post-processing such as repaint in the application using the `path` of the change events.
 
 ```javascript
 doc.subscribe((event) => {
@@ -112,7 +112,7 @@ Custom CRDT types are data types that can be used for special applications such 
 
 #### Text
 
-`Text` provides support for collaborative plain text editing. Under the hood, `Text` is represented as a list of characters. Compared to using a regular JavaScript array, Text offers better performance. And it also has selection information for sharing the cursor position.
+`Text` provides supports for collaborative plain text editing. Under the hood, `Text` is represented as a list of characters. Compared to a regular JavaScript array, Text offers better performance. It also has selection information for sharing the cursor position.
 
 ```javascript
 doc.update((root) => {
@@ -141,7 +141,7 @@ doc.update((root) => {
 An example of RichText co-editing with Quill: [Quill example](https://github.com/yorkie-team/yorkie-js-sdk/blob/main/examples/quill.html), [Demos](/demos)
 
 #### Counter
-`Counter` support numeric types that change to addition and subtraction. If numeric data needs to be modified at the same time, `Counter` should be used instead of Primitive.
+`Counter` supports numeric types that change with addition and subtraction. If a numeric data needs to be modified at the same time, `Counter` should be used instead of primitives.
 
 ```javascript
 doc.update((root) => {
@@ -154,7 +154,7 @@ doc.update((root) => {
 
 ### TypeScript Support
 
-To use document more strictly, we can use [type variable](https://www.typescriptlang.org/docs/handbook/2/generics.html) in TypeScript when creating a Document.
+To use the Document more strictly, we can use [type variable](https://www.typescriptlang.org/docs/handbook/2/generics.html) in TypeScript when creating a Document.
 
 ```typescript
 type DocType = {
@@ -174,4 +174,3 @@ doc.update((root) => {
 For details on how to use the JS SDK, please refer to [JS SDK Reference](https://yorkie.dev/yorkie-js-sdk).
 
 Next, Let's take a look at the various [Tasks](./tasks) that can be performed with Yorkie.
-
