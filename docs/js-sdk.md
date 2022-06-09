@@ -82,7 +82,7 @@ console.log(root.obj.obj); // {"str":"a"}
 console.log(root.obj.arr); // [1,2]
 ```
 
-#### Subscribing Document events
+#### Subscribing to Document events
 
 A Document is modified by changes generated remotely or locally in Yorkie. When the Document is modified, change events occur, to which we can subscribe using `document.subscribe`. Here, we can do post-processing such as repaint in the application using the `path` of the change events.
 
