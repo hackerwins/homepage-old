@@ -106,6 +106,14 @@ doc.subscribe((event) => {
 });
 ```
 
+#### Detaching the Document
+
+If the document is no longer used, it should be detached to increase the efficiency of GC removing [CRDT tombstones](https://crdt.tech/glossary). For more information about GC, please refer to [Garbage Collection](/docs/garbage-collection).
+
+```javascript
+await client.detach(doc);
+```
+
 ### Custom CRDT types
 
 Custom CRDT types are data types that can be used for special applications such as text editors and counters, unlike general JSON data types such as `Object` and `Array`. Custom CRDT types can be created in the callback function of `document.update`.
