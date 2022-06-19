@@ -8,18 +8,18 @@ order: 40
 
 ## Server
 
-Server is a typical server. Server receives changes from Client, stores them in DB, and propagates the changes to Clients who subscribe to the Document.
+Server is a typical server. A Server receives changes from Clients, stores them in DB, and propagates them to Clients who subscribe to Documents.
 
 ### Getting started
 
 #### Install pre-built binaries
 
-The easiest way to install yorkie is from pre-built binaries:
+The easiest way to install Yorkie is from pre-built binaries:
 
 1. Download the compressed archive file for your platform from [Releases](https://github.com/yorkie-team/yorkie/releases).
 2. Unpack the archive file. This results in a directory containing the binaries.
-3. Add the executable binaries to your path. For example, rename and/or move the binaries to a directory in your path (like /usr/local/bin), or add the directory created by the previous step to your path.
-4. From a shell, test that yorkie is in your path:
+3. Add the executable binaries to your path. For example, rename and/or move the binaries to a directory in your path (like /usr/local/bin), or add the directory created from the previous step to your path.
+4. Test if yorkie is in your path in shell:
 ```bash
 $ yorkie --version
 Yorkie: {{site.version}}
@@ -30,7 +30,7 @@ Yorkie: {{site.version}}
 
 [Homebrew](https://brew.sh/) is a free and open-source package management system for Mac OS X. Install the official [Yorkie formula](https://formulae.brew.sh/formula/yorkie) from the terminal.
 
-To update to the latest version of Yorkie, first update Homebrew.
+To update Yorkie to the latest version, update Homebrew first.
 
 ```bash
 $ brew update
@@ -54,9 +54,9 @@ Build date: ...
 
 #### Commands (CLI)
 
-Yorkie is controlled via a very easy to use command-line interface (CLI). Yorkie is only a single command-line application: `yorkie`. This application then takes a subcommand such as `server`.
+Yorkie is controlled via a very easy-to-use command-line interface (CLI). Yorkie is just a single command-line application  `yorkie`, which takes a subcommand such as `server`.
 
-The yorkie CLI is a well-behaved command line application. In erroneous cases, a non-zero exit status will be returned. It also responds to `-h` and `---help` as you'd most likely expect.
+The Yorkie CLI is a well-behaved command-line application. In erroneous cases, a non-zero exit status will be returned. It also responds to `-h` and `---help` as you'd most likely expect.
 
 To get help for any specific command, pass the `-h` flag to the relevant subcommand. For example, to see help about the `server` subcommand:
 
@@ -99,9 +99,9 @@ Flags:
       --rpc-port int                                 RPC port (default 11101)
 ```
 
-#### Running Server
+#### Running a Server
 
-Next, let's start a Yorkie Server. Server runs until they're told to quit and handle the communication of maintenance tasks of Server. and start the server:
+Next, let's start a Yorkie Server. The Server runs until it's told to quit and handle the communication of maintenance tasks of the Server. and start the Server:
 
 ```bash
 $ yorkie server
@@ -112,15 +112,15 @@ serving RPC on 11101
 serving profiling on 11102
 ```
 
-Server stores its data using an in-memory DB that does not provide durability by default.
+The Server stores its data using an in-memory DB that does not provide durability by default.
 
-### Running Server with MongoDB
+### Running the Server with MongoDB
 
-If you start an Server with MongoDB address, you can permanently save the data stored by Yorkie.
+If you start the Server with a MongoDB address, you can permanently save the data stored by Yorkie.
 
 *To start MongoDB, `docker-compose -f docker/docker-compose.yml up --build -d` in [the project root](https://github.com/yorkie-team/yorkie).*
 
-Then start a Yorkie server with `--mongo-connection-uri` flag to connect the MongoDB.
+Then start a Yorkie Server with `--mongo-connection-uri` flag to connect the MongoDB.
 
 ```bash
 $ yorkie server --mongo-connection-uri mongodb://localhost:27017
