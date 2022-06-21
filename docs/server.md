@@ -18,8 +18,8 @@ The easiest way to install Yorkie is from pre-built binaries:
 
 1. Download the compressed archive file for your platform from [Releases](https://github.com/yorkie-team/yorkie/releases).
 2. Unpack the archive file. This results in a directory containing the binaries.
-3. Add the executable binaries to your path. For example, rename and/or move the binaries to a directory in your path (like /usr/local/bin), or add the directory created from the previous step to your path.
-4. Test if yorkie is in your path in shell:
+3. Add the executable binaries to your PATH. For example, rename and/or move the binaries to a directory in your PATH (like /usr/local/bin), or add the directory created from the previous step to your PATH.
+4. Test if Yorkie is in your PATH in shell:
 ```bash
 $ yorkie --version
 Yorkie: {{site.version}}
@@ -28,7 +28,7 @@ Yorkie: {{site.version}}
 
 #### Install via Homebrew
 
-[Homebrew](https://brew.sh/) is a free and open-source package management system for Mac OS X. Install the official [Yorkie formula](https://formulae.brew.sh/formula/yorkie) from the terminal.
+[Homebrew](https://brew.sh/) is a free and open-source package management system for Mac OS X. Install the official [Yorkie formula](https://formulae.brew.sh/formula/yorkie) in Terminal.
 
 To update Yorkie to the latest version, update Homebrew first.
 
@@ -42,7 +42,7 @@ Now, install Yorkie.
 $ brew install yorkie
 ```
 
-Verify that the installation worked by opening a new terminal session and listing Yorkie's available subcommands.
+Verify that the installation worked by opening a new Terminal session and trying Yorkie's available subcommands.
 
 ```bash
 $ yorkie version
@@ -54,7 +54,7 @@ Build date: ...
 
 #### Commands (CLI)
 
-Yorkie is controlled via a very easy-to-use command-line interface (CLI). Yorkie is just a single command-line application  `yorkie`, which takes a subcommand such as `server`.
+Yorkie is controlled via a very easy-to-use command-line interface (CLI). Yorkie is just a single command-line application `yorkie`, which takes a subcommand such as `server`.
 
 The Yorkie CLI is a well-behaved command-line application. In erroneous cases, a non-zero exit status will be returned. It also responds to `-h` and `---help` as you'd most likely expect.
 
@@ -101,7 +101,7 @@ Flags:
 
 #### Running a Server
 
-Next, let's start a Yorkie Server. The Server runs until it's told to quit and handle the communication of maintenance tasks of the Server. and start the Server:
+Next, let's start a Yorkie Server. The Server handles administrative requests such as project maintenance, and it continues to run until it's told to quit with termination commands such as Ctrl+C.
 
 ```bash
 $ yorkie server
@@ -112,7 +112,7 @@ serving RPC on 11101
 serving profiling on 11102
 ```
 
-The Server stores its data using an in-memory DB that does not provide durability by default.
+The Server stores its data using an in-memory DB, which does not provide durability by default.
 
 ### Running the Server with MongoDB
 
@@ -120,7 +120,7 @@ If you start the Server with a MongoDB address, you can permanently save the dat
 
 *To start MongoDB, `docker-compose -f docker/docker-compose.yml up --build -d` in [the project root](https://github.com/yorkie-team/yorkie).*
 
-Then start a Yorkie Server with `--mongo-connection-uri` flag to connect the MongoDB.
+Then, start a Yorkie Server with `--mongo-connection-uri` flag to connect the MongoDB.
 
 ```bash
 $ yorkie server --mongo-connection-uri mongodb://localhost:27017
