@@ -67,7 +67,7 @@ const selectionMap = new Map();
 async function createTextExample(client, doc, placeholder) {
   doc.update((root) => {
     if (!root.codemirror) {
-      root.codemirror = new yorkie.Text();
+      root.codemirror = new yorkie.PlainText();
       root.codemirror.edit(0, 0, '<html>\n  <body>Hello CodeMirror</body>\n</html>');
     }
   }, 'create codemirror if not exists');

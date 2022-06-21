@@ -26,9 +26,9 @@ async function createQuillExample(client, doc, quillHolder) {
   try {
     doc.update((root) => {
       if (!root.quill) {
-        const text = root.createRichText('quill');
-        text.edit(0, 0, 'Hello Quill');
-        text.setStyle(0, 5, {
+        root.quill = new yorkie.RichText();
+        root.quill.edit(0, 0, 'Hello Quill');
+        root.quill.setStyle(0, 5, {
           bold: '1'
         });
       }
