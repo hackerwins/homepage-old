@@ -95,7 +95,7 @@ layout: default
       {% endif %}
       await client.activate();
 
-      const doc = new yorkie.DocumentReplica(`examples$${getYYYYMMDD()}`);
+      const doc = new yorkie.Document(`examples$${getYYYYMMDD()}`);
       await client.attach(doc);
 
       await createPeerAwareness(client, doc, peerList);
