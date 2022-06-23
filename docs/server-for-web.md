@@ -25,7 +25,7 @@ Configuring Envoy by hand with its config file is cumbersome, but using [Docker 
 
 *NOTE: If docker compose is not installed, install it: [Install Docker Compose](https://docs.docker.com/compose/install/)*
 
-First, download all manifests files from [docker folder](https://github.com/yorkie-team/yorkie-team.github.io/tree/main/docker). Then execute the following command in the folder containing the downloaded file.
+First, download all manifests files from [docker folder](https://github.com/yorkie-team/yorkie-team.github.io/tree/main/docker). Then, execute the following command in the folder containing the downloaded file.
 
 ```bash
 $ docker-compose up --build -d
