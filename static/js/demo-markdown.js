@@ -68,8 +68,8 @@ const createMarkdownExample = (() => {
   async function createMarkdownExample(client, doc, placeholder) {
     doc.update((root) => {
       if (!root.markdown) {
-        const text = root.createText('markdown');
-        text.edit(0, 0, '# Hello Markdown');
+        root.markdown = new yorkie.Text('markdown');
+        root.markdown.edit(0, 0, '# Hello Markdown');
       }
     }, 'create markdown if not exists');
     await client.sync();
