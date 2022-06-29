@@ -29,7 +29,7 @@ This metrics can be collected from [Prometheus](https://prometheus.io/).
 
 Running [Prometheus](https://prometheus.io/) and [Grafana](https://grafana.com/oss/grafana/) is the easiest way to monitor Server's metrics.
 
-First, downloads all manifests files from [docker folder](https://github.com/yorkie-team/yorkie-team.github.io/tree/main/docker). Then let's start the applications with `docker-compose`:
+First, download all manifests files from [docker folder](https://github.com/yorkie-team/yorkie-team.github.io/tree/main/docker). Then, start the applications with `docker-compose`:
 
 ```bash
 $ docker-compose -f docker-compose-monitoring.yml up --build -d
@@ -38,9 +38,9 @@ Creating prometheus ... done
 Creating grafana    ... done
 ```
 
-Now Prometheus will collect Server metrics every 10 seconds.
+Now, Prometheus will collect Server metrics every 10 seconds.
 
-Grafana has built-in Prometheus support; just add a Prometheus data source:
+Grafana has a built-in Prometheus support; just add a Prometheus data source:
 
 ```
 Name:   prometheus
@@ -49,7 +49,7 @@ Url:    http://localhost:9090
 Access: proxy
 ```
 
-Then import the [default yorkie dashboard template](https://github.com/yorkie-team/yorkie-team.github.io/tree/main/docker/yorkie-dashboard.json) and customize. For instance, if Prometheus data source name is `my-prometheus`, the datasource field values in JSON also need to be `my-prometheus`.
+Then, import the [default Yorkie dashboard template](https://github.com/yorkie-team/yorkie-team.github.io/tree/main/docker/yorkie-dashboard.json) and customize it. For instance, if Prometheus data source name is `my-prometheus`, the datasource field values in JSON also need to be `my-prometheus`.
 
 Sample dashboard:
 
