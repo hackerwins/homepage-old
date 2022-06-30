@@ -8,9 +8,9 @@ order: 56
 
 ## Cluster Mode
 
-In a production environment, it is generally expected more than one server to handle requests. Even if an server goes down, the other servers must be able to handle the request. We can achieve that by setup Servers with Cluster-Mode.
+In a production environment, it is generally expected that more than one server handles requests. Even if a Server goes down, the other Servers must be able to handle the request. We can achieve that by setting up Servers with Cluster-Mode.
 
-This page describes how to setup a cluster of servers. An example of the cluster is as follows:
+This page describes how to set up a cluster of Servers. An example of the cluster is as follows:
 
 ```
                         ┌───────────┐
@@ -27,16 +27,16 @@ This page describes how to setup a cluster of servers. An example of the cluster
                         └───────────┘
 ```
 
-- Load Balancer: It is responsible for distributing the load of the requests to the servers.
-- Broadcast Channel: It responsible for broadcasting the events to all Servers.
+- Load Balancer: It is responsible for distributing the load of the requests to the Servers.
+- Broadcast Channel: It is responsible for broadcasting the events to all Servers.
 - MongoDB: It stores the data of Yorkie.
 - etcd: It is used to store the state of the cluster such as MemberMap, SubscriptionMap, etc.
 
-### Setup Cluster
+### Cluster Setup
 
-First, we need components such as etcd, MongoDB, and Load Balancer in order to setup the cluster.
+First, we need components such as etcd, MongoDB, and Load Balancer in order to set up the cluster.
 
-Various load balancers can be used as load balancers for the cluster. For CodePair, We have configured the cluster on AWS, so we use [ALB](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html) as Load Balancer.
+Various types of load balancer can be used for the cluster. For CodePair, We have configured the cluster on AWS, so we use [ALB](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html) as Load Balancer.
 
 *For testing cluster mode, we can use Docker Compose to run applications such as etcd and MongoDB. To start them, type `docker-compose -f docker/docker-compose-ci.yml up --build -d` in [the project root](https://github.com/yorkie-team/yorkie).*
 
@@ -64,4 +64,4 @@ serving profiling on 21102
 serving RPC on 21101
 ```
 
-Now both Servers are ready to receive requests from clients.
+Now both Servers are ready to receive requests from Clients.
