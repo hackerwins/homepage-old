@@ -8,9 +8,9 @@ order: 52
 
 ## Server for Web
 
-Server uses [gRPC](https://grpc.io/) to provide an API that clients can connect to. It is currently impossible to implement the HTTP/2 gRPC in some browsers, [Envoy](https://www.envoyproxy.io/) is required for web. For more details: [gRPC-web](https://grpc.io/blog/state-of-grpc-web/)
+Server uses [gRPC](https://grpc.io/) to provide an API that Clients can connect to. Since it is currently impossible to implement the HTTP/2 gRPC in some browsers, [Envoy](https://www.envoyproxy.io/) is required for web. For more details: [gRPC-web](https://grpc.io/blog/state-of-grpc-web/)
 
-This page shows how to start the server for web. Overall structure is as follows:
+This page shows how to start the Server for web. Overall structure is as follows:
 
 ```
  Browser            Envoy                  Server
@@ -25,7 +25,7 @@ Configuring Envoy by hand with its config file is cumbersome, but using [Docker 
 
 *NOTE: If docker compose is not installed, install it: [Install Docker Compose](https://docs.docker.com/compose/install/)*
 
-First, downloads all manifests files from [docker folder](https://github.com/yorkie-team/yorkie-team.github.io/tree/main/docker). Then execute the following command in the folder containing the downloaded file.
+First, download all manifests files from [docker folder](https://github.com/yorkie-team/yorkie-team.github.io/tree/main/docker). Then, execute the following command in the folder containing the downloaded file.
 
 ```bash
 $ docker-compose up --build -d
@@ -34,7 +34,7 @@ Starting yorkie ... done
 Starting envoy  ... done
 ```
 
-This will launch the yorkie(Server) and envoy containers on your environment.
+This will launch Yorkie(Server) and envoy containers on your environment.
 
 ```bash
 $ docker ps
@@ -52,9 +52,9 @@ Then, the ports of the services are bound to the host environment.
 - 11102: HTML port for profiling Server
 - 11103: gRPC port for admin Server
 
-*NOTE: Server stores its data using an in-memory DB that does not provide durability. If you want to store data permanently please refer to [Running Server With MongoDB](/docs/server#running-server-with-mongodb)*
+*NOTE: Server stores its data using an in-memory DB, which does not provide durability. If you want to store data permanently, please refer to [Running Server With MongoDB](/docs/server#running-server-with-mongodb)*
 
-Now lets create a client with address `localhost:8080`.
+Now, let's create a Client with address `localhost:8080`.
 
 ```javascript
 const client = new yorkie.Client('localhost:8080');

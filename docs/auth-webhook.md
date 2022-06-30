@@ -8,9 +8,9 @@ order: 54
 
 ## Auth Webhook
 
-Webhook is an HTTP POST that is called when something happens. When specified, Auth Webhook causes Server to query an outside REST service when determining user privileges.
+A webhook is an HTTP POST that is called when something happens. If the Auth Webhook has been configured, when a Server receives a request from a Client, the Server checks if the Client has been authorized for a certain Document by asking an outside service with a REST request.
 
-This page shows how to set up a auth webhook. The overall flow is as follows:
+This page shows how to set up an Auth Webhook. The overall flow is as follows:
 
 ```
 (5) response the request  (4) handle the request
@@ -30,7 +30,7 @@ This page shows how to set up a auth webhook. The overall flow is as follows:
 
 ### How to implement
 
-First, We need to pass some tokens (that identify users in the service) when creating a client:
+First, We need to pass some tokens (that identify users in the service) when creating a Client:
 
 ```javascript
 const client = new yorkie.Client('localhost:8080', {
@@ -38,9 +38,9 @@ const client = new yorkie.Client('localhost:8080', {
 });
 ```
 
-this token will be sent to the Server on every request from the client.
+This token will be sent to the Server upon every request from the Client.
 
-And when running an Server, We can specify the Auth Webhook by the `--authorization-webhook` flag:
+When running a Server, we can specify an Auth Webhook by the `--authorization-webhook` flag:
 
 ````bash
 $ yorkie server --authorization-webhook=http://localhost:3000/auth-hook
@@ -65,9 +65,9 @@ The outside server should respond like this:
 
 ```javascript
 {
-  "allowed": true, // or false if the given token is not privileged for this document.
+  "allowed": true, // or false if the given token is not authorized for this document.
   "reason": "ok"   // [optional] reason for this response.
 }
 ```
 
-If the server receives a response with `allowed: true` from the outside server, it handles the request normally, otherwise it response an error with `codes.Unauthenticated` to the client.
+If the server receives a response with `allowed: true` from the outside server, it handles the request normally, otherwise it sends the `codes.Unauthenticated` error to the client.
