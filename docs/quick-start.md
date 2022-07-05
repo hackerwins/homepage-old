@@ -65,7 +65,7 @@ The created document should be attached to the client to automatically synchroni
 
 #### 2. Updating the Document
 
-The created document is initially an empty object. You can create or update a key value property that you would like to share between peers by using `doc.update()`.
+The created document is initially an empty object. You can create or update a key-value property you would like to share with peers using `doc.update()`.
 
 ```js
 doc.update((root) => {
