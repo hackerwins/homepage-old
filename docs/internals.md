@@ -4,6 +4,7 @@ layout: docs
 category: "Internals"
 permalink: /docs/internals
 order: 70
+submenu: true
 ---
 
 ## Internals

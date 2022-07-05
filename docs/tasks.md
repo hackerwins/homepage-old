@@ -4,6 +4,7 @@ layout: docs
 category: "Tasks"
 permalink: /docs/tasks
 order: 50
+submenu: true
 ---
 
 ## Tasks
