@@ -43,7 +43,7 @@ or just include the following code in the `<head>` tag of your HTML:
 
 ### How to use Yorkie
 
-#### 1.Initializing Document Properties
+#### 1. Initializing Document Properties
 
 First, create a Client and a Document.
 
