@@ -99,7 +99,7 @@ doc.subscribe((event) => {
 
 #### 4. Viewing the presence of other peers
 
-Other peers' activity can be accessed by subscribing to the client.
+Other peers' activities can be accessed by subscribing to the client.
 
 ```js
 client.subscribe((event) => {
