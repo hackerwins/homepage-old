@@ -43,7 +43,7 @@ or just include the following code in the `<head>` tag of your HTML:
 
 ### How to use Yorkie
 
-#### 1.Initializing Document Properties
+#### 1. Initializing Document Properties
 
 First, create a Client and a Document.
 
@@ -65,7 +65,7 @@ The created document should be attached to the client to automatically synchroni
 
 #### 2. Updating the Document
 
-The created document is initially an empty object. You can create or update a key value property that you would like to share between peers by using `doc.update()`.
+The created document is initially an empty object. You can create or update a key-value property you would like to share with peers using `doc.update()`.
 
 ```js
 doc.update((root) => {
@@ -99,7 +99,7 @@ doc.subscribe((event) => {
 
 #### 4. Viewing the presence of other peers
 
-Other peers' activity can be accessed by subscribing to the client.
+Other peers' activities can be accessed by subscribing to the client.
 
 ```js
 client.subscribe((event) => {
