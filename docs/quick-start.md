@@ -74,9 +74,6 @@ If you want to access the document properties, you can use `doc.getRoot()`. Usin
 doc.update((root) => {
   root.sharedMessage = "Hello World!";
 });
-
-// some time later..
-
 console.log(doc.getRoot().sharedMessage); // "Hello World!";
 ```
 
