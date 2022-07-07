@@ -65,7 +65,21 @@ doc.update((root) => {
 });
 ```
 
-#### 3. Subscribing to the changes that happen in the Document
+#### 3. Accessing Document Properties
+
+If you want to access the document properties, you can use `doc.getRoot()`. Using a dot notation, you can access a key-value property you or your peers have set.
+
+```js
+doc.update((root) => {
+  root.sharedMessage = "Hello World!";
+});
+
+// some time later..
+
+console.log(doc.getRoot().sharedMessage); // "Hello World!";
+```
+
+#### 4. Subscribing to the changes that happen in the Document
 
 Clients sharing the same document can subscribe to the changes that happen in the Document using `doc.subscribe()`
 
@@ -85,7 +99,23 @@ doc.subscribe((event) => {
 });
 ```
 
-#### 4. Viewing the presence of other peers
+Accessing certain document properties when a specific property in the document is changed is the key to creating a collaborative application. You can perform different actions based on which property has changed in the document by examining `paths` array that exists in `event.value` array.
+
+```js
+doc.subscribe((event) => {
+ if (event.type === 'remote-change') {
+    for (const changeInfo of event.value) {
+      for (const path of changeInfo.paths) {
+        if (path.startsWith('$.sharedMessage') {
+          console.log(`One of your peers has changed the message to ${doc.getRoot().sharedMessage}`)
+        }
+      }
+    }
+  }
+});
+```
+
+#### 5. Viewing the presence of other peers
 
 Other peers' activities can be accessed by subscribing to the client.
 
