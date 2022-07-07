@@ -41,6 +41,7 @@ or just include the following code in the `<head>` tag of your HTML:
 
 First, create a Client and a Document.
 
+
 ```js
 async function main() {
   // 01. create a new client instance and connect to the yorkie server
