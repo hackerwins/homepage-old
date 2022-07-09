@@ -19,7 +19,10 @@
                   {% for doc in docs %}
                     {% if doc.category == page.category or doc.title == doc.category %}
                     <li class="{% if doc.url == page.url %}active{% endif %}{% if doc.category != doc.title %} sub{% endif %}">
-                      <a href="{{ doc.url }}">{{ doc.title }}{% if doc.submenu %} &nbsp; ▾{% endif %}</a>
+                      <a href="{{ doc.url }}">{{ doc.title }}
+                        {% if doc.submenu and doc.category != page.category %} &nbsp; ▸{% endif %}
+                        {% if doc.submenu and doc.category == page.category %} &nbsp; ▾{% endif %}
+                      </a>
                     </li>
                     {% endif %}
                   {% endfor %}
