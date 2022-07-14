@@ -6,7 +6,7 @@ permalink: /docs/project
 order: 51
 ---
 
-### Project
+## Project
 
 Project represents your service or application in Yorkie. Separate Projects can exist within a single application. You can add more Projects as needed, for example, if you want to manage [auth webhook](/docs/auth-webhook) and documents for specific purposes.
 
