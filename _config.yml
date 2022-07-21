@@ -45,7 +45,7 @@ sass:
 #   - vendor/ruby/
 
 # the current Yorkie version
-version: 0.2.9
+version: 0.2.12
 
 defaults:
   - scope:

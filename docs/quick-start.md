@@ -35,6 +35,8 @@ or just include the following code in the `<head>` tag of your HTML:
 <script src="https://cdnjs.cloudflare.com/ajax/libs/yorkie-js-sdk/{{site.version}}/yorkie-js-sdk.js"></script>
 ```
 
+*The JS SDKs are also provided by [cdnjs](https://cdnjs.com) to make loading library files faster and easier on websites.<br>For more the JS SDKs: [https://cdnjs.com/libraries/yorkie-js-sdk](https://cdnjs.com/libraries/yorkie-js-sdk)*
+
 ### How to use Yorkie
 
 #### 1. Initializing Document Properties
