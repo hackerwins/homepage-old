@@ -71,7 +71,7 @@ Flags:
 You can update a `auth-webhook-url`.
 ```bash
 $ yorkie project update test-project --auth-webhook-url http://localhost:3000/webhook
-{"id":"62ebf466275b244d0d6e0cca","test-project":"new-test-project","auth_webhook_url":"http://localhost:3000/webhook","auth_webhook_methods":null,"public_key":"cblv8plcefo85rbk33fg","secret_key":"cblv8plcefo85rbk33g0","created_at":"2022-08-04T16:31:34.909Z","updated_at":"2022-08-11T14:51:20.734Z"}
+{"id":"62ebf466275b244d0d6e0cca","name":"test-project","auth_webhook_url":"http://localhost:3000/webhook","auth_webhook_methods":null,"public_key":"cblv8plcefo85rbk33fg","secret_key":"cblv8plcefo85rbk33g0","created_at":"2022-08-04T16:31:34.909Z","updated_at":"2022-08-11T14:51:20.734Z"}
 ```
 You can update a Project `name`.
 ```bash
