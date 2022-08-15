@@ -42,8 +42,14 @@ This token will be sent to the Server upon every request from the Client.
 
 When running a Server, we can specify an Auth Webhook by the `--authorization-webhook` flag:
 
-````bash
+```bash
 $ yorkie server --authorization-webhook=http://localhost:3000/auth-hook
+```
+
+We can also update the auth-webhook-url per project. by the `--auth-webhook-url` flag:
+
+```bash
+$ yorkie project [name] --auth-webhook-url http://localhost:3000/auth-hook
 ```
 
 The Server who receives the token calls the given webhook URL before processing the requests.
