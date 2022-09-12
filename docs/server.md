@@ -21,9 +21,11 @@ The easiest way to install Yorkie is from pre-built binaries:
 3. Add the executable binaries to your PATH. For example, rename and/or move the binaries to a directory in your PATH (like /usr/local/bin), or add the directory created from the previous step to your PATH.
 4. Test if Yorkie is in your PATH in shell:
 ```bash
-$ yorkie --version
+$ yorkie version
 Yorkie: {{site.version}}
-...
+Commit: ...
+Go: ...
+Build date: ...
 ```
 
 #### Install via Homebrew
